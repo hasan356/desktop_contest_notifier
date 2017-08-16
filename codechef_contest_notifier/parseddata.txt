@@ -1,0 +1,12542 @@
+Home » Compete                    
+
+.time_zone_container {
+
+text-align: right;
+
+background-image: url('/sites/all/themes/abessive/images/clock-timer.png');
+
+background-position: right top, left bottom;
+
+background-repeat: no-repeat;
+
+padding-right: 25px;
+
+}
+
+.time_zone_container p {
+
+font-size: 11px;
+
+color: #D8D6D6;
+
+}
+
+#timezone_off {
+
+display: none;
+
+height: 20px;
+
+}
+
+#sidebar-content {
+
+position: absolute;
+
+height: 99.7%;
+
+}
+
+.rounded-cr-footer {
+
+position: relative;
+
+}
+
+.rounded-b-footer {
+
+background: none;
+
+}
+
+.rounded-b-header {
+
+background: none;
+
+}
+
+.rounded-block{
+
+border: 1px solid #E4E1E1;
+
+border-radius: 17px;
+
+}
+
+$(function() {
+
+var sidebar = $('#sidebar-content');
+
+var length = sidebar.height() - $('.content-spacer').height() + sidebar.offset().top;
+
+$(window).scroll(function() {
+
+var scroll = $(this).scrollTop();
+
+var height = $('.content-spacer').height() + 'px';
+
+if (scroll < sidebar.offset().top) {
+
+$('.content-spacer').css({
+
+'position': 'absolute',
+
+'top': '0'
+
+});
+
+} else if (scroll > length) {
+
+$('.content-spacer').css({
+
+'position': 'absolute',
+
+'bottom': '0',
+
+'top': 'auto'
+
+});
+
+} else {
+
+$('.content-spacer').css({
+
+'position': 'fixed',
+
+'top': '10px',
+
+'height': height
+
+});
+
+}
+
+});
+
+});
+
+$(document).ready(function(){
+
+var defaultTzName = 'Asia/Kolkata';
+
+var userTzStr = jstz.determine();
+
+var userTzName = userTzStr.name();
+
+var dateFormat = 'YYYY-MM-DD HH:mm:ss';
+
+function changeTimezone(tzName)
+
+{
+
+//change start date
+
+$('td.start_date').each(function() {
+
+var timeStr = $(this).data('starttime');
+
+var convertedStr = moment(timeStr).tz(tzName).format(dateFormat);
+
+$(this).html(convertedStr);
+
+});
+
+//change end date
+
+$('td.end_date').each(function() {
+
+var timeStr = $(this).data('endtime');
+
+var convertedStr = moment(timeStr).tz(tzName).format(dateFormat);
+
+$(this).html(convertedStr);
+
+});
+
+}
+
+$('#convert_timezone_link').click(function(e) {
+
+e.preventDefault(userTzName);
+
+if(defaultTzName != userTzName) {
+
+changeTimezone(userTzName);
+
+$('#timezone_on').hide();
+
+$('#timezone_off').css({'display':'inline-block'});
+
+}
+
+else {
+
+$.growl({ title: "Info", message: "You are already in IST timezone" });
+
+}
+
+});
+
+$('#reset_timezone_link').click(function(e){
+
+e.preventDefault();
+
+var tzName = defaultTzName;
+
+changeTimezone(defaultTzName);
+
+$('#timezone_on').show();
+
+$('#timezone_off').css({'display':'none'});
+
+});
+
+})
+
+Convert to my Timezone
+
+The times are in IST(Indian Standard Time)
+
+Convert back to IST(Indian Standard Time)
+
+Present Contests
+
+CODE
+
+NAME
+
+START
+
+END
+
+AUG17
+
+August Long Challenge 2017
+
+04 Aug 2017  15:00:00
+
+18 Aug 2017  15:00:00
+
+IOIPRAC
+
+INOI Practice 2015
+
+05 Jan 2016  00:00:00
+
+05 Jan 2018  00:00:00
+
+ZCOPRAC
+
+ZCO Practice Contest
+
+05 Nov 2015  00:00:00
+
+05 Jan 2018  00:00:00
+
+Future Contests
+
+CODE
+
+NAME
+
+START
+
+END
+
+COOK85
+
+August Cook-Off 2017
+
+20 Aug 2017  21:30:00
+
+21 Aug 2017  00:00:00
+
+LOCAUG17
+
+LoC Aug 2017
+
+25 Aug 2017  00:00:00
+
+28 Aug 2017  23:59:59
+
+LTIME51
+
+August Lunchtime 2017
+
+26 Aug 2017  19:30:00
+
+26 Aug 2017  22:30:00
+
+Past Contests
+
+CODE
+
+NAME
+
+START
+
+END
+
+TETO2017
+
+Techtonic
+
+13 Aug 2017  10:00:00
+
+15 Aug 2017  23:59:00
+
+LOCJUL17
+
+LoC July 2017
+
+28 Jul 2017  00:00:00
+
+30 Jul 2017  23:59:59
+
+PROJ2017
+
+ProCon Junior 2017
+
+30 Jul 2017  17:00:00
+
+30 Jul 2017  20:00:00
+
+LTIME50
+
+July Lunchtime 2017
+
+29 Jul 2017  19:30:00
+
+29 Jul 2017  23:00:00
+
+TSCO2017
+
+TSEC Codeathon
+
+29 Jul 2017  15:00:00
+
+29 Jul 2017  19:00:00
+
+ISCC2017
+
+Innerve's Summer Code Challenge
+
+17 Jul 2017  15:00:00
+
+27 Jul 2017  15:00:00
+
+COOK84
+
+July Cook-Off 2017
+
+23 Jul 2017  21:30:00
+
+24 Jul 2017  00:00:00
+
+JULY17
+
+July Challenge 2017
+
+07 Jul 2017  15:00:00
+
+17 Jul 2017  15:00:00
+
+LOCJUN17
+
+LoC June 2017
+
+30 Jun 2017  00:00:00
+
+03 Jul 2017  23:59:59
+
+SNFL17MR
+
+SnackDown 2017 Onsite Final Mirror
+
+01 Jul 2017  12:30:00
+
+01 Jul 2017  17:30:00
+
+SNCKFL17
+
+SnackDown 2017 Onsite Final Round
+
+01 Jul 2017  12:05:00
+
+01 Jul 2017  17:05:00
+
+LTIME49
+
+June Lunchtime 2017
+
+24 Jun 2017  19:30:00
+
+24 Jun 2017  22:30:00
+
+COOK83
+
+June Cook-Off 2017
+
+18 Jun 2017  21:30:00
+
+19 Jun 2017  00:30:00
+
+JUNE17
+
+June Challenge 2017
+
+02 Jun 2017  15:00:00
+
+12 Jun 2017  15:00:00
+
+SNEL17RP
+
+SnackDown 2017 Online Elimination Round Replay
+
+04 Jun 2017  21:00:00
+
+05 Jun 2017  02:00:00
+
+SNCKEL17
+
+SnackDown 2017 Online Elimination Round
+
+03 Jun 2017  19:30:00
+
+04 Jun 2017  00:30:00
+
+SNCKPB17
+
+SnackDown Online Pre-Elimination Round B
+
+31 May 2017  21:00:00
+
+01 Jun 2017  21:00:00
+
+LOCMAY17
+
+May LoC Competitive Programming Marathon
+
+27 May 2017  00:00:00
+
+29 May 2017  23:59:00
+
+SNCKPA17
+
+SnackDown Online Pre-elimination round A
+
+27 May 2017  23:00:00
+
+28 May 2017  23:00:00
+
+LTIME48
+
+May Lunchtime 2017
+
+27 May 2017  19:30:00
+
+27 May 2017  21:14:00
+
+SNCKQL17
+
+SnackDown Online Qualifier 2017
+
+20 May 2017  17:00:00
+
+24 May 2017  17:00:00
+
+COOK82
+
+May Cook-Off 2017
+
+21 May 2017  21:30:00
+
+22 May 2017  00:00:00
+
+MAY17
+
+May Challenge 2017
+
+05 May 2017  15:00:00
+
+18 May 2017  15:00:00
+
+BITM2017
+
+Bit Mask
+
+05 May 2017  16:00:00
+
+05 May 2017  21:00:00
+
+LOCAPR17
+
+April LoC Competitive Programming Marathon
+
+28 Apr 2017  00:00:00
+
+30 Apr 2017  23:59:00
+
+IEMCO17
+
+IEM Coding Olympiad (IEMCO) 2017
+
+30 Apr 2017  20:00:00
+
+30 Apr 2017  23:00:00
+
+LTIME47
+
+April Lunchtime 2017
+
+29 Apr 2017  19:30:00
+
+29 Apr 2017  22:30:00
+
+COOK81
+
+April Cook-Off 2017
+
+23 Apr 2017  21:30:00
+
+24 Apr 2017  00:00:00
+
+IOPC2017
+
+IOPC 2017 (Rated)
+
+21 Apr 2017  15:00:00
+
+21 Apr 2017  19:00:00
+
+APRIL17
+
+April Challenge 2017
+
+07 Apr 2017  15:00:00
+
+17 Apr 2017  15:00:00
+
+EXCO1701
+
+Explore-Code II
+
+09 Apr 2017  18:00:00
+
+09 Apr 2017  21:40:00
+
+ICL2017
+
+International Coding League (Rated)
+
+26 Mar 2017  21:00:00
+
+27 Mar 2017  00:00:00
+
+LTIME46
+
+March Lunchtime 2017
+
+25 Mar 2017  19:30:00
+
+25 Mar 2017  22:30:00
+
+ALKH2017
+
+Alkhwarizm 2017 (Rated)
+
+24 Mar 2017  21:00:00
+
+25 Mar 2017  02:00:00
+
+COOK80
+
+March Cook-Off 2017
+
+19 Mar 2017  21:30:00
+
+20 Mar 2017  00:15:00
+
+PWCE2017
+
+Pradnya Wild Card Entry Round
+
+19 Mar 2017  18:00:00
+
+19 Mar 2017  21:00:00
+
+PRCD1701
+
+Codiyapa
+
+18 Mar 2017  15:00:00
+
+19 Mar 2017  15:00:00
+
+KJSC17
+
+KJSCE Coding Challenge
+
+18 Mar 2017  21:15:00
+
+19 Mar 2017  00:30:00
+
+ABCS2017
+
+Abacus'17 - OLPC
+
+17 Mar 2017  21:00:00
+
+18 Mar 2017  00:00:00
+
+COZI2017
+
+CODEZILLA
+
+14 Mar 2017  21:00:00
+
+15 Mar 2017  00:00:00
+
+MARCH17
+
+March Challenge 2017
+
+03 Mar 2017  15:00:00
+
+13 Mar 2017  15:00:00
+
+BYCO2017
+
+Bytecode 2017
+
+04 Mar 2017  21:00:00
+
+05 Mar 2017  02:00:00
+
+NCL2017
+
+National Computing League
+
+01 Mar 2017  21:00:00
+
+02 Mar 2017  00:00:00
+
+NCC2017
+
+National Computing Contest
+
+28 Feb 2017  21:30:00
+
+01 Mar 2017  00:45:00
+
+ALGR2017
+
+ALGORITHMIST
+
+27 Feb 2017  21:00:00
+
+28 Feb 2017  00:00:00
+
+COLG2017
+
+Coders' Legacy 2017A
+
+26 Feb 2017  11:00:00
+
+26 Feb 2017  23:00:00
+
+LTIME45
+
+February Lunchtime 2017
+
+25 Feb 2017  19:35:00
+
+25 Feb 2017  22:35:00
+
+DEAD2017
+
+Replay of Deadline24 2016 Qualifying Round
+
+24 Feb 2017  20:30:00
+
+24 Feb 2017  23:30:00
+
+CRES2017
+
+Cresense2k17
+
+22 Feb 2017  18:00:00
+
+24 Feb 2017  18:00:00
+
+COMA2017
+
+Codemania
+
+21 Feb 2017  21:00:00
+
+22 Feb 2017  00:00:00
+
+COOK79
+
+February Cook-Off 2017
+
+19 Feb 2017  21:30:00
+
+20 Feb 2017  00:00:00
+
+FEB17
+
+February Challenge 2017
+
+03 Feb 2017  15:00:00
+
+19 Feb 2017  15:00:00
+
+BYTR2017
+
+Byterace
+
+15 Feb 2017  21:00:00
+
+16 Feb 2017  00:00:00
+
+DECA2017
+
+DECATHLON
+
+10 Feb 2017  21:30:00
+
+11 Feb 2017  00:00:00
+
+CDVA17
+
+Codevaitam 3.0
+
+01 Feb 2017  20:00:00
+
+05 Feb 2017  20:00:00
+
+COSU2017
+
+CodeSurf 17
+
+04 Feb 2017  21:00:00
+
+05 Feb 2017  00:00:00
+
+AGOF2017
+
+Algoflux Qualifiers
+
+30 Jan 2017  21:30:00
+
+31 Jan 2017  00:15:00
+
+LTIME44
+
+January Lunchtime 2017
+
+28 Jan 2017  19:30:00
+
+28 Jan 2017  22:30:00
+
+COOK78
+
+January Cook-Off 2017
+
+22 Jan 2017  21:30:00
+
+23 Jan 2017  00:00:00
+
+JAN17
+
+January Challenge 2017
+
+06 Jan 2017  15:00:00
+
+18 Jan 2017  15:00:00
+
+COSE2017
+
+Code Sense
+
+16 Jan 2017  21:00:00
+
+17 Jan 2017  00:00:00
+
+LTC2017
+
+BigO v-3.0
+
+13 Jan 2017  18:30:00
+
+13 Jan 2017  21:30:00
+
+KQPM2017
+
+Keteki Quick Match 4
+
+01 Jan 2017  15:00:00
+
+01 Jan 2017  15:30:00
+
+LTIME43
+
+December Lunchtime 2016
+
+31 Dec 2016  19:30:00
+
+31 Dec 2016  22:30:00
+
+INF16MOS
+
+ACM-ICPC Asia-India Finals Mirror Contest 2016
+
+30 Dec 2016  11:00:00
+
+30 Dec 2016  16:00:00
+
+KOL16MOS
+
+ACM-ICPC Asia-Kolkata Onsite Mirror Contest 2016
+
+27 Dec 2016  11:00:00
+
+27 Dec 2016  16:00:00
+
+BITF2016
+
+BITFLIT
+
+26 Dec 2016  20:00:00
+
+26 Dec 2016  23:30:00
+
+SOPC2016
+
+Shaastra Programming Contest 2016
+
+24 Dec 2016  14:00:00
+
+24 Dec 2016  17:00:00
+
+AMR16MOS
+
+ACM-ICPC Asia-Amritapuri Onsite Mirror Contest 2016
+
+23 Dec 2016  10:00:00
+
+23 Dec 2016  15:30:00
+
+CHN16MOS
+
+ACM-ICPC Asia-Chennai Onsite Mirror Contest 2016
+
+20 Dec 2016  11:00:00
+
+20 Dec 2016  16:00:00
+
+COOK77
+
+December Cook-Off 2016
+
+18 Dec 2016  21:30:00
+
+19 Dec 2016  00:00:00
+
+KGP16MOS
+
+ACM-ICPC Asia-Kharagpur Onsite Mirror Contest 2016
+
+17 Dec 2016  11:30:00
+
+17 Dec 2016  16:30:00
+
+DEC16
+
+December Challenge 2016
+
+02 Dec 2016  15:00:00
+
+12 Dec 2016  15:00:00
+
+GOGL2016
+
+Googol
+
+09 Dec 2016  21:00:00
+
+10 Dec 2016  00:30:00
+
+LTIME42
+
+November Lunchtime 2016
+
+26 Nov 2016  19:30:00
+
+26 Nov 2016  23:00:00
+
+COOK76
+
+November Cook-Off 2016
+
+20 Nov 2016  21:30:00
+
+21 Nov 2016  00:00:00
+
+QCDJ2016
+
+Quark CodeJam Round 1
+
+19 Nov 2016  21:00:00
+
+20 Nov 2016  00:00:00
+
+NOV16
+
+November Challenge 2016
+
+04 Nov 2016  15:00:00
+
+14 Nov 2016  15:00:00
+
+IEMCO16
+
+IEM Coding Olympiad 2016
+
+06 Nov 2016  20:00:00
+
+06 Nov 2016  23:00:00
+
+SMPX2016
+
+SIMPLEX
+
+05 Nov 2016  21:30:00
+
+06 Nov 2016  00:30:00
+
+LTIME41
+
+October Lunchtime 2016
+
+29 Oct 2016  19:30:00
+
+29 Oct 2016  22:30:00
+
+COOK75
+
+October Cook-Off 2016
+
+23 Oct 2016  21:30:00
+
+24 Oct 2016  00:00:00
+
+CDVT2016
+
+Codester veteran
+
+23 Oct 2016  10:30:00
+
+23 Oct 2016  13:00:00
+
+IFCAMR16
+
+ICPC For Schools, Amrita University
+
+22 Oct 2016  19:00:00
+
+22 Oct 2016  22:00:00
+
+ACMIND16
+
+ACM-ICPC India Regionals, Online Preliminary Round 2016
+
+22 Oct 2016  19:00:00
+
+22 Oct 2016  22:00:00
+
+TSTIND16
+
+ACM-ICPC India Regionals, Practice Round 2016
+
+21 Oct 2016  19:00:00
+
+21 Oct 2016  22:00:00
+
+NPLQ1602
+
+NPL Final Round 
+
+21 Oct 2016  14:00:00
+
+21 Oct 2016  16:30:00
+
+NPLQ1601
+
+NPL Elimination Round
+
+18 Oct 2016  18:00:00
+
+18 Oct 2016  20:30:00
+
+OCT16
+
+October Challenge 2016
+
+07 Oct 2016  15:00:00
+
+17 Oct 2016  15:00:00
+
+GMCO2016
+
+Techfest International Coding Challenge - Game of Codes
+
+16 Oct 2016  10:00:00
+
+17 Oct 2016  10:00:00
+
+IPC15CMR
+
+ICPC Preparatory Series by Team Forthewatch Mirror contest
+
+02 Oct 2016  21:00:00
+
+03 Oct 2016  02:00:00
+
+IPC15FLC
+
+ICPC Preparatory Series by Team Forthewatch
+
+02 Oct 2016  20:00:00
+
+03 Oct 2016  01:00:00
+
+IPC15BMR
+
+ICPC Preparatory Series by Team Skull Crackers Mirror contest
+
+01 Oct 2016  15:00:00
+
+01 Oct 2016  20:00:00
+
+IPC15FLB
+
+ICPC Preparatory Series by Team Skull Crackers
+
+01 Oct 2016  14:00:00
+
+01 Oct 2016  19:00:00
+
+CDSP2016
+
+Code Sprint
+
+28 Sep 2016  13:15:00
+
+28 Sep 2016  15:40:00
+
+IPC15AMR
+
+ICPC Preparatory Series by Team Akatsuki Mirror contest
+
+25 Sep 2016  21:00:00
+
+26 Sep 2016  02:00:00
+
+IPC15FLA
+
+ICPC Preparatory Series by Team Akatsuki
+
+25 Sep 2016  20:00:00
+
+26 Sep 2016  01:10:00
+
+KJCS16
+
+KJSCE Code Spree
+
+25 Sep 2016  21:00:00
+
+26 Sep 2016  00:00:00
+
+LTIME40
+
+September Lunchtime 2016
+
+24 Sep 2016  19:30:00
+
+24 Sep 2016  22:30:00
+
+COWS2016
+
+CODE_WAR
+
+21 Sep 2016  20:00:00
+
+22 Sep 2016  20:00:00
+
+COOK74
+
+September Cook-Off 2016
+
+18 Sep 2016  21:30:00
+
+19 Sep 2016  00:00:00
+
+GSTS1601
+
+BUG4EVER
+
+18 Sep 2016  09:00:00
+
+18 Sep 2016  21:00:00
+
+SIC2016
+
+HACK NITJ
+
+17 Sep 2016  15:00:00
+
+17 Sep 2016  18:00:00
+
+SEPT16
+
+September Challenge 2016
+
+02 Sep 2016  15:00:00
+
+15 Sep 2016  15:00:00
+
+CDTN2016
+
+Codeathon
+
+10 Sep 2016  21:00:00
+
+10 Sep 2016  23:00:00
+
+LOCAUG16
+
+August LoC Competitive Programming Marathon
+
+02 Sep 2016  00:00:00
+
+05 Sep 2016  23:59:00
+
+INSQ2016
+
+Insomnia 2016 Qualifier
+
+04 Sep 2016  21:30:00
+
+05 Sep 2016  00:30:00
+
+LTIME39
+
+August Lunchtime 2016
+
+27 Aug 2016  19:30:00
+
+27 Aug 2016  22:30:00
+
+COOK73
+
+August Cook-Off 2016
+
+21 Aug 2016  21:30:00
+
+22 Aug 2016  00:00:00
+
+CCWR2016
+
+Clash Credenz 2016 Wildcard Round
+
+20 Aug 2016  21:00:00
+
+21 Aug 2016  00:00:00
+
+AUG16
+
+August Challenge 2016
+
+05 Aug 2016  15:00:00
+
+15 Aug 2016  15:00:00
+
+CDJA2016
+
+Codejam
+
+10 Aug 2016  18:00:00
+
+11 Aug 2016  00:00:00
+
+PROC2016
+
+ProCon 2016 | Esya'16
+
+06 Aug 2016  21:00:00
+
+07 Aug 2016  00:00:00
+
+GSTS2016
+
+GST SRM Aug
+
+06 Aug 2016  18:00:00
+
+06 Aug 2016  21:00:00
+
+CDGO2016
+
+Codigo-2016
+
+03 Aug 2016  21:00:00
+
+04 Aug 2016  01:00:00
+
+LOCJUL16
+
+July LoC Competitive Programming Marathon
+
+29 Jul 2016  00:00:00
+
+01 Aug 2016  23:59:00
+
+LTIME38
+
+July Lunchtime 2016
+
+30 Jul 2016  19:30:00
+
+30 Jul 2016  23:30:00
+
+PROC1601
+
+ProCon Junior 2016 | Esya'16
+
+30 Jul 2016  11:00:00
+
+30 Jul 2016  14:15:00
+
+CYPH2016
+
+Cypher 1.0
+
+28 Jul 2016  20:00:00
+
+28 Jul 2016  22:00:00
+
+COOK72
+
+July Cook-Off 2016
+
+24 Jul 2016  21:30:00
+
+25 Jul 2016  00:00:00
+
+UEMK2016
+
+UEM Kolkata June-July College Coding Competition
+
+16 Jul 2016  18:00:00
+
+16 Jul 2016  20:00:00
+
+JULY16
+
+July Challenge 2016
+
+01 Jul 2016  15:00:00
+
+13 Jul 2016  15:00:00
+
+SNFL16MR
+
+SnackDown 2016 Onsite Final Mirror
+
+09 Jul 2016  12:20:00
+
+09 Jul 2016  17:20:00
+
+LOCJUN16
+
+June LoC Competitive Programming Marathon
+
+24 Jun 2016  00:00:00
+
+27 Jun 2016  23:59:00
+
+COOK71
+
+June Cook-Off 2016
+
+26 Jun 2016  21:30:00
+
+27 Jun 2016  00:00:00
+
+LTIME37
+
+June Lunchtime 2016
+
+25 Jun 2016  19:30:00
+
+25 Jun 2016  22:30:00
+
+SNCKEL16
+
+SnackDown 2016 Online Elimination Round
+
+19 Jun 2016  19:30:00
+
+20 Jun 2016  00:30:00
+
+JUNE16
+
+June Challenge 2016
+
+03 Jun 2016  15:00:00
+
+15 Jun 2016  15:00:00
+
+SNPB16RP
+
+SnackDown Online Pre- elimination Round B - Replay
+
+13 Jun 2016  21:00:00
+
+14 Jun 2016  21:00:00
+
+SNCKPB16
+
+SnackDown Online Pre- elimination Round B
+
+12 Jun 2016  21:00:00
+
+13 Jun 2016  21:00:00
+
+SNCKPA16
+
+SnackDown Online Pre-elimination round A
+
+04 Jun 2016  21:00:00
+
+05 Jun 2016  21:00:00
+
+SNCKQL16
+
+SnackDown Online Qualifier 2016
+
+27 May 2016  21:00:00
+
+31 May 2016  21:00:00
+
+LOCMAY16
+
+May LoC Competitive Programming Marathon
+
+27 May 2016  00:00:00
+
+30 May 2016  23:59:00
+
+LTIME36
+
+May Lunchtime 2016
+
+28 May 2016  19:30:00
+
+28 May 2016  22:30:00
+
+COOK70
+
+May Cook-Off 2016
+
+22 May 2016  21:30:00
+
+23 May 2016  00:00:00
+
+MAY16
+
+May Challenge 2016
+
+06 May 2016  15:00:00
+
+16 May 2016  15:00:00
+
+LOCAPR16
+
+April LoC Competitive Programming Marathon
+
+29 Apr 2016  00:00:00
+
+02 May 2016  23:59:00
+
+LTIME35
+
+April Lunchtime 2016
+
+30 Apr 2016  19:40:00
+
+30 Apr 2016  22:40:00
+
+SSC2016
+
+SCC - School Coding Competition
+
+29 Apr 2016  19:30:00
+
+29 Apr 2016  22:30:00
+
+RECJ1601
+
+Recursion Junior Challenge-II 
+
+21 Apr 2016  21:30:00
+
+22 Apr 2016  00:30:00
+
+COWO1601
+
+CodeWORM 
+
+20 Apr 2016  14:15:00
+
+20 Apr 2016  16:45:00
+
+COOK69
+
+April Cook-Off 2016
+
+17 Apr 2016  21:30:00
+
+18 Apr 2016  00:00:00
+
+BIGO2016
+
+BIG-O v2.0
+
+16 Apr 2016  18:00:00
+
+16 Apr 2016  21:00:00
+
+APRIL16
+
+April Challenge 2016
+
+01 Apr 2016  15:00:00
+
+11 Apr 2016  17:00:00
+
+CDQU1601
+
+Codervation qualifiers
+
+08 Apr 2016  14:00:00
+
+09 Apr 2016  00:00:00
+
+DMNT2016
+
+DEMENTIA 16
+
+07 Apr 2016  21:30:00
+
+08 Apr 2016  00:00:00
+
+ALKH2016
+
+Alkhwarizm 2016
+
+03 Apr 2016  21:00:00
+
+04 Apr 2016  02:00:00
+
+NCC2016
+
+National Computing Contest
+
+02 Apr 2016  21:00:00
+
+03 Apr 2016  00:00:00
+
+LOCMAR16
+
+March LoC Competitive Programming Marathon
+
+25 Mar 2016  00:00:00
+
+29 Mar 2016  13:59:00
+
+SRMC2016
+
+SRM Codejam [Qualifiers]
+
+26 Mar 2016  13:00:00
+
+27 Mar 2016  13:00:00
+
+LTIME34
+
+March Lunchtime 2016
+
+26 Mar 2016  19:30:00
+
+26 Mar 2016  22:30:00
+
+CDST2016
+
+CodeStorm
+
+21 Mar 2016  10:00:00
+
+23 Mar 2016  17:00:00
+
+BITC2016
+
+BIT Mesra Overnight Coding
+
+22 Mar 2016  21:30:00
+
+23 Mar 2016  01:00:00
+
+COOK68
+
+March Cook-Off 2016
+
+20 Mar 2016  21:30:00
+
+21 Mar 2016  00:00:00
+
+CLDB2016
+
+CODE BLOODED
+
+20 Mar 2016  11:30:00
+
+20 Mar 2016  16:00:00
+
+KJSP1602
+
+KJSCE Coding Challenge
+
+19 Mar 2016  18:00:00
+
+19 Mar 2016  22:00:00
+
+ODCO2016
+
+Ode to Code 2016 prelims
+
+16 Mar 2016  21:00:00
+
+17 Mar 2016  00:40:00
+
+FLFI2016
+
+Flaw Fishing
+
+16 Mar 2016  19:00:00
+
+16 Mar 2016  20:30:00
+
+REC2016
+
+RECursion Challenge II
+
+15 Mar 2016  21:30:00
+
+16 Mar 2016  00:30:00
+
+COBL2016
+
+CodeBattle
+
+15 Mar 2016  21:00:00
+
+16 Mar 2016  00:00:00
+
+MARCH16
+
+March Challenge 2016
+
+04 Mar 2016  15:00:00
+
+15 Mar 2016  15:00:00
+
+INLO2016
+
+Infinite Loop
+
+12 Mar 2016  10:00:00
+
+14 Mar 2016  23:30:00
+
+COMN2016
+
+CODE MARATHON
+
+13 Mar 2016  18:00:00
+
+14 Mar 2016  00:00:00
+
+IOPC2016
+
+IOPC 2016
+
+12 Mar 2016  19:00:00
+
+13 Mar 2016  19:00:00
+
+COFI2016
+
+CodeFight 2.0
+
+12 Mar 2016  12:00:00
+
+13 Mar 2016  00:00:00
+
+HFCQ2016
+
+HumbleFool Cup Qualifiers
+
+11 Mar 2016  21:00:00
+
+12 Mar 2016  00:00:00
+
+CDWR2016
+
+CodeWars
+
+11 Mar 2016  14:30:00
+
+11 Mar 2016  16:30:00
+
+ALPH2016
+
+Algophobic Online Mirror
+
+10 Mar 2016  22:00:00
+
+11 Mar 2016  01:30:00
+
+ABCS2016
+
+aBaCUS16
+
+10 Mar 2016  21:00:00
+
+10 Mar 2016  23:45:00
+
+COCR2016
+
+Code Cracker 
+
+10 Mar 2016  11:30:00
+
+10 Mar 2016  14:00:00
+
+IPC15P3C
+
+ICPC Preparatory Series by Team Apocalypse
+
+09 Mar 2016  20:00:00
+
+10 Mar 2016  01:00:00
+
+COYA2016
+
+Codiyapa
+
+05 Mar 2016  15:00:00
+
+09 Mar 2016  15:00:00
+
+ITRA2016
+
+ITerate
+
+06 Mar 2016  11:00:00
+
+07 Mar 2016  11:00:00
+
+IPC15P3B
+
+ICPC Preparatory Series by Team Akatsuki
+
+06 Mar 2016  20:00:00
+
+07 Mar 2016  01:00:00
+
+BUDE2016
+
+Bug of Debug
+
+03 Mar 2016  12:40:00
+
+03 Mar 2016  14:40:00
+
+LOCFEB16
+
+LoC Competitive Programming Marathon
+
+26 Feb 2016  00:00:00
+
+29 Feb 2016  23:59:00
+
+CDFXOQ16
+
+CodeFlux Qualifiers
+
+29 Feb 2016  20:30:00
+
+29 Feb 2016  22:30:00
+
+IPC15P3A
+
+ICPC Preparatory Series by Team apqAW2
+
+28 Feb 2016  20:00:00
+
+29 Feb 2016  01:00:00
+
+DECI2016
+
+Decipher, Codefest'16
+
+28 Feb 2016  16:00:00
+
+28 Feb 2016  19:00:00
+
+LTIME33
+
+February Lunchtime 2016
+
+27 Feb 2016  19:30:00
+
+27 Feb 2016  22:30:00
+
+BYCO2016
+
+ByteCode 2016
+
+26 Feb 2016  20:30:00
+
+27 Feb 2016  01:30:00
+
+DEAD2016
+
+Replay of Deadline24 2015 Qualifying Round
+
+23 Feb 2016  21:00:00
+
+24 Feb 2016  00:00:00
+
+COMA2016
+
+Code Mania 2016
+
+22 Feb 2016  21:00:00
+
+23 Feb 2016  00:00:00
+
+COOK67
+
+February Cook-Off 2016
+
+21 Feb 2016  22:00:00
+
+22 Feb 2016  00:30:00
+
+COPR2016
+
+Codestorm Prelims
+
+21 Feb 2016  15:00:00
+
+21 Feb 2016  18:15:00
+
+ITRX2016
+
+ITRIX Online Programming Contest
+
+20 Feb 2016  19:30:00
+
+20 Feb 2016  22:00:00
+
+COWH2016
+
+CodeWhiz
+
+20 Feb 2016  18:00:00
+
+20 Feb 2016  21:00:00
+
+COCL2016
+
+CODE CLASH
+
+20 Feb 2016  10:00:00
+
+20 Feb 2016  15:00:00
+
+COCU2016
+
+Code Currents
+
+20 Feb 2016  13:00:00
+
+20 Feb 2016  15:00:00
+
+CDWA2016
+
+CodeWars
+
+20 Feb 2016  12:00:00
+
+20 Feb 2016  14:00:00
+
+ASNE2016
+
+ASN_Epoch 1.0
+
+19 Feb 2016  21:30:00
+
+20 Feb 2016  00:30:00
+
+CDGF2016
+
+Codegolf 2016
+
+19 Feb 2016  21:00:00
+
+20 Feb 2016  00:00:00
+
+ICOD2016
+
+I-CODE 2016
+
+16 Feb 2016  18:00:00
+
+19 Feb 2016  18:00:00
+
+CRES2016
+
+Cresense
+
+18 Feb 2016  12:00:00
+
+19 Feb 2016  12:00:00
+
+WBY1601
+
+Whats Bugging You Qualifiers
+
+18 Feb 2016  13:00:00
+
+18 Feb 2016  16:30:00
+
+COWA1601
+
+Code-Wars#ver2.0 Qualifiers
+
+18 Feb 2016  10:00:00
+
+18 Feb 2016  13:20:00
+
+FEB16
+
+February Challenge 2016
+
+05 Feb 2016  15:00:00
+
+15 Feb 2016  15:00:00
+
+CHN15MRP
+
+ACM-ICPC Asia-Chennai Onsite Replay Contest 2015
+
+14 Feb 2016  19:00:00
+
+15 Feb 2016  00:00:00
+
+KOPC2016
+
+Kurukshetra Online Programming Contest
+
+13 Feb 2016  19:00:00
+
+14 Feb 2016  00:00:00
+
+IC32016
+
+ICODE 3
+
+12 Feb 2016  09:00:00
+
+13 Feb 2016  21:00:00
+
+ICL2016
+
+International Coding League, BITS Pilani
+
+11 Feb 2016  20:30:00
+
+11 Feb 2016  22:30:00
+
+BYTE2016
+
+BYTES
+
+07 Feb 2016  21:00:00
+
+08 Feb 2016  00:00:00
+
+COLE2016
+
+Coder's Legacy 2016
+
+05 Feb 2016  21:00:00
+
+07 Feb 2016  21:00:00
+
+IPC15P2C
+
+ICPC Preparatory Series by Team ForTheWatch
+
+07 Feb 2016  14:00:00
+
+07 Feb 2016  19:00:00
+
+DECA2016
+
+Decathlon
+
+06 Feb 2016  21:30:00
+
+07 Feb 2016  00:30:00
+
+CDVA16
+
+CodeVaitam 2.0
+
+03 Feb 2016  20:00:00
+
+07 Feb 2016  00:01:00
+
+COJA2016
+
+Quark Codejam '16 
+
+06 Feb 2016  14:00:00
+
+06 Feb 2016  17:00:00
+
+IPC15P2B
+
+ICPC Preparatory Series by Team Horcruxes
+
+03 Feb 2016  21:00:00
+
+04 Feb 2016  02:00:00
+
+IPC15P2A
+
+ICPC Preparatory Series by Team Sataday
+
+31 Jan 2016  21:40:00
+
+01 Feb 2016  02:40:00
+
+LTIME32
+
+January Lunchtime 2016
+
+31 Jan 2016  11:00:00
+
+31 Jan 2016  14:00:00
+
+DIBZ2016
+
+Divide by zero
+
+30 Jan 2016  21:00:00
+
+31 Jan 2016  02:00:00
+
+COOK66
+
+January Cook-Off 2016
+
+24 Jan 2016  21:30:00
+
+25 Jan 2016  00:00:00
+
+WBY2016
+
+Whats Bugging You
+
+24 Jan 2016  17:00:00
+
+24 Jan 2016  20:00:00
+
+COWA2016
+
+Code-Wars#ver2.0
+
+23 Jan 2016  17:00:00
+
+23 Jan 2016  20:00:00
+
+CHN15MOS
+
+ACM-ICPC Asia-Chennai Onsite Mirror Contest 2015
+
+23 Jan 2016  11:30:00
+
+23 Jan 2016  16:30:00
+
+AUST2016
+
+Intra AUST Programming Contest Fall 2015
+
+22 Jan 2016  18:30:00
+
+22 Jan 2016  22:30:00
+
+AMR15ROL
+
+ACM-ICPC Asia-Amritapuri Online Contest 2015, Replay
+
+21 Jan 2016  21:00:00
+
+22 Jan 2016  00:00:00
+
+SOPC1602
+
+SOPC 2.0
+
+13 Jan 2016  21:00:00
+
+13 Jan 2016  23:00:00
+
+COBA2016
+
+CodeBar
+
+11 Jan 2016  19:00:00
+
+11 Jan 2016  20:30:00
+
+JAN16
+
+January Long Challenge 2016
+
+01 Jan 2016  15:00:00
+
+11 Jan 2016  15:00:00
+
+KQPM2016
+
+Keteki Quick Match 2
+
+10 Jan 2016  10:00:00
+
+10 Jan 2016  10:30:00
+
+COSH2015
+
+Code-O-Shuffle
+
+27 Dec 2015  21:00:00
+
+28 Dec 2015  00:30:00
+
+LTIME31
+
+December Lunchtime 2015
+
+27 Dec 2015  11:00:00
+
+27 Dec 2015  14:00:00
+
+KOL15MOS
+
+ACM-ICPC Asia-Kolkata Onsite Mirror Contest 2015
+
+26 Dec 2015  11:00:00
+
+26 Dec 2015  16:00:00
+
+ACM15AMR
+
+ACM-ICPC Asia-Amritapuri Site Onsite round 2015
+
+21 Dec 2015  12:55:00
+
+21 Dec 2015  15:25:00
+
+AMR15MOS
+
+ACM-ICPC Asia-Amritapuri Onsite Mirror Contest 2015
+
+21 Dec 2015  10:00:00
+
+21 Dec 2015  15:00:00
+
+COOK65
+
+December Cook-Off 2015
+
+20 Dec 2015  21:30:00
+
+21 Dec 2015  00:00:00
+
+KQPM2015
+
+Keteki Quick Power Match
+
+20 Dec 2015  20:00:00
+
+20 Dec 2015  21:00:00
+
+SOPC2015
+
+Shaastra Online Programming Contest
+
+19 Dec 2015  21:00:00
+
+20 Dec 2015  00:45:00
+
+CHN15ROL
+
+ACM-ICPC Asia-Chennai Online Contest 2015, Replay
+
+17 Dec 2015  21:00:00
+
+18 Dec 2015  00:00:00
+
+KOL15ROL
+
+ACM-ICPC Asia-Kolkata Online Contest 2015, Replay
+
+16 Dec 2015  21:30:00
+
+17 Dec 2015  00:00:00
+
+DEC15
+
+December Challenge 2015
+
+04 Dec 2015  15:00:00
+
+14 Dec 2015  15:00:00
+
+IPC15P1C
+
+ICPC Preparatory Series by Team Enigma
+
+02 Dec 2015  21:00:00
+
+03 Dec 2015  02:00:00
+
+LTIME30
+
+November Lunchtime 2015
+
+29 Nov 2015  11:00:00
+
+29 Nov 2015  14:00:00
+
+IPC15P1B
+
+ICPC Preparatory Series by Team BlundersPride
+
+28 Nov 2015  21:00:00
+
+29 Nov 2015  03:00:00
+
+IPC15P1A
+
+ICPC Preparatory Series by Team SkullCrackers
+
+25 Nov 2015  21:00:00
+
+26 Nov 2015  02:00:00
+
+COOK64
+
+November Cook-Off 2015
+
+22 Nov 2015  21:30:00
+
+23 Nov 2015  00:00:00
+
+NOV15
+
+November Challenge 2015
+
+06 Nov 2015  15:00:00
+
+16 Nov 2015  15:00:00
+
+COMN2015
+
+Code Mania
+
+11 Nov 2015  00:00:00
+
+12 Nov 2015  00:00:00
+
+EXTE2015
+
+./Execute, NIT Jalandhar
+
+03 Nov 2015  21:00:00
+
+04 Nov 2015  00:00:00
+
+COMS1501
+
+CodeMasters 1.0
+
+01 Nov 2015  21:00:00
+
+02 Nov 2015  00:00:00
+
+ACMKOL15
+
+ACM-ICPC Asia-Kolkata Site First Round Online Contest 2015
+
+31 Oct 2015  16:00:00
+
+31 Oct 2015  18:30:00
+
+ACMCHN15
+
+ACM-ICPC Asia-Chennai Site, First Round - Online Contest 2015
+
+28 Oct 2015  18:00:00
+
+28 Oct 2015  21:10:00
+
+AIPC2015
+
+Code-Adda Practice Contest
+
+25 Oct 2015  19:00:00
+
+25 Oct 2015  23:59:00
+
+LTIME29
+
+October Lunchtime 2015
+
+25 Oct 2015  11:00:00
+
+25 Oct 2015  14:00:00
+
+KOKT2015
+
+Koder Kombat
+
+24 Oct 2015  20:00:00
+
+25 Oct 2015  00:00:00
+
+NPLTZ15
+
+NPL, TechnoZion 2015
+
+19 Oct 2015  17:00:00
+
+19 Oct 2015  20:00:00
+
+COOK63
+
+October Cook-Off 2015
+
+18 Oct 2015  21:30:00
+
+19 Oct 2015  00:00:00
+
+QBIT15
+
+QBIT15
+
+15 Oct 2015  10:00:00
+
+16 Oct 2015  10:00:00
+
+NUPNMR15
+
+Mirror of 1st NYU ProgNova
+
+12 Oct 2015  19:30:00
+
+12 Oct 2015  22:30:00
+
+OCT15
+
+October Challenge 2015
+
+02 Oct 2015  15:00:00
+
+12 Oct 2015  15:00:00
+
+ACMAMR15
+
+ACM-ICPC Asia-Amritapuri Site, First Round - Online Contest 2015
+
+11 Oct 2015  17:00:00
+
+11 Oct 2015  20:05:00
+
+CDON2015
+
+Codathon
+
+10 Oct 2015  21:30:00
+
+11 Oct 2015  01:00:00
+
+KTBC2015
+
+Keteki Beta Contest
+
+10 Oct 2015  19:00:00
+
+10 Oct 2015  19:30:00
+
+TSTAM15
+
+ACM-ICPC Asia-Amritapuri Site, 2nd Practice Round 2015
+
+09 Oct 2015  18:00:00
+
+09 Oct 2015  21:00:00
+
+CDX2015
+
+CodeX
+
+08 Oct 2015  22:00:00
+
+09 Oct 2015  01:00:00
+
+CFSN2015
+
+Code Fusion - II
+
+07 Oct 2015  18:00:00
+
+07 Oct 2015  20:00:00
+
+TSTAMR15
+
+ACM-ICPC Asia-Amritapuri Site, 1st Practice Round 2015
+
+06 Oct 2015  21:00:00
+
+07 Oct 2015  02:00:00
+
+SIMPLX15
+
+SIMPLEX
+
+02 Oct 2015  21:30:00
+
+03 Oct 2015  00:00:00
+
+NEPR2015
+
+Nexus'15 Prelims
+
+02 Oct 2015  11:30:00
+
+02 Oct 2015  14:30:00
+
+CWAR2015
+
+CodeWar NIT Durgapur
+
+01 Oct 2015  19:00:00
+
+02 Oct 2015  01:00:00
+
+CDSK2015
+
+CodeStrike by Atharva College of Engineering
+
+29 Sep 2015  11:00:00
+
+29 Sep 2015  14:00:00
+
+KJCC2015
+
+KJSCE Code Spree
+
+27 Sep 2015  16:00:00
+
+27 Sep 2015  20:00:00
+
+LTIME28
+
+September Lunchtime 2015
+
+27 Sep 2015  11:00:00
+
+27 Sep 2015  14:00:00
+
+COOK62
+
+September Mega Cook-Off 2015
+
+20 Sep 2015  21:30:00
+
+21 Sep 2015  00:00:00
+
+IGCD2015
+
+Ignited Coders
+
+20 Sep 2015  11:00:00
+
+20 Sep 2015  14:00:00
+
+NUCD2015
+
+NU Coding
+
+19 Sep 2015  15:00:00
+
+19 Sep 2015  19:00:00
+
+CORU2015
+
+CodeRush
+
+18 Sep 2015  21:30:00
+
+19 Sep 2015  00:00:00
+
+SEPT15
+
+September Challenge 2015
+
+04 Sep 2015  15:00:00
+
+14 Sep 2015  15:00:00
+
+APTT2015
+
+Apttus Code-A-Thon
+
+11 Sep 2015  21:00:00
+
+12 Sep 2015  00:00:00
+
+GGWC2015
+
+Grow Geeks Warm-up Challenge
+
+11 Sep 2015  13:30:00
+
+11 Sep 2015  16:05:00
+
+INSQ2015
+
+Insomnia 2015 Qualifier
+
+06 Sep 2015  21:30:00
+
+07 Sep 2015  00:30:00
+
+SPIT1503
+
+SPIT Coder's Club Monthly Contest 3.0
+
+06 Sep 2015  18:00:00
+
+06 Sep 2015  21:00:00
+
+CODEWARS
+
+CodeWars, Aaruush 2015
+
+30 Aug 2015  18:00:00
+
+01 Sep 2015  18:00:00
+
+LTIME27
+
+August Lunchtime 2015
+
+30 Aug 2015  11:00:00
+
+30 Aug 2015  14:00:00
+
+COOK61
+
+August Cook-Off 2015
+
+23 Aug 2015  21:30:00
+
+24 Aug 2015  00:50:00
+
+CCWC2015
+
+Clash Credenz 2015 Wild Card Round
+
+22 Aug 2015  21:00:00
+
+23 Aug 2015  01:00:00
+
+CDBU2015
+
+Codebuster
+
+18 Aug 2015  18:00:00
+
+19 Aug 2015  12:00:00
+
+COSE2015
+
+Counter Strike
+
+18 Aug 2015  21:30:00
+
+19 Aug 2015  00:00:00
+
+AUG15
+
+August Challenge 2015
+
+07 Aug 2015  15:00:00
+
+17 Aug 2015  15:00:00
+
+COFU2015
+
+Code Fusion - I
+
+09 Aug 2015  16:00:00
+
+09 Aug 2015  18:45:00
+
+PROCON15
+
+Procon 2015
+
+08 Aug 2015  18:00:00
+
+08 Aug 2015  20:30:00
+
+INTO2015
+
+Intoxia
+
+02 Aug 2015  10:00:00
+
+02 Aug 2015  13:00:00
+
+PRCNJR15
+
+Procon Junior 2015
+
+31 Jul 2015  10:00:00
+
+31 Jul 2015  13:00:00
+
+LTIME26
+
+July Lunchtime 2015
+
+26 Jul 2015  11:00:00
+
+26 Jul 2015  14:15:00
+
+COOK60
+
+July Cook-Off 2015
+
+19 Jul 2015  21:30:00
+
+20 Jul 2015  00:00:00
+
+JULY15
+
+July Challenge 2015
+
+03 Jul 2015  15:00:00
+
+13 Jul 2015  15:00:00
+
+AMSC2015
+
+Amritapuri Summer Camp Final Contest 2015
+
+04 Jul 2015  09:30:00
+
+04 Jul 2015  13:30:00
+
+DTMA2015
+
+DTU Programming Mania - 2
+
+03 Jul 2015  21:30:00
+
+04 Jul 2015  00:30:00
+
+HOCO2015
+
+Hour Of Code I
+
+28 Jun 2015  17:00:00
+
+28 Jun 2015  18:00:00
+
+LTIME25
+
+June Lunchtime 2015
+
+28 Jun 2015  11:00:00
+
+28 Jun 2015  14:00:00
+
+SNCK15FL
+
+CodeChef Snackdown 2015 Finale 
+
+27 Jun 2015  13:00:00
+
+27 Jun 2015  18:00:00
+
+SD15FLMR
+
+SnackDown 2015 Final Mirror
+
+27 Jun 2015  14:00:00
+
+27 Jun 2015  18:00:00
+
+COOK59
+
+June Cook-Off 2015
+
+21 Jun 2015  21:30:00
+
+22 Jun 2015  00:00:00
+
+JUNE15
+
+June Challenge 2015
+
+05 Jun 2015  15:00:00
+
+15 Jun 2015  15:00:00
+
+SD15ELOP
+
+SnackDown Elimination Mirror
+
+12 Jun 2015  23:00:00
+
+13 Jun 2015  02:00:00
+
+SNCK15EL
+
+CodeChef Snackdown 2015 : Online Elimination Round
+
+12 Jun 2015  21:30:00
+
+13 Jun 2015  00:30:00
+
+CODE2015
+
+Codex_1.0
+
+10 Jun 2015  20:00:00
+
+10 Jun 2015  23:15:00
+
+SNCK151C
+
+CodeChef Snackdown 2015, Round 1C
+
+07 Jun 2015  21:30:00
+
+07 Jun 2015  23:45:00
+
+LTIME24
+
+May Lunchtime 2015
+
+31 May 2015  11:00:00
+
+31 May 2015  14:00:00
+
+SNCK151B
+
+CodeChef Snackdown 2015, Round 1B
+
+30 May 2015  06:30:00
+
+30 May 2015  08:30:00
+
+COOK58
+
+May Cook-Off 2015
+
+24 May 2015  21:30:00
+
+25 May 2015  00:00:00
+
+SNCK151A
+
+CodeChef Snackdown 2015, Round 1A
+
+23 May 2015  14:30:00
+
+23 May 2015  16:45:00
+
+MAY15
+
+May Challenge 2015
+
+08 May 2015  15:00:00
+
+18 May 2015  15:00:00
+
+KOAT2015
+
+Kodeathon 15.2 - Rapid fire
+
+14 May 2015  21:00:00
+
+15 May 2015  00:00:00
+
+EXCT2015
+
+Execute 15.2
+
+09 May 2015  21:00:00
+
+10 May 2015  01:00:00
+
+CLCO2015
+
+Clash of Coders
+
+01 May 2015  20:00:00
+
+02 May 2015  01:15:00
+
+LTIME23
+
+April Lunchtime 2015
+
+26 Apr 2015  11:00:00
+
+26 Apr 2015  14:00:00
+
+SMCS2015
+
+SmartCoders(1.2)
+
+25 Apr 2015  21:00:00
+
+26 Apr 2015  00:00:00
+
+INLO2015
+
+Infinite Loop
+
+23 Apr 2015  11:00:00
+
+25 Apr 2015  23:00:00
+
+COOK57
+
+April Cook-Off 2015
+
+19 Apr 2015  21:30:00
+
+20 Apr 2015  00:30:00
+
+SPT2015
+
+SPIT Coder's Club 2.0
+
+19 Apr 2015  18:00:00
+
+19 Apr 2015  21:00:00
+
+COST2015
+
+CodeStorm 15.04
+
+18 Apr 2015  21:00:00
+
+19 Apr 2015  00:00:00
+
+DTCT2015
+
+DTU Programming Mania
+
+17 Apr 2015  21:00:00
+
+18 Apr 2015  00:00:00
+
+APRIL15
+
+April Challenge 2015
+
+03 Apr 2015  15:00:00
+
+13 Apr 2015  15:00:00
+
+CDQT2015
+
+Code-Quest
+
+11 Apr 2015  09:00:00
+
+12 Apr 2015  00:00:00
+
+BTCJ2015
+
+BIT Codejam
+
+07 Apr 2015  21:30:00
+
+08 Apr 2015  00:00:00
+
+GOCD2015
+
+Game of Codes 2.0
+
+05 Apr 2015  21:00:00
+
+06 Apr 2015  00:00:00
+
+GOOG2015
+
+Googol - ISM Dhanbad
+
+04 Apr 2015  21:00:00
+
+05 Apr 2015  00:00:00
+
+PSCD2015
+
+Pseudo Code
+
+04 Apr 2015  17:00:00
+
+04 Apr 2015  21:00:00
+
+CDOT2015
+
+CodeOut 2015
+
+03 Apr 2015  21:00:00
+
+04 Apr 2015  00:00:00
+
+KAN14ROS
+
+ACM-ICPC Asia-Kanpur Onsite Contest 2014, Replay
+
+02 Apr 2015  19:00:00
+
+03 Apr 2015  00:00:00
+
+DMNT2015
+
+Dementia 2015
+
+01 Apr 2015  22:00:00
+
+02 Apr 2015  00:30:00
+
+BIGO2015
+
+BIG (O)
+
+01 Apr 2015  18:00:00
+
+01 Apr 2015  21:00:00
+
+DBYZ15
+
+Divide By Zero 3.0
+
+29 Mar 2015  21:30:00
+
+30 Mar 2015  01:30:00
+
+LTIME22
+
+March Lunchtime 2015
+
+29 Mar 2015  11:00:00
+
+29 Mar 2015  14:00:00
+
+NCC2015
+
+National Computing Contest 2015
+
+28 Mar 2015  21:00:00
+
+28 Mar 2015  23:00:00
+
+PITTCS15
+
+Replay of Pitt CSC - University of Pittsburgh 
+
+25 Mar 2015  22:00:00
+
+26 Mar 2015  01:00:00
+
+COOK56
+
+March Cook-Off 2015
+
+22 Mar 2015  21:30:00
+
+23 Mar 2015  00:00:00
+
+COMA2015
+
+Code Marathon 2015
+
+19 Mar 2015  20:00:00
+
+20 Mar 2015  22:00:00
+
+GOC2015
+
+Game of codes 2015
+
+19 Mar 2015  21:00:00
+
+20 Mar 2015  00:00:00
+
+CDMN2015
+
+Code Mania 2015
+
+18 Mar 2015  21:00:00
+
+19 Mar 2015  00:20:00
+
+CDGO2015
+
+Codigo 2015
+
+17 Mar 2015  21:30:00
+
+18 Mar 2015  00:20:00
+
+PRDN2015
+
+Pradnya'15
+
+16 Mar 2015  21:00:00
+
+16 Mar 2015  23:00:00
+
+MARCH15
+
+March Challenge 2015
+
+06 Mar 2015  15:00:00
+
+16 Mar 2015  15:00:00
+
+ABYN2015
+
+OPC-Abhiyanth 2015
+
+15 Mar 2015  21:00:00
+
+16 Mar 2015  00:00:00
+
+IOPC2015
+
+IOPC 2015
+
+14 Mar 2015  18:00:00
+
+15 Mar 2015  18:00:00
+
+KJCC1501
+
+KJSCE Coding Challenge 2015
+
+14 Mar 2015  12:00:00
+
+14 Mar 2015  23:59:00
+
+CDER2015
+
+CodeERA
+
+09 Mar 2015  00:00:00
+
+14 Mar 2015  12:00:00
+
+CDPH2015
+
+Codephrenia 2015
+
+11 Mar 2015  21:00:00
+
+12 Mar 2015  00:00:00
+
+COTG2015
+
+Code On the Go 2015
+
+09 Mar 2015  21:00:00
+
+10 Mar 2015  22:00:00
+
+MTHX2015
+
+MathRix OPC 2015
+
+10 Mar 2015  21:00:00
+
+10 Mar 2015  22:00:00
+
+DCL1501
+
+Delhi Coding League 2015
+
+03 Mar 2015  21:00:00
+
+07 Mar 2015  21:00:00
+
+CDHU2015
+
+Code Hunt 2015
+
+06 Mar 2015  08:00:00
+
+07 Mar 2015  19:00:00
+
+CCBE2015
+
+C-Cube 2015
+
+05 Mar 2015  21:00:00
+
+06 Mar 2015  09:00:00
+
+HUMP15R
+
+Hindustan University Multi Provincial Re-Contest 2015
+
+05 Mar 2015  20:00:00
+
+06 Mar 2015  00:00:00
+
+ACMN2015
+
+OPC ACUMEN 2015
+
+04 Mar 2015  14:35:00
+
+05 Mar 2015  20:00:00
+
+FBFRW15
+
+February Farewell 2015
+
+04 Mar 2015  21:00:00
+
+05 Mar 2015  00:00:00
+
+BRCD2015
+
+BreakTheCode 2015
+
+02 Mar 2015  19:00:00
+
+03 Mar 2015  12:00:00
+
+BBYB2015
+
+Beat By BIT 2015
+
+01 Mar 2015  19:00:00
+
+02 Mar 2015  00:40:00
+
+CDTR1502
+
+CodeTrenders 2015
+
+01 Mar 2015  17:00:00
+
+01 Mar 2015  23:00:00
+
+COCR2015
+
+CodeCracker 2015
+
+28 Feb 2015  19:00:00
+
+01 Mar 2015  00:00:00
+
+PRYS2015
+
+Prayaas 2015
+
+28 Feb 2015  14:00:00
+
+28 Feb 2015  19:00:00
+
+BYCD2015
+
+ByteCode 2015
+
+27 Feb 2015  20:30:00
+
+28 Feb 2015  01:30:00
+
+CDME2015
+
+Code Me 15.02
+
+26 Feb 2015  21:30:00
+
+27 Feb 2015  00:00:00
+
+CDSH2015
+
+CODESHOW 2015
+
+25 Feb 2015  21:00:00
+
+26 Feb 2015  00:10:00
+
+DOEX2015
+
+./Execute 2015
+
+23 Feb 2015  21:00:00
+
+24 Feb 2015  01:30:00
+
+ICL2015
+
+ACM-ICL Prelims 2015
+
+22 Feb 2015  21:00:00
+
+23 Feb 2015  02:00:00
+
+LTIME21
+
+February Lunchtime 2015
+
+22 Feb 2015  11:00:00
+
+22 Feb 2015  14:00:00
+
+CDMU2015
+
+Code Mutants 2015
+
+21 Feb 2015  20:00:00
+
+22 Feb 2015  01:00:00
+
+CDTR2015
+
+JNTUV Warmup 2015
+
+19 Feb 2015  17:00:00
+
+19 Feb 2015  23:00:00
+
+ABCS2015
+
+Abacus'15
+
+18 Feb 2015  20:30:00
+
+19 Feb 2015  00:00:00
+
+IGNU2015
+
+IGNUS
+
+18 Feb 2015  20:00:00
+
+18 Feb 2015  23:00:00
+
+FEB15
+
+February Challenge 2015
+
+06 Feb 2015  15:00:00
+
+16 Feb 2015  15:00:00
+
+COOK55
+
+February Cook-Off 2015
+
+15 Feb 2015  21:30:00
+
+16 Feb 2015  00:00:00
+
+BION2015
+
+Bits ON! 2015
+
+15 Feb 2015  10:00:00
+
+15 Feb 2015  12:00:00
+
+CRNM2015
+
+Cranium
+
+14 Feb 2015  21:00:00
+
+15 Feb 2015  01:00:00
+
+CDWR1501
+
+Code-Wars, Round 1
+
+14 Feb 2015  18:00:00
+
+14 Feb 2015  20:00:00
+
+CSZLPR15
+
+CodeZilla Prelims 2015
+
+11 Feb 2015  21:00:00
+
+11 Feb 2015  23:30:00
+
+MDSW2015
+
+Mindsweepers 2015
+
+07 Feb 2015  09:30:00
+
+08 Feb 2015  12:30:00
+
+CDVA2015
+
+CodeVaitam
+
+04 Feb 2015  20:00:00
+
+08 Feb 2015  00:01:00
+
+CDBR2015
+
+Code Brunch
+
+03 Feb 2015  18:00:00
+
+06 Feb 2015  18:00:00
+
+CODC2015
+
+CSI XIE Contest 2015
+
+06 Feb 2015  10:00:00
+
+06 Feb 2015  14:00:00
+
+EXCU2015
+
+Execute 15.1 replay 2015
+
+05 Feb 2015  21:00:00
+
+06 Feb 2015  00:00:00
+
+CDCRF15R
+
+CodeCraft 2015 Replay
+
+03 Feb 2015  20:00:00
+
+04 Feb 2015  01:00:00
+
+XCPT2015
+
+Xception 2.0
+
+31 Jan 2015  21:00:00
+
+01 Feb 2015  00:30:00
+
+CDCR2015
+
+Code Currents 2015
+
+31 Jan 2015  14:30:00
+
+31 Jan 2015  17:00:00
+
+CDSU2015
+
+CodeSurf 2015
+
+30 Jan 2015  21:30:00
+
+31 Jan 2015  00:30:00
+
+INPR1503
+
+INOI 2015, Practice Round 3
+
+30 Jan 2015  19:00:00
+
+30 Jan 2015  22:00:00
+
+INPR1502
+
+INOI 2015, Practice Round 2
+
+30 Jan 2015  15:00:00
+
+30 Jan 2015  18:00:00
+
+DCOD2015
+
+Code.IT(101)
+
+29 Jan 2015  21:00:00
+
+30 Jan 2015  00:00:00
+
+INPR1501
+
+INOI 2015, Practice Round 1
+
+29 Jan 2015  18:00:00
+
+29 Jan 2015  21:00:00
+
+ALMA2015
+
+Rise of AlgoManiacs
+
+28 Jan 2015  21:30:00
+
+29 Jan 2015  00:30:00
+
+PSYC2015
+
+Psycoders 2015
+
+26 Jan 2015  17:00:00
+
+27 Jan 2015  00:59:00
+
+RCSN2015
+
+RECursion Challenge-I
+
+25 Jan 2015  21:00:00
+
+26 Jan 2015  00:30:00
+
+LTIME20
+
+January Lunchtime 2015
+
+25 Jan 2015  11:00:00
+
+25 Jan 2015  14:00:00
+
+GRCO2015
+
+GrietCode,January 2015
+
+22 Jan 2015  14:00:00
+
+25 Jan 2015  14:00:00
+
+KRKS2015
+
+Kurukshetra 2015
+
+24 Jan 2015  20:00:00
+
+25 Jan 2015  01:00:00
+
+WPC1501
+
+IIT Kanpur, Monthly Programming Contest 2015
+
+21 Jan 2015  19:00:00
+
+22 Jan 2015  01:00:00
+
+COOK54
+
+January Cook-Off 2015
+
+18 Jan 2015  21:30:00
+
+19 Jan 2015  01:00:00
+
+PRVG2015
+
+OPC- Pravega 2015
+
+17 Jan 2015  21:00:00
+
+18 Jan 2015  00:00:00
+
+DINP1501
+
+DPS Dwarka INOI practice contest 01
+
+13 Jan 2015  12:00:00
+
+17 Jan 2015  12:00:00
+
+EQBR2014
+
+Equilibrio 2015
+
+16 Jan 2015  13:00:00
+
+16 Jan 2015  15:00:00
+
+CONI2015
+
+Code Niche 2015
+
+15 Jan 2015  21:00:00
+
+16 Jan 2015  02:00:00
+
+AMR14ROS
+
+ACM-ICPC Asia-Amritapuri Onsite Contest 2014, Replay
+
+14 Jan 2015  18:00:00
+
+14 Jan 2015  23:00:00
+
+ARHN1502
+
+Aarohan 2, 2014
+
+12 Jan 2015  06:00:00
+
+13 Jan 2015  18:00:00
+
+JAN15
+
+January Challenge 2015
+
+02 Jan 2015  15:00:00
+
+12 Jan 2015  15:00:00
+
+LTIME19
+
+December Lunchtime 2014
+
+28 Dec 2014  11:00:00
+
+28 Dec 2014  14:00:00
+
+KGP14ROS
+
+ACM-ICPC Asia-Kharagpur Onsite Contest 2014, Replay
+
+24 Dec 2014  18:00:00
+
+24 Dec 2014  23:00:00
+
+COOK53
+
+December Cook-Off 2014
+
+21 Dec 2014  21:30:00
+
+22 Dec 2014  00:00:00
+
+QUCO2014
+
+Quark CodeJam
+
+20 Dec 2014  21:00:00
+
+21 Dec 2014  00:00:00
+
+ICPC14PR
+
+ACM-ICPC Practice round 2014
+
+01 Dec 2014  00:00:00
+
+17 Dec 2014  23:00:00
+
+DEC14
+
+December Challenge 2014
+
+05 Dec 2014  15:00:00
+
+15 Dec 2014  17:00:00
+
+XCEP2014
+
+Xception 1.0
+
+10 Dec 2014  21:00:00
+
+11 Dec 2014  00:00:00
+
+KG14ROL2
+
+ACM-ICPC Asia-Kharagpur Round 1, Online Contest 2014, Replay
+
+30 Nov 2014  18:00:00
+
+30 Nov 2014  21:00:00
+
+LTIME18
+
+November Lunchtime 2014
+
+30 Nov 2014  11:00:00
+
+30 Nov 2014  14:00:00
+
+KGP14ROL
+
+ACM-ICPC Asia-Kharagpur Online Contest 2014, Replay
+
+28 Nov 2014  18:00:00
+
+28 Nov 2014  21:00:00
+
+CDTR2014
+
+Codetrix II
+
+26 Nov 2014  20:30:00
+
+26 Nov 2014  22:30:00
+
+KAN14ROL
+
+ACM-ICPC Asia-Kanpur Online Contest 2014, Replay
+
+25 Nov 2014  18:00:00
+
+25 Nov 2014  21:00:00
+
+COOK52
+
+November Cook-Off 2014
+
+23 Nov 2014  21:30:00
+
+24 Nov 2014  00:00:00
+
+CDSM2014
+
+Code Smart 2014
+
+14 Nov 2014  21:00:00
+
+19 Nov 2014  21:00:00
+
+MTRX2014
+
+Matrix 2014
+
+18 Nov 2014  19:00:00
+
+19 Nov 2014  07:00:00
+
+NOV14
+
+November Challenge 2014
+
+07 Nov 2014  15:00:00
+
+17 Nov 2014  15:00:00
+
+CDAV2014
+
+Code Avengers 2014,  ABESEC Ghaziabad. 
+
+12 Nov 2014  20:00:00
+
+12 Nov 2014  23:00:00
+
+COQU2014
+
+Code Quest 2014
+
+07 Nov 2014  14:00:00
+
+07 Nov 2014  16:45:00
+
+CDZP2014
+
+Code Zip 2014
+
+02 Nov 2014  18:00:00
+
+02 Nov 2014  21:00:00
+
+ACMKAN14
+
+ACM-ICPC Asia-Kanpur Site First Round Online Contest 2014
+
+01 Nov 2014  14:00:00
+
+01 Nov 2014  16:00:00
+
+TSTKAN14
+
+ACM-ICPC Asia-Kanpur Online Practice Round, 2014
+
+31 Oct 2014  18:00:00
+
+31 Oct 2014  21:00:00
+
+ACMKG14R
+
+ACM-ICPC Asia-Kharagpur Site First Round Online Recontest 2014
+
+30 Oct 2014  18:00:00
+
+30 Oct 2014  21:00:00
+
+AMR14ROL
+
+ACM-ICPC Asia-Amritapuri Online Contest 2014, Replay
+
+28 Oct 2014  20:00:00
+
+28 Oct 2014  23:00:00
+
+LTIME17
+
+October Lunchtime 2014
+
+26 Oct 2014  11:00:00
+
+26 Oct 2014  14:00:00
+
+COOK51
+
+October Cook-Off 2014
+
+19 Oct 2014  21:30:00
+
+20 Oct 2014  00:10:00
+
+ACMKGP14
+
+ACM-ICPC Asia-Kharagpur Site First Round Online Contest 2014
+
+18 Oct 2014  14:00:00
+
+18 Oct 2014  17:00:00
+
+CDMS2014
+
+CodeMasters 2014
+
+18 Oct 2014  11:00:00
+
+18 Oct 2014  13:30:00
+
+TSTKGP14
+
+ACM-ICPC Asia - IIT Kharagpur Online Practice Round, 2014
+
+17 Oct 2014  18:00:00
+
+17 Oct 2014  21:00:00
+
+OCT14
+
+October Challenge 2014
+
+03 Oct 2014  15:00:00
+
+13 Oct 2014  15:00:00
+
+TCFS15S
+
+TechFest 2015, Screening round
+
+12 Oct 2014  20:00:00
+
+13 Oct 2014  00:30:00
+
+TCFS15P
+
+TechFest 2015, Portal round
+
+09 Oct 2014  21:00:00
+
+12 Oct 2014  02:00:00
+
+ACMAMR14
+
+ACM-ICPC Asia-Amritapuri Site First Round Online Contest 2014
+
+11 Oct 2014  18:00:00
+
+11 Oct 2014  21:30:00
+
+TSTAMR14
+
+ACM-ICPC Asia-Amritapuri Online Practice Round, 2014
+
+11 Oct 2014  13:00:00
+
+11 Oct 2014  15:00:00
+
+CDWR2014
+
+Codewars 2014
+
+08 Oct 2014  18:00:00
+
+08 Oct 2014  22:00:00
+
+WPC1401
+
+IIT Kanpur, Monthly Programming Contest-1
+
+30 Sep 2014  19:00:00
+
+01 Oct 2014  00:00:00
+
+LTIME16
+
+September Lunchtime 2014
+
+28 Sep 2014  11:00:00
+
+28 Sep 2014  14:00:00
+
+INSM2014
+
+Insomnia 2014
+
+26 Sep 2014  22:00:00
+
+27 Sep 2014  04:00:00
+
+CDST2014
+
+CodeStrike 2014
+
+23 Sep 2014  14:30:00
+
+23 Sep 2014  16:00:00
+
+COOK50
+
+September Cook-Off 2014, ACM-ICPC Warm up
+
+21 Sep 2014  21:30:00
+
+22 Sep 2014  00:00:00
+
+SEPT14
+
+September Challenge 2014
+
+05 Sep 2014  15:00:00
+
+15 Sep 2014  15:00:00
+
+CLASH14
+
+Clash Credenz 2014 Wild Card Round
+
+31 Aug 2014  21:00:00
+
+01 Sep 2014  21:00:00
+
+LTIME15
+
+August Lunchtime 2014
+
+31 Aug 2014  11:00:00
+
+31 Aug 2014  14:00:00
+
+COOK49
+
+August Cook-Off 2014
+
+24 Aug 2014  21:30:00
+
+25 Aug 2014  00:20:00
+
+AUG14
+
+August Challenge 2014
+
+01 Aug 2014  15:00:00
+
+11 Aug 2014  15:00:00
+
+PRCNSR14
+
+Procon 2014
+
+10 Aug 2014  17:00:00
+
+10 Aug 2014  19:30:00
+
+LTIME14
+
+July Lunchtime 2014
+
+27 Jul 2014  11:00:00
+
+27 Jul 2014  14:45:00
+
+COOK48
+
+July Cook-Off 2014
+
+20 Jul 2014  21:30:00
+
+21 Jul 2014  01:00:00
+
+JULY14
+
+July Challenge 2014
+
+04 Jul 2014  15:00:00
+
+14 Jul 2014  15:00:00
+
+LTIME13
+
+June Lunchtime 2014
+
+29 Jun 2014  11:00:00
+
+29 Jun 2014  14:00:00
+
+COOK47
+
+June Cook-Off 2014
+
+22 Jun 2014  21:30:00
+
+23 Jun 2014  00:45:00
+
+JUNE14
+
+June Challenge 2014
+
+06 Jun 2014  15:00:00
+
+16 Jun 2014  15:00:00
+
+LTIME12
+
+May Lunchtime 2014
+
+25 May 2014  11:00:00
+
+25 May 2014  14:00:00
+
+COOK46
+
+May Cook-Off 2014
+
+18 May 2014  21:30:00
+
+19 May 2014  00:00:00
+
+NCC2014
+
+National Computing Contest 2014
+
+15 May 2014  21:00:00
+
+16 May 2014  00:00:00
+
+MAY14
+
+May Challenge 2014
+
+02 May 2014  15:00:00
+
+12 May 2014  15:00:00
+
+CDSN2014
+
+Gambit 2014
+
+03 May 2014  15:30:00
+
+03 May 2014  19:00:00
+
+LTIME11
+
+April Lunchtime 2014
+
+27 Apr 2014  11:00:00
+
+27 Apr 2014  14:00:00
+
+COOK45
+
+April Cook-Off 2014
+
+20 Apr 2014  21:30:00
+
+21 Apr 2014  00:00:00
+
+CDGR2014
+
+CodeGuru 2014
+
+20 Apr 2014  10:00:00
+
+20 Apr 2014  13:00:00
+
+PRMT2014
+
+Prometheus 2014
+
+14 Apr 2014  00:00:00
+
+18 Apr 2014  00:00:00
+
+APRIL14
+
+April Challenge 2014
+
+04 Apr 2014  15:00:00
+
+14 Apr 2014  15:00:00
+
+TUXO2014
+
+Tux Coder 2014
+
+07 Apr 2014  21:00:00
+
+08 Apr 2014  00:00:00
+
+CDCN2014
+
+Code  2014
+
+03 Apr 2014  12:00:00
+
+04 Apr 2014  12:00:00
+
+LTIME10
+
+March Lunchtime 2014
+
+30 Mar 2014  11:00:00
+
+30 Mar 2014  14:00:00
+
+GOC2014
+
+Game of Codes 2014
+
+29 Mar 2014  21:00:00
+
+30 Mar 2014  00:00:00
+
+COOK44
+
+March Cook-Off 2014
+
+23 Mar 2014  21:30:00
+
+24 Mar 2014  00:00:00
+
+CDR2014
+
+Coder 2014
+
+22 Mar 2014  21:00:00
+
+23 Mar 2014  02:00:00
+
+BTBT2014
+
+Bit Battle 2014
+
+22 Mar 2014  21:30:00
+
+23 Mar 2014  00:00:00
+
+CDMR2014
+
+Code Marathon 2014
+
+22 Mar 2014  19:00:00
+
+22 Mar 2014  22:00:00
+
+MARCH14
+
+March Challenge 2014
+
+07 Mar 2014  15:00:00
+
+18 Mar 2014  15:00:00
+
+ABCS2014
+
+aBaCUS'14
+
+15 Mar 2014  20:00:00
+
+15 Mar 2014  23:30:00
+
+COGZ2014
+
+CodeIt 2014
+
+14 Mar 2014  11:00:00
+
+14 Mar 2014  13:30:00
+
+BTCD2014
+
+ByteCode 2014
+
+08 Mar 2014  20:30:00
+
+09 Mar 2014  01:30:00
+
+DMNT2014
+
+Dementia 2014
+
+05 Mar 2014  22:00:00
+
+06 Mar 2014  00:45:00
+
+TRNT2014
+
+Trinity 2014
+
+02 Mar 2014  21:30:00
+
+03 Mar 2014  00:00:00
+
+IOPC2014
+
+IOPC 2014
+
+01 Mar 2014  12:00:00
+
+02 Mar 2014  12:00:00
+
+CDCS2014
+
+CodeCrusade 2014
+
+01 Mar 2014  10:00:00
+
+01 Mar 2014  13:20:00
+
+IGNS2014
+
+Ignus 2014
+
+25 Feb 2014  19:00:00
+
+25 Feb 2014  22:30:00
+
+NCDFEB14
+
+UVCE N-Code February 2014
+
+22 Feb 2014  07:00:00
+
+23 Feb 2014  22:00:00
+
+CDNCTR14
+
+CodeNiche 2014, Trial round
+
+22 Feb 2014  21:00:00
+
+23 Feb 2014  21:00:00
+
+LTIME09
+
+February Lunchtime 2014
+
+23 Feb 2014  11:00:00
+
+23 Feb 2014  14:30:00
+
+CDMT2014
+
+Code Mutants 2014
+
+22 Feb 2014  20:30:00
+
+23 Feb 2014  01:30:00
+
+AICL2014
+
+ACM-ICL 2014
+
+22 Feb 2014  21:30:00
+
+23 Feb 2014  00:00:00
+
+CDMN2014
+
+CodeMania 2014
+
+18 Feb 2014  21:00:00
+
+19 Feb 2014  00:00:00
+
+FEB14
+
+February Challenge 2014
+
+07 Feb 2014  15:00:00
+
+17 Feb 2014  15:00:00
+
+COOK43
+
+February Cook-Off 2014
+
+16 Feb 2014  21:30:00
+
+17 Feb 2014  00:00:00
+
+CDCRNT14
+
+Code Currents 2014
+
+15 Feb 2014  21:00:00
+
+15 Feb 2014  23:00:00
+
+CDLV2014
+
+CodeLive 2014
+
+12 Feb 2014  12:00:00
+
+13 Feb 2014  00:00:00
+
+CDZL2014
+
+Code Zilla 2014
+
+10 Feb 2014  21:30:00
+
+11 Feb 2014  00:30:00
+
+CRNM2014
+
+Cranium 2014
+
+08 Feb 2014  21:00:00
+
+09 Feb 2014  00:00:00
+
+TROK2014
+
+Bytes 2014
+
+02 Feb 2014  21:00:00
+
+03 Feb 2014  00:00:00
+
+SMHT2014
+
+Samhita OLPC 2014
+
+02 Feb 2014  20:00:00
+
+02 Feb 2014  23:00:00
+
+DBYZ2014
+
+Divide By Zero 2014
+
+01 Feb 2014  21:30:00
+
+02 Feb 2014  00:00:00
+
+CDCRFT14
+
+CodeCraft: IIIT Hyderabad, Replay
+
+01 Feb 2014  11:00:00
+
+01 Feb 2014  18:00:00
+
+LTIME08
+
+January Lunchtime 2014
+
+26 Jan 2014  11:00:00
+
+26 Jan 2014  14:00:00
+
+CODX2014
+
+CodeX 2014
+
+24 Jan 2014  19:00:00
+
+25 Jan 2014  19:00:00
+
+COOK42
+
+January Cook-off 2014
+
+19 Jan 2014  21:30:00
+
+20 Jan 2014  00:45:00
+
+CDIT2014
+
+Code-It 2014
+
+18 Jan 2014  11:00:00
+
+18 Jan 2014  12:00:00
+
+JAN14
+
+January Challenge 2014
+
+03 Jan 2014  15:00:00
+
+13 Jan 2014  15:00:00
+
+SHSTRA14
+
+Shaastra 2014
+
+04 Jan 2014  20:00:00
+
+05 Jan 2014  01:00:00
+
+LTIME07
+
+December Lunchtime 2013
+
+29 Dec 2013  11:00:00
+
+29 Dec 2013  14:00:00
+
+KGP13ACM
+
+ACM-ICPC Kharagpur onsite regionals 2013 : Replay
+
+28 Dec 2013  18:00:00
+
+28 Dec 2013  23:00:00
+
+COOK41
+
+December Cook-off 2013
+
+22 Dec 2013  21:30:00
+
+23 Dec 2013  00:00:00
+
+DEC13
+
+December Challenge 2013
+
+06 Dec 2013  15:00:00
+
+16 Dec 2013  15:00:00
+
+KAN13ACM
+
+ACM-ICPC Kanpur onsite regionals 2013 : Replay
+
+14 Dec 2013  19:00:00
+
+15 Dec 2013  00:00:00
+
+LTIME06
+
+November Lunchtime 2013
+
+24 Nov 2013  11:00:00
+
+24 Nov 2013  14:30:00
+
+NCDRN13
+
+UVCE N-Code November 2013
+
+14 Nov 2013  21:00:00
+
+18 Nov 2013  00:00:00
+
+COOK40
+
+November Cook-off 2013
+
+17 Nov 2013  21:30:00
+
+18 Nov 2013  00:00:00
+
+ODCD2013
+
+Ode2Code 2013
+
+16 Nov 2013  20:00:00
+
+17 Nov 2013  02:00:00
+
+CDWV2013
+
+CodeWeavers 2013
+
+13 Nov 2013  21:00:00
+
+14 Nov 2013  00:00:00
+
+NOV13
+
+November Challenge 2013
+
+01 Nov 2013  15:00:00
+
+11 Nov 2013  15:00:00
+
+CDCZ2013
+
+CodeCzar 2013
+
+10 Nov 2013  12:00:00
+
+10 Nov 2013  15:00:00
+
+PRVG2014
+
+Pravega 2014
+
+09 Nov 2013  21:00:00
+
+09 Nov 2013  23:00:00
+
+ACMKGP13
+
+ACM-ICPC Asia-Kharagpur Site First Round Online Contest 2013
+
+02 Nov 2013  11:00:00
+
+02 Nov 2013  13:10:00
+
+TCFST13
+
+TechFest 2013
+
+26 Oct 2013  21:00:00
+
+28 Oct 2013  00:00:00
+
+INSCRP13
+
+Inscription 2013
+
+27 Oct 2013  21:00:00
+
+28 Oct 2013  00:00:00
+
+LTIME05
+
+October Lunchtime 2013
+
+27 Oct 2013  11:00:00
+
+27 Oct 2013  14:00:00
+
+CDCRNC13
+
+Code Crunch 2013
+
+25 Oct 2013  10:00:00
+
+25 Oct 2013  19:00:00
+
+ALKH2013
+
+Alkhwarism 2013 
+
+24 Oct 2013  20:00:00
+
+25 Oct 2013  00:00:00
+
+COOK39
+
+October Cook-Off 2013
+
+20 Oct 2013  21:30:00
+
+21 Oct 2013  00:00:00
+
+CRPT2013
+
+Cryptoss 2013
+
+16 Oct 2013  00:00:00
+
+21 Oct 2013  00:00:00
+
+ACMKAN13
+
+ACM-ICPC Asia-Kanpur Site First Round Online Contest 2013
+
+19 Oct 2013  11:00:00
+
+19 Oct 2013  13:30:00
+
+UVCNCD13
+
+UVCE NCode- October 2013
+
+07 Oct 2013  15:00:00
+
+17 Oct 2013  15:00:00
+
+DSEC2013
+
+./ Execute 2013
+
+14 Oct 2013  21:00:00
+
+16 Oct 2013  21:00:00
+
+OCT13
+
+October Challenge 2013
+
+04 Oct 2013  15:00:00
+
+14 Oct 2013  15:00:00
+
+CODW2013
+
+CodeWars 2013 - BITS, Pilani Hyderabad Campus
+
+02 Oct 2013  14:00:00
+
+02 Oct 2013  19:00:00
+
+CDCL2013
+
+CodeClash 2013
+
+02 Oct 2013  13:00:00
+
+02 Oct 2013  18:00:00
+
+CDGF2013
+
+Code Zip 2013
+
+25 Sep 2013  15:00:00
+
+29 Sep 2013  15:00:00
+
+CDWR2013
+
+Code War 2013
+
+27 Sep 2013  15:00:00
+
+29 Sep 2013  15:00:00
+
+LTIME04
+
+September Lunchtime 2013
+
+29 Sep 2013  11:00:00
+
+29 Sep 2013  14:30:00
+
+LGCD2013
+
+LogiCode 2013
+
+27 Sep 2013  18:00:00
+
+28 Sep 2013  00:00:00
+
+COOK38
+
+September Cook-Off 2013
+
+22 Sep 2013  21:30:00
+
+23 Sep 2013  00:00:00
+
+INSM2013
+
+Insomnia 2013
+
+20 Sep 2013  22:00:00
+
+21 Sep 2013  04:00:00
+
+SEPT13
+
+September Challenge 2013
+
+06 Sep 2013  15:00:00
+
+16 Sep 2013  15:00:00
+
+CLASH13
+
+Clash Credenz 2013
+
+27 Aug 2013  00:00:00
+
+29 Aug 2013  00:00:00
+
+BTCD2013
+
+ByteCode 2013
+
+18 Aug 2013  12:00:00
+
+28 Aug 2013  12:00:00
+
+LTIME03
+
+August Lunchtime 2013
+
+25 Aug 2013  11:00:00
+
+25 Aug 2013  14:00:00
+
+COOK37
+
+August Cook-Off 2013
+
+18 Aug 2013  21:30:00
+
+19 Aug 2013  00:25:00
+
+PRCN2013
+
+Procon 2013
+
+16 Aug 2013  13:30:00
+
+16 Aug 2013  15:30:00
+
+AUG13
+
+August Challenge 2013
+
+02 Aug 2013  15:00:00
+
+12 Aug 2013  15:00:00
+
+LTIME02
+
+Lunch Time July 2013
+
+28 Jul 2013  11:00:00
+
+28 Jul 2013  14:30:00
+
+COOK36
+
+July Cook-off 2013
+
+21 Jul 2013  21:30:00
+
+22 Jul 2013  00:00:00
+
+JULY13
+
+July Challenge 2013
+
+05 Jul 2013  15:00:00
+
+15 Jul 2013  15:00:00
+
+LTIME01
+
+Lunch Time June 2013
+
+30 Jun 2013  11:00:00
+
+30 Jun 2013  14:00:00
+
+COOK35
+
+June Cook-Off 2013
+
+23 Jun 2013  21:30:00
+
+24 Jun 2013  00:00:00
+
+JUNE13
+
+June Challenge 2013
+
+07 Jun 2013  15:00:00
+
+17 Jun 2013  15:00:00
+
+COOK34
+
+May Cook-off 2013
+
+19 May 2013  21:30:00
+
+20 May 2013  00:00:00
+
+MAY13
+
+May Challenge 2013
+
+03 May 2013  15:00:00
+
+13 May 2013  16:00:00
+
+COOK33
+
+April Cook-Off 2013
+
+21 Apr 2013  21:30:00
+
+22 Apr 2013  00:00:00
+
+CDNB2013
+
+Coding 2013
+
+20 Apr 2013  15:00:00
+
+21 Apr 2013  10:00:00
+
+APRIL13
+
+April Challenge 2013
+
+05 Apr 2013  15:00:00
+
+15 Apr 2013  15:00:00
+
+PROM2013
+
+Prometheus 2013 
+
+10 Apr 2013  16:00:00
+
+15 Apr 2013  00:00:00
+
+KDAT2013
+
+Kodeathon 2013
+
+13 Apr 2013  20:00:00
+
+14 Apr 2013  20:00:00
+
+CODS2013
+
+Codies 2013
+
+07 Apr 2013  20:00:00
+
+08 Apr 2013  00:00:00
+
+COOK32
+
+March Cook-off 2013
+
+24 Mar 2013  21:30:00
+
+25 Mar 2013  00:07:00
+
+INST2013
+
+Instruo 2013
+
+23 Mar 2013  21:30:00
+
+23 Mar 2013  23:30:00
+
+INVS2013
+
+CodeZilla 2013
+
+19 Mar 2013  21:00:00
+
+19 Mar 2013  23:00:00
+
+OVRN2013
+
+OverNite 2013
+
+16 Mar 2013  23:00:00
+
+17 Mar 2013  02:00:00
+
+DBYZ2013
+
+Divide By Zero 2013
+
+16 Mar 2013  16:00:00
+
+16 Mar 2013  18:00:00
+
+ALGT2013
+
+Algothika 2013
+
+11 Mar 2013  23:00:00
+
+14 Mar 2013  23:00:00
+
+MARCH13
+
+March Challenge 2013
+
+01 Mar 2013  15:00:00
+
+11 Mar 2013  15:00:00
+
+BTFR2013
+
+Bit Freak 2013
+
+09 Mar 2013  16:00:00
+
+10 Mar 2013  16:00:00
+
+IOPC2013
+
+IOPC 2013
+
+09 Mar 2013  12:00:00
+
+10 Mar 2013  12:00:00
+
+CDNC2013
+
+IIT BHU Varanasi Code Niche
+
+01 Mar 2013  20:00:00
+
+02 Mar 2013  20:00:00
+
+CDOL2013
+
+Code Olympics 2013
+
+01 Mar 2013  10:00:00
+
+01 Mar 2013  13:00:00
+
+OBFS2013
+
+Obfuscation 2013
+
+26 Feb 2013  20:00:00
+
+27 Feb 2013  00:00:00
+
+TCSG2013
+
+TechnoSurge 2013
+
+24 Feb 2013  20:00:00
+
+25 Feb 2013  00:00:00
+
+EXBT2013
+
+Exhibit 2013
+
+22 Feb 2013  20:30:00
+
+23 Feb 2013  00:30:00
+
+INCD2013
+
+International Code Zilla 2013
+
+19 Feb 2013  12:30:00
+
+19 Feb 2013  20:00:00
+
+COOK31
+
+February Cook-Off 2013
+
+17 Feb 2013  21:30:00
+
+18 Feb 2013  00:00:00
+
+DSPF2013
+
+./EXECEUTE Prefest contest
+
+11 Feb 2013  13:00:00
+
+14 Feb 2013  13:00:00
+
+CRNM2013
+
+Cranium  2013
+
+13 Feb 2013  20:00:00
+
+14 Feb 2013  01:00:00
+
+FEB13
+
+February 2013 Challenge
+
+01 Feb 2013  15:00:00
+
+11 Feb 2013  15:00:00
+
+BYTS2013
+
+Bytes 2013
+
+10 Feb 2013  20:00:00
+
+11 Feb 2013  01:00:00
+
+PRST2013
+
+IIT BHU Varanasi CodeNiche - Trial 1
+
+08 Feb 2013  20:00:00
+
+09 Feb 2013  20:00:00
+
+TCSP2013
+
+Techspardha 2013
+
+02 Feb 2013  11:00:00
+
+02 Feb 2013  14:00:00
+
+OVNT2012
+
+OverNite 2013
+
+29 Jan 2013  20:00:00
+
+29 Jan 2013  23:00:00
+
+ACMAMR12
+
+ACM-ICPC Amritapuri onsite regionals 2012 : Replay
+
+25 Jan 2013  15:00:00
+
+28 Jan 2013  15:00:00
+
+COOK30
+
+January Cook-Off 2013
+
+20 Jan 2013  21:30:00
+
+21 Jan 2013  00:20:00
+
+JAN13
+
+January Challenge 2013
+
+01 Jan 2013  15:00:00
+
+15 Jan 2013  15:00:00
+
+COOK29
+
+December Cook-Off 2012
+
+23 Dec 2012  21:30:00
+
+24 Dec 2012  00:00:00
+
+DEC12
+
+December Challenge 2012
+
+01 Dec 2012  15:00:00
+
+11 Dec 2012  15:00:00
+
+COOK28
+
+November Cook-Off 2012
+
+18 Nov 2012  21:30:00
+
+19 Nov 2012  00:00:00
+
+ZERO1
+
+ZERO1
+
+16 Nov 2012  16:00:00
+
+17 Nov 2012  16:00:00
+
+NOV12
+
+November Challenge 2012
+
+01 Nov 2012  15:00:00
+
+12 Nov 2012  15:00:00
+
+ACMKGP12
+
+ACM-ICPC Asia-Kanpur Site First Round Online Contest 2012
+
+11 Nov 2012  14:30:00
+
+11 Nov 2012  17:30:00
+
+CDWV2012
+
+CodeWeavers 2012 
+
+07 Nov 2012  21:00:00
+
+08 Nov 2012  00:00:00
+
+ACMKAN12
+
+ACM-ICPC Asia-Kanpur Site First Round Online Contest 2012
+
+03 Nov 2012  14:30:00
+
+03 Nov 2012  16:30:00
+
+CODW2012
+
+CodeWars 2012
+
+24 Oct 2012  18:00:00
+
+26 Oct 2012  18:00:00
+
+COOK27
+
+October Cook-Off 2012
+
+21 Oct 2012  21:30:00
+
+22 Oct 2012  00:00:00
+
+OCT12
+
+October Challenge 2012
+
+01 Oct 2012  15:00:00
+
+15 Oct 2012  15:00:00
+
+ALKH2012
+
+Alkhwarizm 2012
+
+29 Sep 2012  19:00:00
+
+30 Sep 2012  00:00:00
+
+EPNY2012
+
+Epiphany 2012
+
+27 Sep 2012  17:00:00
+
+28 Sep 2012  18:00:00
+
+TCSN2012
+
+Techno Shine 2012
+
+27 Sep 2012  21:30:00
+
+28 Sep 2012  00:00:00
+
+COOK26
+
+September Cook-Off 2012
+
+23 Sep 2012  21:30:00
+
+24 Sep 2012  00:45:00
+
+SEP12
+
+September Challenge 2012
+
+01 Sep 2012  15:00:00
+
+11 Sep 2012  15:00:00
+
+BTCD2012
+
+ByteCode 2012
+
+12 Aug 2012  20:00:00
+
+26 Aug 2012  20:00:00
+
+COOK25
+
+August Cook-Off 2012
+
+19 Aug 2012  21:30:00
+
+20 Aug 2012  00:20:00
+
+AUG12
+
+August Challenge 2012
+
+01 Aug 2012  15:00:00
+
+11 Aug 2012  15:00:00
+
+COOK24
+
+July Cook-Off 2012
+
+22 Jul 2012  21:30:00
+
+23 Jul 2012  00:00:00
+
+JULY12
+
+July Challenge 2012
+
+01 Jul 2012  15:00:00
+
+11 Jul 2012  15:00:00
+
+COOK23
+
+June Cook-Off 2012
+
+17 Jun 2012  21:30:00
+
+18 Jun 2012  00:25:00
+
+JUNE12
+
+June Challenge 2012
+
+01 Jun 2012  15:00:00
+
+11 Jun 2012  15:00:00
+
+ADR2012
+
+Android Hack Camp v.02
+
+28 May 2012  20:00:00
+
+30 May 2012  20:00:00
+
+COOK22
+
+May Cook-Off 2012
+
+20 May 2012  21:30:00
+
+21 May 2012  00:10:00
+
+MAY12
+
+May Challenge 2012
+
+01 May 2012  15:00:00
+
+11 May 2012  15:00:00
+
+COOK21
+
+April Cook-Off 2012
+
+22 Apr 2012  21:30:00
+
+23 Apr 2012  00:00:00
+
+ANDR2012
+
+Android Hack Camp 2012
+
+14 Apr 2012  08:00:00
+
+16 Apr 2012  14:00:00
+
+APRIL12
+
+April Challenge 2012
+
+01 Apr 2012  15:00:00
+
+11 Apr 2012  15:00:00
+
+PRDM2012
+
+Paradigm Shift contest 2012
+
+31 Mar 2012  18:00:00
+
+31 Mar 2012  20:30:00
+
+ADYN2012
+
+Adhyayan 2012
+
+21 Mar 2012  18:00:00
+
+22 Mar 2012  00:00:00
+
+COOK20
+
+March Cook-Off 2012
+
+18 Mar 2012  21:30:00
+
+19 Mar 2012  00:00:00
+
+AGTK2012
+
+ALGOTHIKA 2012
+
+03 Mar 2012  17:00:00
+
+17 Mar 2012  10:00:00
+
+TCTR2012
+
+TechTrishna 2012
+
+14 Mar 2012  12:00:00
+
+15 Mar 2012  03:00:00
+
+ICDE2012
+
+I-Code 2012
+
+11 Mar 2012  21:00:00
+
+12 Mar 2012  00:00:00
+
+MARCH12
+
+March 2012 Challenge
+
+01 Mar 2012  15:00:00
+
+11 Mar 2012  15:00:00
+
+CDOL2012
+
+Code Olympics 2012
+
+03 Mar 2012  10:00:00
+
+03 Mar 2012  13:00:00
+
+PRFT2012
+
+Dot Slash Execute Prefest Contest Page 2012
+
+27 Feb 2012  09:00:00
+
+01 Mar 2012  02:00:00
+
+CNSC2012
+
+Conscientia 2012
+
+25 Feb 2012  22:00:00
+
+26 Feb 2012  02:00:00
+
+ANWS2012
+
+WYSIWYG 2012
+
+25 Feb 2012  21:30:00
+
+26 Feb 2012  00:00:00
+
+CDSC2012
+
+CodeScone contest 2012
+
+24 Feb 2012  19:30:00
+
+25 Feb 2012  10:00:00
+
+SOPC2012
+
+SOPC Contest 2012
+
+24 Feb 2012  12:00:00
+
+25 Feb 2012  00:00:00
+
+ENCD2012
+
+Encoder 2012
+
+24 Feb 2012  17:00:00
+
+24 Feb 2012  22:00:00
+
+CRNM2012
+
+Cranium Contest 2012
+
+21 Feb 2012  19:15:00
+
+22 Feb 2012  03:15:00
+
+COOK19
+
+February 2012 Cook-off
+
+19 Feb 2012  21:30:00
+
+20 Feb 2012  00:00:00
+
+COZL2012
+
+CODEZILLA - RUBIX'12 by CSI-TSEC
+
+19 Feb 2012  09:00:00
+
+19 Feb 2012  18:00:00
+
+IGNS2012
+
+Codka Challenge 2012
+
+12 Feb 2012  09:00:00
+
+19 Feb 2012  09:00:00
+
+CDZL2012
+
+CodeZilla contest 2012
+
+17 Feb 2012  20:00:00
+
+17 Feb 2012  23:00:00
+
+CDMT2012
+
+CodeMutants 2012
+
+16 Feb 2012  20:30:00
+
+16 Feb 2012  23:10:00
+
+ALGO2012
+
+Algorythmus 2012
+
+11 Feb 2012  21:00:00
+
+12 Feb 2012  02:30:00
+
+FEB12
+
+February 2012 Challenge
+
+01 Feb 2012  15:00:00
+
+11 Feb 2012  15:00:00
+
+COOK18
+
+January Cook-Off
+
+22 Jan 2012  21:30:00
+
+23 Jan 2012  00:00:00
+
+DMNT2012
+
+Dementia 2012 - IIT Mandi
+
+21 Jan 2012  18:00:00
+
+22 Jan 2012  00:00:00
+
+IOPC2012
+
+IOPC Techkriti 2012 - IIT Kanpur
+
+14 Jan 2012  12:00:00
+
+15 Jan 2012  12:00:00
+
+JAN12
+
+January 2012 Challenge
+
+01 Jan 2012  15:00:00
+
+11 Jan 2012  15:00:00
+
+COOK17
+
+December Cook-Off
+
+18 Dec 2011  21:30:00
+
+19 Dec 2011  00:10:00
+
+DEC11
+
+December 2011 Long Contest
+
+01 Dec 2011  15:00:00
+
+11 Dec 2011  15:00:00
+
+AMRITA11
+
+Amritapuri ICPC Warmup 2011
+
+03 Dec 2011  14:30:00
+
+03 Dec 2011  16:30:00
+
+COOK16
+
+November Cook-Off
+
+20 Nov 2011  21:30:00
+
+21 Nov 2011  00:00:00
+
+NOV11
+
+November Long Contest 2011
+
+01 Nov 2011  15:00:00
+
+11 Nov 2011  15:00:00
+
+ACMKAN11
+
+ACM-ICPC Asia-Kanpur Site First Round Online Contest
+
+29 Oct 2011  14:30:00
+
+29 Oct 2011  16:30:00
+
+COOK15
+
+October Cook-off
+
+23 Oct 2011  21:30:00
+
+24 Oct 2011  00:15:00
+
+TCHR1
+
+The Code Hunt, VITS, Satna, Round 1.
+
+22 Oct 2011  10:00:00
+
+22 Oct 2011  16:00:00
+
+KANWRMUP
+
+Kanpur ACM ICPC Warm-up Contest
+
+15 Oct 2011  21:30:00
+
+16 Oct 2011  00:00:00
+
+OCT11
+
+October Long Contest 2011
+
+01 Oct 2011  15:00:00
+
+11 Oct 2011  15:00:00
+
+LMDPLA11
+
+Limit de Plazo 2011, IIIT-Allahabad
+
+28 Sep 2011  21:00:00
+
+29 Sep 2011  00:00:00
+
+ALKH11
+
+AlKhwarizm, IIIT Allahabad
+
+27 Sep 2011  21:00:00
+
+28 Sep 2011  01:30:00
+
+COOK14
+
+September Cook-off
+
+18 Sep 2011  21:30:00
+
+19 Sep 2011  00:01:00
+
+SEPT11
+
+September Long Contest
+
+01 Sep 2011  15:00:00
+
+11 Sep 2011  15:00:00
+
+COOK13
+
+August Cook-off 2011
+
+21 Aug 2011  21:30:00
+
+22 Aug 2011  00:00:00
+
+AUG11
+
+August Long Contest 2011
+
+01 Aug 2011  15:00:00
+
+12 Aug 2011  15:00:00
+
+COOK12
+
+July Cook-off 2011
+
+24 Jul 2011  21:30:00
+
+25 Jul 2011  00:00:00
+
+JULY11
+
+July 2011 Long Contest
+
+01 Jul 2011  15:00:00
+
+11 Jul 2011  15:00:00
+
+COOK11
+
+June Cook-off
+
+19 Jun 2011  21:30:00
+
+20 Jun 2011  00:00:00
+
+JUNE11
+
+June Long Contest 2011
+
+01 Jun 2011  15:00:00
+
+12 Jun 2011  15:00:00
+
+COOK10
+
+May Cook-off 2011
+
+29 May 2011  21:30:00
+
+30 May 2011  00:00:00
+
+MAY11
+
+May Long Contest 2011
+
+01 May 2011  15:00:00
+
+11 May 2011  15:00:00
+
+CDEZILLA
+
+Netaj Subhash Institute of Technology - CodeZilla
+
+25 Apr 2011  19:00:00
+
+26 Apr 2011  00:00:00
+
+COOK09
+
+April Cook-Off Challenge
+
+24 Apr 2011  21:30:00
+
+25 Apr 2011  00:00:00
+
+DREAMSPK
+
+The DreamSpark Contest -  Microsoft Software & Technology Club India
+
+17 Apr 2011  20:00:00
+
+18 Apr 2011  01:00:00
+
+APRIL11
+
+April Long Contest
+
+01 Apr 2011  15:00:00
+
+12 Apr 2011  15:00:00
+
+DSPATNA
+
+DreamSpark - Microsoft Software & Technology Club
+
+02 Apr 2011  11:30:00
+
+02 Apr 2011  14:00:00
+
+HCKATHON
+
+Hackathon
+
+24 Mar 2011  00:00:00
+
+24 Mar 2011  06:00:00
+
+SOPC2011
+
+Skit Online Programming Contest - Swami Keshvanand Institute of Technology, Management and gramothan
+
+22 Mar 2011  12:00:00
+
+23 Mar 2011  00:00:00
+
+DIALECT
+
+J.N.E.C. - Dialect
+
+21 Mar 2011  10:00:00
+
+21 Mar 2011  14:00:00
+
+COOK08
+
+March Cook-off Challenge
+
+20 Mar 2011  21:30:00
+
+21 Mar 2011  00:00:00
+
+MARCH11
+
+March 2011 Challenge
+
+12 Mar 2011  18:00:00
+
+13 Mar 2011  18:00:00
+
+XECUTE
+
+Madras Institute of Technology - Prayatna11 - Xecute
+
+10 Mar 2011  20:00:00
+
+11 Mar 2011  00:00:00
+
+CODER11
+
+BITS Pilani, Apogee 2011 - CODER
+
+05 Mar 2011  20:00:00
+
+06 Mar 2011  01:00:00
+
+ENCODED
+
+IEM - Kolkata - FESTRONIX - Encoded
+
+27 Feb 2011  15:00:00
+
+28 Feb 2011  00:00:00
+
+DSPCXI
+
+DreamSpark - Microsoft Software & Technology Club
+
+26 Feb 2011  16:00:00
+
+27 Feb 2011  04:00:00
+
+TGPA11
+
+Conscientia - TGPA 2011
+
+26 Feb 2011  22:00:00
+
+27 Feb 2011  03:00:00
+
+CMUTANTS
+
+Code Mutants - DA - IICT
+
+24 Feb 2011  21:00:00
+
+25 Feb 2011  02:00:00
+
+COOK07
+
+February Cook - Off Challenge
+
+20 Feb 2011  21:30:00
+
+21 Feb 2011  00:00:00
+
+BYTCDE11
+
+NIT Trichy ByteCode 2011
+
+20 Feb 2011  14:30:00
+
+20 Feb 2011  20:30:00
+
+SYNAPSE
+
+DA-IICT - Algorythmus, Synapse
+
+19 Feb 2011  19:30:00
+
+20 Feb 2011  19:30:00
+
+RUBIX11
+
+Thadomal Shahani Engineering College - RUBIX - Codezilla
+
+17 Feb 2011  19:00:00
+
+18 Feb 2011  00:00:00
+
+IOPC2011
+
+IIT Kanpur IOPC 2011
+
+12 Feb 2011  12:00:00
+
+13 Feb 2011  12:00:00
+
+FEB11
+
+February 2011 Contest
+
+01 Feb 2011  15:00:00
+
+11 Feb 2011  15:00:00
+
+ENCODER
+
+NIT - Kurukshetra
+
+26 Jan 2011  14:15:00
+
+26 Jan 2011  19:15:00
+
+COOK06
+
+The January 2011 Cook-Off
+
+23 Jan 2011  21:30:00
+
+24 Jan 2011  00:00:00
+
+CODEIT
+
+Indian Statistical Institute - CodeIT
+
+23 Jan 2011  08:00:00
+
+23 Jan 2011  20:00:00
+
+JAN11
+
+January 2011 Challenge
+
+01 Jan 2011  15:00:00
+
+11 Jan 2011  15:00:00
+
+COOK05
+
+The December 2010 Cook-Off
+
+19 Dec 2010  21:30:00
+
+20 Dec 2010  00:00:00
+
+DEC10
+
+December 2010 Challenge
+
+01 Dec 2010  15:00:00
+
+11 Dec 2010  15:00:00
+
+COOK04
+
+The November CookOff
+
+27 Nov 2010  21:30:00
+
+28 Nov 2010  00:00:00
+
+RUBIXDEN
+
+RubixDen - JIIT Noida
+
+26 Nov 2010  18:00:00
+
+27 Nov 2010  00:00:00
+
+NOV10
+
+November 2010 Challenge
+
+01 Nov 2010  15:00:00
+
+11 Nov 2010  15:00:00
+
+STLEMATE
+
+NSIT Delhi - Stale Mate 2.0
+
+31 Oct 2010  18:00:00
+
+01 Nov 2010  00:00:00
+
+ACMKAN10
+
+ACM-ICPC Asia-Kanpur Site First Round Online Contest 
+
+30 Oct 2010  14:30:00
+
+30 Oct 2010  17:30:00
+
+COOK03
+
+The October Cook-Off (ACM ICPC Warm Up IIT-K)
+
+15 Oct 2010  21:30:00
+
+16 Oct 2010  00:00:00
+
+TECHART
+
+MGM - Tech Arete
+
+05 Oct 2010  00:00:00
+
+12 Oct 2010  00:00:00
+
+OCT10
+
+October 2010 Challenge
+
+01 Oct 2010  15:00:00
+
+11 Oct 2010  15:00:00
+
+RGEAR
+
+Thapar University - Aranya 2010
+
+07 Oct 2010  18:00:00
+
+08 Oct 2010  18:00:00
+
+AVISHKAR
+
+MNIT - Avishkar 2010
+
+03 Oct 2010  17:00:00
+
+03 Oct 2010  22:00:00
+
+ACMTRIAL
+
+ACM Trial
+
+01 Oct 2010  19:00:00
+
+03 Oct 2010  12:00:00
+
+LMDPLA10
+
+IIIT - A , Limit-de-Plazo 2010
+
+02 Oct 2010  19:00:00
+
+03 Oct 2010  00:00:00
+
+ALKH10
+
+IIIT - A , Alkhwarizm 2010
+
+01 Oct 2010  19:00:00
+
+02 Oct 2010  00:00:00
+
+AMRITA01
+
+Amritapuri ICPC Warmup 1
+
+24 Sep 2010  20:00:00
+
+24 Sep 2010  22:30:00
+
+SEPT10
+
+September 2010 Challenge
+
+01 Sep 2010  15:00:00
+
+11 Sep 2010  15:00:00
+
+INSOMNIA
+
+Insomnia 2010
+
+04 Sep 2010  00:00:00
+
+05 Sep 2010  00:00:00
+
+COOK02
+
+August Cook Off
+
+21 Aug 2010  21:30:00
+
+22 Aug 2010  00:00:00
+
+AUG10
+
+August 2010 Challenge
+
+01 Aug 2010  15:00:00
+
+11 Aug 2010  15:00:00
+
+COOK01
+
+July Cook Off 
+
+24 Jul 2010  21:30:00
+
+25 Jul 2010  00:00:00
+
+JULY10
+
+July 2010
+
+01 Jul 2010  15:00:00
+
+11 Jul 2010  15:00:00
+
+JUNE10
+
+June 2010 Contest
+
+01 Jun 2010  15:00:00
+
+11 Jun 2010  15:00:00
+
+MAY10
+
+May 2010 Contest
+
+01 May 2010  15:00:00
+
+12 May 2010  15:00:00
+
+DSPC30
+
+DreamSpark Contest 3
+
+24 Apr 2010  18:00:00
+
+26 Apr 2010  23:59:00
+
+APRIL10
+
+April 2010 Contest
+
+01 Apr 2010  15:00:00
+
+13 Apr 2010  15:00:00
+
+EMA2010
+
+EMA 2010
+
+02 Apr 2010  00:00:00
+
+03 Apr 2010  15:00:00
+
+CE2010
+
+CE 2010
+
+25 Mar 2010  19:00:00
+
+31 Mar 2010  19:00:00
+
+CYWSL4
+
+CYW Round 4
+
+30 Mar 2010  15:00:00
+
+30 Mar 2010  16:00:00
+
+CYWSL3
+
+CYW Round 3
+
+30 Mar 2010  11:00:00
+
+30 Mar 2010  12:00:00
+
+CYWSL2
+
+CYW Round 2
+
+29 Mar 2010  15:00:00
+
+29 Mar 2010  16:00:00
+
+CYWSL1
+
+CYW Round 1
+
+29 Mar 2010  13:00:00
+
+29 Mar 2010  14:00:00
+
+MANTH10
+
+Manthan 2010
+
+28 Mar 2010  18:00:00
+
+29 Mar 2010  00:00:00
+
+ICODER10
+
+Icoder 2010
+
+21 Mar 2010  14:30:00
+
+21 Mar 2010  20:00:00
+
+CSOC30
+
+DreamSpark 2
+
+13 Mar 2010  20:00:00
+
+15 Mar 2010  02:00:00
+
+CWARS10
+
+Code Wars
+
+14 Mar 2010  16:30:00
+
+14 Mar 2010  18:00:00
+
+CRAFTALG
+
+Craft 2010
+
+10 Mar 2010  14:45:00
+
+13 Mar 2010  19:00:00
+
+MARCH10
+
+March 2010 Contest
+
+01 Mar 2010  15:00:00
+
+13 Mar 2010  15:00:00
+
+MINDB10
+
+Mindbend 2010
+
+12 Mar 2010  09:00:00
+
+13 Mar 2010  09:00:00
+
+ALGOTH10
+
+Algothika 2010
+
+04 Mar 2010  18:00:00
+
+12 Mar 2010  18:00:00
+
+ALGOC10
+
+CTRLF9 2010
+
+04 Mar 2010  10:00:00
+
+04 Mar 2010  12:00:00
+
+CSOC20
+
+DreamSpark 2010
+
+27 Feb 2010  18:00:00
+
+01 Mar 2010  00:00:00
+
+TGPA10
+
+TGPA 2010
+
+28 Feb 2010  12:00:00
+
+28 Feb 2010  17:00:00
+
+CSOC10
+
+Code Spaghetti
+
+21 Feb 2010  00:00:00
+
+22 Feb 2010  00:00:00
+
+RUBIX10
+
+Rubix 2010
+
+14 Feb 2010  12:00:00
+
+14 Feb 2010  18:00:00
+
+TZTEST
+
+TZ test
+
+11 Feb 2010  22:37:00
+
+11 Feb 2010  22:42:00
+
+FEB10
+
+February 2010 Contest
+
+01 Feb 2010  15:00:00
+
+11 Feb 2010  15:00:00
+
+CHACK01
+
+Codehack 2010
+
+06 Feb 2010  23:59:00
+
+07 Feb 2010  06:00:00
+
+TBS101
+
+Technical Blitzschlag
+
+31 Jan 2010  00:00:00
+
+01 Feb 2010  00:00:00
+
+TBS102
+
+Technical Blitzschlag
+
+31 Jan 2010  00:00:00
+
+01 Feb 2010  00:00:00
+
+CBUZZ101
+
+CodeBuzz
+
+31 Jan 2010  18:00:00
+
+31 Jan 2010  23:00:00
+
+QCJAM10
+
+Quark 2010
+
+31 Jan 2010  14:00:00
+
+31 Jan 2010  19:45:00
+
+SNONLINE
+
+Online Team Contest
+
+24 Jan 2010  21:30:00
+
+25 Jan 2010  02:30:00
+
+TV10CAT3
+
+Technovanza
+
+24 Jan 2010  22:00:00
+
+25 Jan 2010  00:30:00
+
+ENC2010
+
+Encoder 2010
+
+24 Jan 2010  14:00:00
+
+24 Jan 2010  22:00:00
+
+TV10CAT2
+
+Technovanza
+
+17 Jan 2010  21:00:00
+
+17 Jan 2010  23:00:00
+
+JAN10
+
+January 2010 (Contest XII)
+
+01 Jan 2010  15:00:00
+
+15 Jan 2010  15:00:00
+
+TV10CAT1
+
+Technovanza 2010 Round 1
+
+13 Jan 2010  21:00:00
+
+13 Jan 2010  23:00:00
+
+SNONSITE
+
+Snackdown Onsite Final
+
+10 Jan 2010  11:45:00
+
+10 Jan 2010  15:45:00
+
+RESNKDWN
+
+Codechef Campus ReSnackdown
+
+20 Dec 2009  16:00:00
+
+20 Dec 2009  19:00:00
+
+RESNKTST
+
+Resnackdown Practice Run
+
+17 Dec 2009  19:45:00
+
+17 Dec 2009  21:00:00
+
+DEC09
+
+December 2009 (Contest XI)
+
+01 Dec 2009  15:00:00
+
+11 Dec 2009  15:00:00
+
+SNACKDWN
+
+Codechef Campus Snackdown
+
+21 Nov 2009  19:00:00
+
+22 Nov 2009  00:00:00
+
+SNACKTST
+
+Snackdown Test
+
+19 Nov 2009  20:00:00
+
+19 Nov 2009  22:00:00
+
+NOV09
+
+November 2009 (Contest X)
+
+01 Nov 2009  15:00:00
+
+11 Nov 2009  15:00:00
+
+CB109
+
+Code Baker
+
+27 Oct 2009  18:00:00
+
+28 Oct 2009  18:00:00
+
+KNCO209
+
+Knight Coders Round 2
+
+24 Oct 2009  21:00:00
+
+25 Oct 2009  21:00:00
+
+INS09
+
+Inscription 2009
+
+25 Oct 2009  14:30:00
+
+25 Oct 2009  19:30:00
+
+OCT09
+
+October 2009 (Contest IX)
+
+01 Oct 2009  15:00:00
+
+11 Oct 2009  15:00:00
+
+NSIT091
+
+NSIT Contest 1
+
+10 Oct 2009  00:00:00
+
+11 Oct 2009  00:00:00
+
+SEP09
+
+September 2009 (Contest VIII)
+
+01 Sep 2009  15:00:00
+
+11 Sep 2009  15:00:00
+
+AUGMINI
+
+August Mini Challenge 2009 (Contest VII)
+
+22 Aug 2009  15:00:00
+
+24 Aug 2009  15:00:00
+
+AUG09
+
+August 2009 (Contest VI)
+
+01 Aug 2009  15:00:00
+
+11 Aug 2009  15:00:00
+
+JULY09
+
+July 2009 (Contest V)
+
+01 Jul 2009  15:00:00
+
+13 Jul 2009  15:00:00
+
+MAYGAMER
+
+May Gamers Challenge
+
+15 May 2009  00:00:00
+
+15 Jun 2009  00:00:00
+
+JUNE09
+
+June 2009 (Contest IV)
+
+01 Jun 2009  15:00:00
+
+11 Jun 2009  15:00:00
+
+MAY09
+
+May 2009 (Contest III)
+
+01 May 2009  15:00:00
+
+11 May 2009  15:00:00
+
+APRIL09
+
+April 2009 (Contest II)
+
+01 Apr 2009  15:00:00
+
+15 Apr 2009  15:00:00
+
+INSOM2
+
+IIT Roorkee Insomnia - Thought Round
+
+21 Mar 2009  21:00:00
+
+22 Mar 2009  09:00:00
+
+INSOM1
+
+IIT Roorkee Insomnia - Speed Round
+
+20 Mar 2009  16:00:00
+
+20 Mar 2009  20:00:00
+
+MARCH09
+
+March 2009 (Contest I)
+
+28 Feb 2009  22:00:00
+
+15 Mar 2009  00:00:00
+
+AUG17
+
+August Long Challenge 2017
+
+04 Aug 2017  15:00:00
+
+18 Aug 2017  15:00:00
+
+IOIPRAC
+
+INOI Practice 2015
+
+05 Jan 2016  00:00:00
+
+05 Jan 2018  00:00:00
+
+ZCOPRAC
+
+ZCO Practice Contest
+
+05 Nov 2015  00:00:00
+
+05 Jan 2018  00:00:00
+
+COOK85
+
+August Cook-Off 2017
+
+20 Aug 2017  21:30:00
+
+21 Aug 2017  00:00:00
+
+LOCAUG17
+
+LoC Aug 2017
+
+25 Aug 2017  00:00:00
+
+28 Aug 2017  23:59:59
+
+LTIME51
+
+August Lunchtime 2017
+
+26 Aug 2017  19:30:00
+
+26 Aug 2017  22:30:00
+
+TETO2017
+
+Techtonic
+
+13 Aug 2017  10:00:00
+
+15 Aug 2017  23:59:00
+
+LOCJUL17
+
+LoC July 2017
+
+28 Jul 2017  00:00:00
+
+30 Jul 2017  23:59:59
+
+PROJ2017
+
+ProCon Junior 2017
+
+30 Jul 2017  17:00:00
+
+30 Jul 2017  20:00:00
+
+LTIME50
+
+July Lunchtime 2017
+
+29 Jul 2017  19:30:00
+
+29 Jul 2017  23:00:00
+
+TSCO2017
+
+TSEC Codeathon
+
+29 Jul 2017  15:00:00
+
+29 Jul 2017  19:00:00
+
+ISCC2017
+
+Innerve's Summer Code Challenge
+
+17 Jul 2017  15:00:00
+
+27 Jul 2017  15:00:00
+
+COOK84
+
+July Cook-Off 2017
+
+23 Jul 2017  21:30:00
+
+24 Jul 2017  00:00:00
+
+JULY17
+
+July Challenge 2017
+
+07 Jul 2017  15:00:00
+
+17 Jul 2017  15:00:00
+
+LOCJUN17
+
+LoC June 2017
+
+30 Jun 2017  00:00:00
+
+03 Jul 2017  23:59:59
+
+SNFL17MR
+
+SnackDown 2017 Onsite Final Mirror
+
+01 Jul 2017  12:30:00
+
+01 Jul 2017  17:30:00
+
+SNCKFL17
+
+SnackDown 2017 Onsite Final Round
+
+01 Jul 2017  12:05:00
+
+01 Jul 2017  17:05:00
+
+LTIME49
+
+June Lunchtime 2017
+
+24 Jun 2017  19:30:00
+
+24 Jun 2017  22:30:00
+
+COOK83
+
+June Cook-Off 2017
+
+18 Jun 2017  21:30:00
+
+19 Jun 2017  00:30:00
+
+JUNE17
+
+June Challenge 2017
+
+02 Jun 2017  15:00:00
+
+12 Jun 2017  15:00:00
+
+SNEL17RP
+
+SnackDown 2017 Online Elimination Round Replay
+
+04 Jun 2017  21:00:00
+
+05 Jun 2017  02:00:00
+
+SNCKEL17
+
+SnackDown 2017 Online Elimination Round
+
+03 Jun 2017  19:30:00
+
+04 Jun 2017  00:30:00
+
+SNCKPB17
+
+SnackDown Online Pre-Elimination Round B
+
+31 May 2017  21:00:00
+
+01 Jun 2017  21:00:00
+
+LOCMAY17
+
+May LoC Competitive Programming Marathon
+
+27 May 2017  00:00:00
+
+29 May 2017  23:59:00
+
+SNCKPA17
+
+SnackDown Online Pre-elimination round A
+
+27 May 2017  23:00:00
+
+28 May 2017  23:00:00
+
+LTIME48
+
+May Lunchtime 2017
+
+27 May 2017  19:30:00
+
+27 May 2017  21:14:00
+
+SNCKQL17
+
+SnackDown Online Qualifier 2017
+
+20 May 2017  17:00:00
+
+24 May 2017  17:00:00
+
+COOK82
+
+May Cook-Off 2017
+
+21 May 2017  21:30:00
+
+22 May 2017  00:00:00
+
+MAY17
+
+May Challenge 2017
+
+05 May 2017  15:00:00
+
+18 May 2017  15:00:00
+
+BITM2017
+
+Bit Mask
+
+05 May 2017  16:00:00
+
+05 May 2017  21:00:00
+
+LOCAPR17
+
+April LoC Competitive Programming Marathon
+
+28 Apr 2017  00:00:00
+
+30 Apr 2017  23:59:00
+
+IEMCO17
+
+IEM Coding Olympiad (IEMCO) 2017
+
+30 Apr 2017  20:00:00
+
+30 Apr 2017  23:00:00
+
+LTIME47
+
+April Lunchtime 2017
+
+29 Apr 2017  19:30:00
+
+29 Apr 2017  22:30:00
+
+COOK81
+
+April Cook-Off 2017
+
+23 Apr 2017  21:30:00
+
+24 Apr 2017  00:00:00
+
+IOPC2017
+
+IOPC 2017 (Rated)
+
+21 Apr 2017  15:00:00
+
+21 Apr 2017  19:00:00
+
+APRIL17
+
+April Challenge 2017
+
+07 Apr 2017  15:00:00
+
+17 Apr 2017  15:00:00
+
+EXCO1701
+
+Explore-Code II
+
+09 Apr 2017  18:00:00
+
+09 Apr 2017  21:40:00
+
+ICL2017
+
+International Coding League (Rated)
+
+26 Mar 2017  21:00:00
+
+27 Mar 2017  00:00:00
+
+LTIME46
+
+March Lunchtime 2017
+
+25 Mar 2017  19:30:00
+
+25 Mar 2017  22:30:00
+
+ALKH2017
+
+Alkhwarizm 2017 (Rated)
+
+24 Mar 2017  21:00:00
+
+25 Mar 2017  02:00:00
+
+COOK80
+
+March Cook-Off 2017
+
+19 Mar 2017  21:30:00
+
+20 Mar 2017  00:15:00
+
+PWCE2017
+
+Pradnya Wild Card Entry Round
+
+19 Mar 2017  18:00:00
+
+19 Mar 2017  21:00:00
+
+PRCD1701
+
+Codiyapa
+
+18 Mar 2017  15:00:00
+
+19 Mar 2017  15:00:00
+
+KJSC17
+
+KJSCE Coding Challenge
+
+18 Mar 2017  21:15:00
+
+19 Mar 2017  00:30:00
+
+ABCS2017
+
+Abacus'17 - OLPC
+
+17 Mar 2017  21:00:00
+
+18 Mar 2017  00:00:00
+
+COZI2017
+
+CODEZILLA
+
+14 Mar 2017  21:00:00
+
+15 Mar 2017  00:00:00
+
+MARCH17
+
+March Challenge 2017
+
+03 Mar 2017  15:00:00
+
+13 Mar 2017  15:00:00
+
+BYCO2017
+
+Bytecode 2017
+
+04 Mar 2017  21:00:00
+
+05 Mar 2017  02:00:00
+
+NCL2017
+
+National Computing League
+
+01 Mar 2017  21:00:00
+
+02 Mar 2017  00:00:00
+
+NCC2017
+
+National Computing Contest
+
+28 Feb 2017  21:30:00
+
+01 Mar 2017  00:45:00
+
+ALGR2017
+
+ALGORITHMIST
+
+27 Feb 2017  21:00:00
+
+28 Feb 2017  00:00:00
+
+COLG2017
+
+Coders' Legacy 2017A
+
+26 Feb 2017  11:00:00
+
+26 Feb 2017  23:00:00
+
+LTIME45
+
+February Lunchtime 2017
+
+25 Feb 2017  19:35:00
+
+25 Feb 2017  22:35:00
+
+DEAD2017
+
+Replay of Deadline24 2016 Qualifying Round
+
+24 Feb 2017  20:30:00
+
+24 Feb 2017  23:30:00
+
+CRES2017
+
+Cresense2k17
+
+22 Feb 2017  18:00:00
+
+24 Feb 2017  18:00:00
+
+COMA2017
+
+Codemania
+
+21 Feb 2017  21:00:00
+
+22 Feb 2017  00:00:00
+
+COOK79
+
+February Cook-Off 2017
+
+19 Feb 2017  21:30:00
+
+20 Feb 2017  00:00:00
+
+FEB17
+
+February Challenge 2017
+
+03 Feb 2017  15:00:00
+
+19 Feb 2017  15:00:00
+
+BYTR2017
+
+Byterace
+
+15 Feb 2017  21:00:00
+
+16 Feb 2017  00:00:00
+
+DECA2017
+
+DECATHLON
+
+10 Feb 2017  21:30:00
+
+11 Feb 2017  00:00:00
+
+CDVA17
+
+Codevaitam 3.0
+
+01 Feb 2017  20:00:00
+
+05 Feb 2017  20:00:00
+
+COSU2017
+
+CodeSurf 17
+
+04 Feb 2017  21:00:00
+
+05 Feb 2017  00:00:00
+
+AGOF2017
+
+Algoflux Qualifiers
+
+30 Jan 2017  21:30:00
+
+31 Jan 2017  00:15:00
+
+LTIME44
+
+January Lunchtime 2017
+
+28 Jan 2017  19:30:00
+
+28 Jan 2017  22:30:00
+
+COOK78
+
+January Cook-Off 2017
+
+22 Jan 2017  21:30:00
+
+23 Jan 2017  00:00:00
+
+JAN17
+
+January Challenge 2017
+
+06 Jan 2017  15:00:00
+
+18 Jan 2017  15:00:00
+
+COSE2017
+
+Code Sense
+
+16 Jan 2017  21:00:00
+
+17 Jan 2017  00:00:00
+
+LTC2017
+
+BigO v-3.0
+
+13 Jan 2017  18:30:00
+
+13 Jan 2017  21:30:00
+
+KQPM2017
+
+Keteki Quick Match 4
+
+01 Jan 2017  15:00:00
+
+01 Jan 2017  15:30:00
+
+LTIME43
+
+December Lunchtime 2016
+
+31 Dec 2016  19:30:00
+
+31 Dec 2016  22:30:00
+
+INF16MOS
+
+ACM-ICPC Asia-India Finals Mirror Contest 2016
+
+30 Dec 2016  11:00:00
+
+30 Dec 2016  16:00:00
+
+KOL16MOS
+
+ACM-ICPC Asia-Kolkata Onsite Mirror Contest 2016
+
+27 Dec 2016  11:00:00
+
+27 Dec 2016  16:00:00
+
+BITF2016
+
+BITFLIT
+
+26 Dec 2016  20:00:00
+
+26 Dec 2016  23:30:00
+
+SOPC2016
+
+Shaastra Programming Contest 2016
+
+24 Dec 2016  14:00:00
+
+24 Dec 2016  17:00:00
+
+AMR16MOS
+
+ACM-ICPC Asia-Amritapuri Onsite Mirror Contest 2016
+
+23 Dec 2016  10:00:00
+
+23 Dec 2016  15:30:00
+
+CHN16MOS
+
+ACM-ICPC Asia-Chennai Onsite Mirror Contest 2016
+
+20 Dec 2016  11:00:00
+
+20 Dec 2016  16:00:00
+
+COOK77
+
+December Cook-Off 2016
+
+18 Dec 2016  21:30:00
+
+19 Dec 2016  00:00:00
+
+KGP16MOS
+
+ACM-ICPC Asia-Kharagpur Onsite Mirror Contest 2016
+
+17 Dec 2016  11:30:00
+
+17 Dec 2016  16:30:00
+
+DEC16
+
+December Challenge 2016
+
+02 Dec 2016  15:00:00
+
+12 Dec 2016  15:00:00
+
+GOGL2016
+
+Googol
+
+09 Dec 2016  21:00:00
+
+10 Dec 2016  00:30:00
+
+LTIME42
+
+November Lunchtime 2016
+
+26 Nov 2016  19:30:00
+
+26 Nov 2016  23:00:00
+
+COOK76
+
+November Cook-Off 2016
+
+20 Nov 2016  21:30:00
+
+21 Nov 2016  00:00:00
+
+QCDJ2016
+
+Quark CodeJam Round 1
+
+19 Nov 2016  21:00:00
+
+20 Nov 2016  00:00:00
+
+NOV16
+
+November Challenge 2016
+
+04 Nov 2016  15:00:00
+
+14 Nov 2016  15:00:00
+
+IEMCO16
+
+IEM Coding Olympiad 2016
+
+06 Nov 2016  20:00:00
+
+06 Nov 2016  23:00:00
+
+SMPX2016
+
+SIMPLEX
+
+05 Nov 2016  21:30:00
+
+06 Nov 2016  00:30:00
+
+LTIME41
+
+October Lunchtime 2016
+
+29 Oct 2016  19:30:00
+
+29 Oct 2016  22:30:00
+
+COOK75
+
+October Cook-Off 2016
+
+23 Oct 2016  21:30:00
+
+24 Oct 2016  00:00:00
+
+CDVT2016
+
+Codester veteran
+
+23 Oct 2016  10:30:00
+
+23 Oct 2016  13:00:00
+
+IFCAMR16
+
+ICPC For Schools, Amrita University
+
+22 Oct 2016  19:00:00
+
+22 Oct 2016  22:00:00
+
+ACMIND16
+
+ACM-ICPC India Regionals, Online Preliminary Round 2016
+
+22 Oct 2016  19:00:00
+
+22 Oct 2016  22:00:00
+
+TSTIND16
+
+ACM-ICPC India Regionals, Practice Round 2016
+
+21 Oct 2016  19:00:00
+
+21 Oct 2016  22:00:00
+
+NPLQ1602
+
+NPL Final Round 
+
+21 Oct 2016  14:00:00
+
+21 Oct 2016  16:30:00
+
+NPLQ1601
+
+NPL Elimination Round
+
+18 Oct 2016  18:00:00
+
+18 Oct 2016  20:30:00
+
+OCT16
+
+October Challenge 2016
+
+07 Oct 2016  15:00:00
+
+17 Oct 2016  15:00:00
+
+GMCO2016
+
+Techfest International Coding Challenge - Game of Codes
+
+16 Oct 2016  10:00:00
+
+17 Oct 2016  10:00:00
+
+IPC15CMR
+
+ICPC Preparatory Series by Team Forthewatch Mirror contest
+
+02 Oct 2016  21:00:00
+
+03 Oct 2016  02:00:00
+
+IPC15FLC
+
+ICPC Preparatory Series by Team Forthewatch
+
+02 Oct 2016  20:00:00
+
+03 Oct 2016  01:00:00
+
+IPC15BMR
+
+ICPC Preparatory Series by Team Skull Crackers Mirror contest
+
+01 Oct 2016  15:00:00
+
+01 Oct 2016  20:00:00
+
+IPC15FLB
+
+ICPC Preparatory Series by Team Skull Crackers
+
+01 Oct 2016  14:00:00
+
+01 Oct 2016  19:00:00
+
+CDSP2016
+
+Code Sprint
+
+28 Sep 2016  13:15:00
+
+28 Sep 2016  15:40:00
+
+IPC15AMR
+
+ICPC Preparatory Series by Team Akatsuki Mirror contest
+
+25 Sep 2016  21:00:00
+
+26 Sep 2016  02:00:00
+
+IPC15FLA
+
+ICPC Preparatory Series by Team Akatsuki
+
+25 Sep 2016  20:00:00
+
+26 Sep 2016  01:10:00
+
+KJCS16
+
+KJSCE Code Spree
+
+25 Sep 2016  21:00:00
+
+26 Sep 2016  00:00:00
+
+LTIME40
+
+September Lunchtime 2016
+
+24 Sep 2016  19:30:00
+
+24 Sep 2016  22:30:00
+
+COWS2016
+
+CODE_WAR
+
+21 Sep 2016  20:00:00
+
+22 Sep 2016  20:00:00
+
+COOK74
+
+September Cook-Off 2016
+
+18 Sep 2016  21:30:00
+
+19 Sep 2016  00:00:00
+
+GSTS1601
+
+BUG4EVER
+
+18 Sep 2016  09:00:00
+
+18 Sep 2016  21:00:00
+
+SIC2016
+
+HACK NITJ
+
+17 Sep 2016  15:00:00
+
+17 Sep 2016  18:00:00
+
+SEPT16
+
+September Challenge 2016
+
+02 Sep 2016  15:00:00
+
+15 Sep 2016  15:00:00
+
+CDTN2016
+
+Codeathon
+
+10 Sep 2016  21:00:00
+
+10 Sep 2016  23:00:00
+
+LOCAUG16
+
+August LoC Competitive Programming Marathon
+
+02 Sep 2016  00:00:00
+
+05 Sep 2016  23:59:00
+
+INSQ2016
+
+Insomnia 2016 Qualifier
+
+04 Sep 2016  21:30:00
+
+05 Sep 2016  00:30:00
+
+LTIME39
+
+August Lunchtime 2016
+
+27 Aug 2016  19:30:00
+
+27 Aug 2016  22:30:00
+
+COOK73
+
+August Cook-Off 2016
+
+21 Aug 2016  21:30:00
+
+22 Aug 2016  00:00:00
+
+CCWR2016
+
+Clash Credenz 2016 Wildcard Round
+
+20 Aug 2016  21:00:00
+
+21 Aug 2016  00:00:00
+
+AUG16
+
+August Challenge 2016
+
+05 Aug 2016  15:00:00
+
+15 Aug 2016  15:00:00
+
+CDJA2016
+
+Codejam
+
+10 Aug 2016  18:00:00
+
+11 Aug 2016  00:00:00
+
+PROC2016
+
+ProCon 2016 | Esya'16
+
+06 Aug 2016  21:00:00
+
+07 Aug 2016  00:00:00
+
+GSTS2016
+
+GST SRM Aug
+
+06 Aug 2016  18:00:00
+
+06 Aug 2016  21:00:00
+
+CDGO2016
+
+Codigo-2016
+
+03 Aug 2016  21:00:00
+
+04 Aug 2016  01:00:00
+
+LOCJUL16
+
+July LoC Competitive Programming Marathon
+
+29 Jul 2016  00:00:00
+
+01 Aug 2016  23:59:00
+
+LTIME38
+
+July Lunchtime 2016
+
+30 Jul 2016  19:30:00
+
+30 Jul 2016  23:30:00
+
+PROC1601
+
+ProCon Junior 2016 | Esya'16
+
+30 Jul 2016  11:00:00
+
+30 Jul 2016  14:15:00
+
+CYPH2016
+
+Cypher 1.0
+
+28 Jul 2016  20:00:00
+
+28 Jul 2016  22:00:00
+
+COOK72
+
+July Cook-Off 2016
+
+24 Jul 2016  21:30:00
+
+25 Jul 2016  00:00:00
+
+UEMK2016
+
+UEM Kolkata June-July College Coding Competition
+
+16 Jul 2016  18:00:00
+
+16 Jul 2016  20:00:00
+
+JULY16
+
+July Challenge 2016
+
+01 Jul 2016  15:00:00
+
+13 Jul 2016  15:00:00
+
+SNFL16MR
+
+SnackDown 2016 Onsite Final Mirror
+
+09 Jul 2016  12:20:00
+
+09 Jul 2016  17:20:00
+
+LOCJUN16
+
+June LoC Competitive Programming Marathon
+
+24 Jun 2016  00:00:00
+
+27 Jun 2016  23:59:00
+
+COOK71
+
+June Cook-Off 2016
+
+26 Jun 2016  21:30:00
+
+27 Jun 2016  00:00:00
+
+LTIME37
+
+June Lunchtime 2016
+
+25 Jun 2016  19:30:00
+
+25 Jun 2016  22:30:00
+
+SNCKEL16
+
+SnackDown 2016 Online Elimination Round
+
+19 Jun 2016  19:30:00
+
+20 Jun 2016  00:30:00
+
+JUNE16
+
+June Challenge 2016
+
+03 Jun 2016  15:00:00
+
+15 Jun 2016  15:00:00
+
+SNPB16RP
+
+SnackDown Online Pre- elimination Round B - Replay
+
+13 Jun 2016  21:00:00
+
+14 Jun 2016  21:00:00
+
+SNCKPB16
+
+SnackDown Online Pre- elimination Round B
+
+12 Jun 2016  21:00:00
+
+13 Jun 2016  21:00:00
+
+SNCKPA16
+
+SnackDown Online Pre-elimination round A
+
+04 Jun 2016  21:00:00
+
+05 Jun 2016  21:00:00
+
+SNCKQL16
+
+SnackDown Online Qualifier 2016
+
+27 May 2016  21:00:00
+
+31 May 2016  21:00:00
+
+LOCMAY16
+
+May LoC Competitive Programming Marathon
+
+27 May 2016  00:00:00
+
+30 May 2016  23:59:00
+
+LTIME36
+
+May Lunchtime 2016
+
+28 May 2016  19:30:00
+
+28 May 2016  22:30:00
+
+COOK70
+
+May Cook-Off 2016
+
+22 May 2016  21:30:00
+
+23 May 2016  00:00:00
+
+MAY16
+
+May Challenge 2016
+
+06 May 2016  15:00:00
+
+16 May 2016  15:00:00
+
+LOCAPR16
+
+April LoC Competitive Programming Marathon
+
+29 Apr 2016  00:00:00
+
+02 May 2016  23:59:00
+
+LTIME35
+
+April Lunchtime 2016
+
+30 Apr 2016  19:40:00
+
+30 Apr 2016  22:40:00
+
+SSC2016
+
+SCC - School Coding Competition
+
+29 Apr 2016  19:30:00
+
+29 Apr 2016  22:30:00
+
+RECJ1601
+
+Recursion Junior Challenge-II 
+
+21 Apr 2016  21:30:00
+
+22 Apr 2016  00:30:00
+
+COWO1601
+
+CodeWORM 
+
+20 Apr 2016  14:15:00
+
+20 Apr 2016  16:45:00
+
+COOK69
+
+April Cook-Off 2016
+
+17 Apr 2016  21:30:00
+
+18 Apr 2016  00:00:00
+
+BIGO2016
+
+BIG-O v2.0
+
+16 Apr 2016  18:00:00
+
+16 Apr 2016  21:00:00
+
+APRIL16
+
+April Challenge 2016
+
+01 Apr 2016  15:00:00
+
+11 Apr 2016  17:00:00
+
+CDQU1601
+
+Codervation qualifiers
+
+08 Apr 2016  14:00:00
+
+09 Apr 2016  00:00:00
+
+DMNT2016
+
+DEMENTIA 16
+
+07 Apr 2016  21:30:00
+
+08 Apr 2016  00:00:00
+
+ALKH2016
+
+Alkhwarizm 2016
+
+03 Apr 2016  21:00:00
+
+04 Apr 2016  02:00:00
+
+NCC2016
+
+National Computing Contest
+
+02 Apr 2016  21:00:00
+
+03 Apr 2016  00:00:00
+
+LOCMAR16
+
+March LoC Competitive Programming Marathon
+
+25 Mar 2016  00:00:00
+
+29 Mar 2016  13:59:00
+
+SRMC2016
+
+SRM Codejam [Qualifiers]
+
+26 Mar 2016  13:00:00
+
+27 Mar 2016  13:00:00
+
+LTIME34
+
+March Lunchtime 2016
+
+26 Mar 2016  19:30:00
+
+26 Mar 2016  22:30:00
+
+CDST2016
+
+CodeStorm
+
+21 Mar 2016  10:00:00
+
+23 Mar 2016  17:00:00
+
+BITC2016
+
+BIT Mesra Overnight Coding
+
+22 Mar 2016  21:30:00
+
+23 Mar 2016  01:00:00
+
+COOK68
+
+March Cook-Off 2016
+
+20 Mar 2016  21:30:00
+
+21 Mar 2016  00:00:00
+
+CLDB2016
+
+CODE BLOODED
+
+20 Mar 2016  11:30:00
+
+20 Mar 2016  16:00:00
+
+KJSP1602
+
+KJSCE Coding Challenge
+
+19 Mar 2016  18:00:00
+
+19 Mar 2016  22:00:00
+
+ODCO2016
+
+Ode to Code 2016 prelims
+
+16 Mar 2016  21:00:00
+
+17 Mar 2016  00:40:00
+
+FLFI2016
+
+Flaw Fishing
+
+16 Mar 2016  19:00:00
+
+16 Mar 2016  20:30:00
+
+REC2016
+
+RECursion Challenge II
+
+15 Mar 2016  21:30:00
+
+16 Mar 2016  00:30:00
+
+COBL2016
+
+CodeBattle
+
+15 Mar 2016  21:00:00
+
+16 Mar 2016  00:00:00
+
+MARCH16
+
+March Challenge 2016
+
+04 Mar 2016  15:00:00
+
+15 Mar 2016  15:00:00
+
+INLO2016
+
+Infinite Loop
+
+12 Mar 2016  10:00:00
+
+14 Mar 2016  23:30:00
+
+COMN2016
+
+CODE MARATHON
+
+13 Mar 2016  18:00:00
+
+14 Mar 2016  00:00:00
+
+IOPC2016
+
+IOPC 2016
+
+12 Mar 2016  19:00:00
+
+13 Mar 2016  19:00:00
+
+COFI2016
+
+CodeFight 2.0
+
+12 Mar 2016  12:00:00
+
+13 Mar 2016  00:00:00
+
+HFCQ2016
+
+HumbleFool Cup Qualifiers
+
+11 Mar 2016  21:00:00
+
+12 Mar 2016  00:00:00
+
+CDWR2016
+
+CodeWars
+
+11 Mar 2016  14:30:00
+
+11 Mar 2016  16:30:00
+
+ALPH2016
+
+Algophobic Online Mirror
+
+10 Mar 2016  22:00:00
+
+11 Mar 2016  01:30:00
+
+ABCS2016
+
+aBaCUS16
+
+10 Mar 2016  21:00:00
+
+10 Mar 2016  23:45:00
+
+COCR2016
+
+Code Cracker 
+
+10 Mar 2016  11:30:00
+
+10 Mar 2016  14:00:00
+
+IPC15P3C
+
+ICPC Preparatory Series by Team Apocalypse
+
+09 Mar 2016  20:00:00
+
+10 Mar 2016  01:00:00
+
+COYA2016
+
+Codiyapa
+
+05 Mar 2016  15:00:00
+
+09 Mar 2016  15:00:00
+
+ITRA2016
+
+ITerate
+
+06 Mar 2016  11:00:00
+
+07 Mar 2016  11:00:00
+
+IPC15P3B
+
+ICPC Preparatory Series by Team Akatsuki
+
+06 Mar 2016  20:00:00
+
+07 Mar 2016  01:00:00
+
+BUDE2016
+
+Bug of Debug
+
+03 Mar 2016  12:40:00
+
+03 Mar 2016  14:40:00
+
+LOCFEB16
+
+LoC Competitive Programming Marathon
+
+26 Feb 2016  00:00:00
+
+29 Feb 2016  23:59:00
+
+CDFXOQ16
+
+CodeFlux Qualifiers
+
+29 Feb 2016  20:30:00
+
+29 Feb 2016  22:30:00
+
+IPC15P3A
+
+ICPC Preparatory Series by Team apqAW2
+
+28 Feb 2016  20:00:00
+
+29 Feb 2016  01:00:00
+
+DECI2016
+
+Decipher, Codefest'16
+
+28 Feb 2016  16:00:00
+
+28 Feb 2016  19:00:00
+
+LTIME33
+
+February Lunchtime 2016
+
+27 Feb 2016  19:30:00
+
+27 Feb 2016  22:30:00
+
+BYCO2016
+
+ByteCode 2016
+
+26 Feb 2016  20:30:00
+
+27 Feb 2016  01:30:00
+
+DEAD2016
+
+Replay of Deadline24 2015 Qualifying Round
+
+23 Feb 2016  21:00:00
+
+24 Feb 2016  00:00:00
+
+COMA2016
+
+Code Mania 2016
+
+22 Feb 2016  21:00:00
+
+23 Feb 2016  00:00:00
+
+COOK67
+
+February Cook-Off 2016
+
+21 Feb 2016  22:00:00
+
+22 Feb 2016  00:30:00
+
+COPR2016
+
+Codestorm Prelims
+
+21 Feb 2016  15:00:00
+
+21 Feb 2016  18:15:00
+
+ITRX2016
+
+ITRIX Online Programming Contest
+
+20 Feb 2016  19:30:00
+
+20 Feb 2016  22:00:00
+
+COWH2016
+
+CodeWhiz
+
+20 Feb 2016  18:00:00
+
+20 Feb 2016  21:00:00
+
+COCL2016
+
+CODE CLASH
+
+20 Feb 2016  10:00:00
+
+20 Feb 2016  15:00:00
+
+COCU2016
+
+Code Currents
+
+20 Feb 2016  13:00:00
+
+20 Feb 2016  15:00:00
+
+CDWA2016
+
+CodeWars
+
+20 Feb 2016  12:00:00
+
+20 Feb 2016  14:00:00
+
+ASNE2016
+
+ASN_Epoch 1.0
+
+19 Feb 2016  21:30:00
+
+20 Feb 2016  00:30:00
+
+CDGF2016
+
+Codegolf 2016
+
+19 Feb 2016  21:00:00
+
+20 Feb 2016  00:00:00
+
+ICOD2016
+
+I-CODE 2016
+
+16 Feb 2016  18:00:00
+
+19 Feb 2016  18:00:00
+
+CRES2016
+
+Cresense
+
+18 Feb 2016  12:00:00
+
+19 Feb 2016  12:00:00
+
+WBY1601
+
+Whats Bugging You Qualifiers
+
+18 Feb 2016  13:00:00
+
+18 Feb 2016  16:30:00
+
+COWA1601
+
+Code-Wars#ver2.0 Qualifiers
+
+18 Feb 2016  10:00:00
+
+18 Feb 2016  13:20:00
+
+FEB16
+
+February Challenge 2016
+
+05 Feb 2016  15:00:00
+
+15 Feb 2016  15:00:00
+
+CHN15MRP
+
+ACM-ICPC Asia-Chennai Onsite Replay Contest 2015
+
+14 Feb 2016  19:00:00
+
+15 Feb 2016  00:00:00
+
+KOPC2016
+
+Kurukshetra Online Programming Contest
+
+13 Feb 2016  19:00:00
+
+14 Feb 2016  00:00:00
+
+IC32016
+
+ICODE 3
+
+12 Feb 2016  09:00:00
+
+13 Feb 2016  21:00:00
+
+ICL2016
+
+International Coding League, BITS Pilani
+
+11 Feb 2016  20:30:00
+
+11 Feb 2016  22:30:00
+
+BYTE2016
+
+BYTES
+
+07 Feb 2016  21:00:00
+
+08 Feb 2016  00:00:00
+
+COLE2016
+
+Coder's Legacy 2016
+
+05 Feb 2016  21:00:00
+
+07 Feb 2016  21:00:00
+
+IPC15P2C
+
+ICPC Preparatory Series by Team ForTheWatch
+
+07 Feb 2016  14:00:00
+
+07 Feb 2016  19:00:00
+
+DECA2016
+
+Decathlon
+
+06 Feb 2016  21:30:00
+
+07 Feb 2016  00:30:00
+
+CDVA16
+
+CodeVaitam 2.0
+
+03 Feb 2016  20:00:00
+
+07 Feb 2016  00:01:00
+
+COJA2016
+
+Quark Codejam '16 
+
+06 Feb 2016  14:00:00
+
+06 Feb 2016  17:00:00
+
+IPC15P2B
+
+ICPC Preparatory Series by Team Horcruxes
+
+03 Feb 2016  21:00:00
+
+04 Feb 2016  02:00:00
+
+IPC15P2A
+
+ICPC Preparatory Series by Team Sataday
+
+31 Jan 2016  21:40:00
+
+01 Feb 2016  02:40:00
+
+LTIME32
+
+January Lunchtime 2016
+
+31 Jan 2016  11:00:00
+
+31 Jan 2016  14:00:00
+
+DIBZ2016
+
+Divide by zero
+
+30 Jan 2016  21:00:00
+
+31 Jan 2016  02:00:00
+
+COOK66
+
+January Cook-Off 2016
+
+24 Jan 2016  21:30:00
+
+25 Jan 2016  00:00:00
+
+WBY2016
+
+Whats Bugging You
+
+24 Jan 2016  17:00:00
+
+24 Jan 2016  20:00:00
+
+COWA2016
+
+Code-Wars#ver2.0
+
+23 Jan 2016  17:00:00
+
+23 Jan 2016  20:00:00
+
+CHN15MOS
+
+ACM-ICPC Asia-Chennai Onsite Mirror Contest 2015
+
+23 Jan 2016  11:30:00
+
+23 Jan 2016  16:30:00
+
+AUST2016
+
+Intra AUST Programming Contest Fall 2015
+
+22 Jan 2016  18:30:00
+
+22 Jan 2016  22:30:00
+
+AMR15ROL
+
+ACM-ICPC Asia-Amritapuri Online Contest 2015, Replay
+
+21 Jan 2016  21:00:00
+
+22 Jan 2016  00:00:00
+
+SOPC1602
+
+SOPC 2.0
+
+13 Jan 2016  21:00:00
+
+13 Jan 2016  23:00:00
+
+COBA2016
+
+CodeBar
+
+11 Jan 2016  19:00:00
+
+11 Jan 2016  20:30:00
+
+JAN16
+
+January Long Challenge 2016
+
+01 Jan 2016  15:00:00
+
+11 Jan 2016  15:00:00
+
+KQPM2016
+
+Keteki Quick Match 2
+
+10 Jan 2016  10:00:00
+
+10 Jan 2016  10:30:00
+
+COSH2015
+
+Code-O-Shuffle
+
+27 Dec 2015  21:00:00
+
+28 Dec 2015  00:30:00
+
+LTIME31
+
+December Lunchtime 2015
+
+27 Dec 2015  11:00:00
+
+27 Dec 2015  14:00:00
+
+KOL15MOS
+
+ACM-ICPC Asia-Kolkata Onsite Mirror Contest 2015
+
+26 Dec 2015  11:00:00
+
+26 Dec 2015  16:00:00
+
+ACM15AMR
+
+ACM-ICPC Asia-Amritapuri Site Onsite round 2015
+
+21 Dec 2015  12:55:00
+
+21 Dec 2015  15:25:00
+
+AMR15MOS
+
+ACM-ICPC Asia-Amritapuri Onsite Mirror Contest 2015
+
+21 Dec 2015  10:00:00
+
+21 Dec 2015  15:00:00
+
+COOK65
+
+December Cook-Off 2015
+
+20 Dec 2015  21:30:00
+
+21 Dec 2015  00:00:00
+
+KQPM2015
+
+Keteki Quick Power Match
+
+20 Dec 2015  20:00:00
+
+20 Dec 2015  21:00:00
+
+SOPC2015
+
+Shaastra Online Programming Contest
+
+19 Dec 2015  21:00:00
+
+20 Dec 2015  00:45:00
+
+CHN15ROL
+
+ACM-ICPC Asia-Chennai Online Contest 2015, Replay
+
+17 Dec 2015  21:00:00
+
+18 Dec 2015  00:00:00
+
+KOL15ROL
+
+ACM-ICPC Asia-Kolkata Online Contest 2015, Replay
+
+16 Dec 2015  21:30:00
+
+17 Dec 2015  00:00:00
+
+DEC15
+
+December Challenge 2015
+
+04 Dec 2015  15:00:00
+
+14 Dec 2015  15:00:00
+
+IPC15P1C
+
+ICPC Preparatory Series by Team Enigma
+
+02 Dec 2015  21:00:00
+
+03 Dec 2015  02:00:00
+
+LTIME30
+
+November Lunchtime 2015
+
+29 Nov 2015  11:00:00
+
+29 Nov 2015  14:00:00
+
+IPC15P1B
+
+ICPC Preparatory Series by Team BlundersPride
+
+28 Nov 2015  21:00:00
+
+29 Nov 2015  03:00:00
+
+IPC15P1A
+
+ICPC Preparatory Series by Team SkullCrackers
+
+25 Nov 2015  21:00:00
+
+26 Nov 2015  02:00:00
+
+COOK64
+
+November Cook-Off 2015
+
+22 Nov 2015  21:30:00
+
+23 Nov 2015  00:00:00
+
+NOV15
+
+November Challenge 2015
+
+06 Nov 2015  15:00:00
+
+16 Nov 2015  15:00:00
+
+COMN2015
+
+Code Mania
+
+11 Nov 2015  00:00:00
+
+12 Nov 2015  00:00:00
+
+EXTE2015
+
+./Execute, NIT Jalandhar
+
+03 Nov 2015  21:00:00
+
+04 Nov 2015  00:00:00
+
+COMS1501
+
+CodeMasters 1.0
+
+01 Nov 2015  21:00:00
+
+02 Nov 2015  00:00:00
+
+ACMKOL15
+
+ACM-ICPC Asia-Kolkata Site First Round Online Contest 2015
+
+31 Oct 2015  16:00:00
+
+31 Oct 2015  18:30:00
+
+ACMCHN15
+
+ACM-ICPC Asia-Chennai Site, First Round - Online Contest 2015
+
+28 Oct 2015  18:00:00
+
+28 Oct 2015  21:10:00
+
+AIPC2015
+
+Code-Adda Practice Contest
+
+25 Oct 2015  19:00:00
+
+25 Oct 2015  23:59:00
+
+LTIME29
+
+October Lunchtime 2015
+
+25 Oct 2015  11:00:00
+
+25 Oct 2015  14:00:00
+
+KOKT2015
+
+Koder Kombat
+
+24 Oct 2015  20:00:00
+
+25 Oct 2015  00:00:00
+
+NPLTZ15
+
+NPL, TechnoZion 2015
+
+19 Oct 2015  17:00:00
+
+19 Oct 2015  20:00:00
+
+COOK63
+
+October Cook-Off 2015
+
+18 Oct 2015  21:30:00
+
+19 Oct 2015  00:00:00
+
+QBIT15
+
+QBIT15
+
+15 Oct 2015  10:00:00
+
+16 Oct 2015  10:00:00
+
+NUPNMR15
+
+Mirror of 1st NYU ProgNova
+
+12 Oct 2015  19:30:00
+
+12 Oct 2015  22:30:00
+
+OCT15
+
+October Challenge 2015
+
+02 Oct 2015  15:00:00
+
+12 Oct 2015  15:00:00
+
+ACMAMR15
+
+ACM-ICPC Asia-Amritapuri Site, First Round - Online Contest 2015
+
+11 Oct 2015  17:00:00
+
+11 Oct 2015  20:05:00
+
+CDON2015
+
+Codathon
+
+10 Oct 2015  21:30:00
+
+11 Oct 2015  01:00:00
+
+KTBC2015
+
+Keteki Beta Contest
+
+10 Oct 2015  19:00:00
+
+10 Oct 2015  19:30:00
+
+TSTAM15
+
+ACM-ICPC Asia-Amritapuri Site, 2nd Practice Round 2015
+
+09 Oct 2015  18:00:00
+
+09 Oct 2015  21:00:00
+
+CDX2015
+
+CodeX
+
+08 Oct 2015  22:00:00
+
+09 Oct 2015  01:00:00
+
+CFSN2015
+
+Code Fusion - II
+
+07 Oct 2015  18:00:00
+
+07 Oct 2015  20:00:00
+
+TSTAMR15
+
+ACM-ICPC Asia-Amritapuri Site, 1st Practice Round 2015
+
+06 Oct 2015  21:00:00
+
+07 Oct 2015  02:00:00
+
+SIMPLX15
+
+SIMPLEX
+
+02 Oct 2015  21:30:00
+
+03 Oct 2015  00:00:00
+
+NEPR2015
+
+Nexus'15 Prelims
+
+02 Oct 2015  11:30:00
+
+02 Oct 2015  14:30:00
+
+CWAR2015
+
+CodeWar NIT Durgapur
+
+01 Oct 2015  19:00:00
+
+02 Oct 2015  01:00:00
+
+CDSK2015
+
+CodeStrike by Atharva College of Engineering
+
+29 Sep 2015  11:00:00
+
+29 Sep 2015  14:00:00
+
+KJCC2015
+
+KJSCE Code Spree
+
+27 Sep 2015  16:00:00
+
+27 Sep 2015  20:00:00
+
+LTIME28
+
+September Lunchtime 2015
+
+27 Sep 2015  11:00:00
+
+27 Sep 2015  14:00:00
+
+COOK62
+
+September Mega Cook-Off 2015
+
+20 Sep 2015  21:30:00
+
+21 Sep 2015  00:00:00
+
+IGCD2015
+
+Ignited Coders
+
+20 Sep 2015  11:00:00
+
+20 Sep 2015  14:00:00
+
+NUCD2015
+
+NU Coding
+
+19 Sep 2015  15:00:00
+
+19 Sep 2015  19:00:00
+
+CORU2015
+
+CodeRush
+
+18 Sep 2015  21:30:00
+
+19 Sep 2015  00:00:00
+
+SEPT15
+
+September Challenge 2015
+
+04 Sep 2015  15:00:00
+
+14 Sep 2015  15:00:00
+
+APTT2015
+
+Apttus Code-A-Thon
+
+11 Sep 2015  21:00:00
+
+12 Sep 2015  00:00:00
+
+GGWC2015
+
+Grow Geeks Warm-up Challenge
+
+11 Sep 2015  13:30:00
+
+11 Sep 2015  16:05:00
+
+INSQ2015
+
+Insomnia 2015 Qualifier
+
+06 Sep 2015  21:30:00
+
+07 Sep 2015  00:30:00
+
+SPIT1503
+
+SPIT Coder's Club Monthly Contest 3.0
+
+06 Sep 2015  18:00:00
+
+06 Sep 2015  21:00:00
+
+CODEWARS
+
+CodeWars, Aaruush 2015
+
+30 Aug 2015  18:00:00
+
+01 Sep 2015  18:00:00
+
+LTIME27
+
+August Lunchtime 2015
+
+30 Aug 2015  11:00:00
+
+30 Aug 2015  14:00:00
+
+COOK61
+
+August Cook-Off 2015
+
+23 Aug 2015  21:30:00
+
+24 Aug 2015  00:50:00
+
+CCWC2015
+
+Clash Credenz 2015 Wild Card Round
+
+22 Aug 2015  21:00:00
+
+23 Aug 2015  01:00:00
+
+CDBU2015
+
+Codebuster
+
+18 Aug 2015  18:00:00
+
+19 Aug 2015  12:00:00
+
+COSE2015
+
+Counter Strike
+
+18 Aug 2015  21:30:00
+
+19 Aug 2015  00:00:00
+
+AUG15
+
+August Challenge 2015
+
+07 Aug 2015  15:00:00
+
+17 Aug 2015  15:00:00
+
+COFU2015
+
+Code Fusion - I
+
+09 Aug 2015  16:00:00
+
+09 Aug 2015  18:45:00
+
+PROCON15
+
+Procon 2015
+
+08 Aug 2015  18:00:00
+
+08 Aug 2015  20:30:00
+
+INTO2015
+
+Intoxia
+
+02 Aug 2015  10:00:00
+
+02 Aug 2015  13:00:00
+
+PRCNJR15
+
+Procon Junior 2015
+
+31 Jul 2015  10:00:00
+
+31 Jul 2015  13:00:00
+
+LTIME26
+
+July Lunchtime 2015
+
+26 Jul 2015  11:00:00
+
+26 Jul 2015  14:15:00
+
+COOK60
+
+July Cook-Off 2015
+
+19 Jul 2015  21:30:00
+
+20 Jul 2015  00:00:00
+
+JULY15
+
+July Challenge 2015
+
+03 Jul 2015  15:00:00
+
+13 Jul 2015  15:00:00
+
+AMSC2015
+
+Amritapuri Summer Camp Final Contest 2015
+
+04 Jul 2015  09:30:00
+
+04 Jul 2015  13:30:00
+
+DTMA2015
+
+DTU Programming Mania - 2
+
+03 Jul 2015  21:30:00
+
+04 Jul 2015  00:30:00
+
+HOCO2015
+
+Hour Of Code I
+
+28 Jun 2015  17:00:00
+
+28 Jun 2015  18:00:00
+
+LTIME25
+
+June Lunchtime 2015
+
+28 Jun 2015  11:00:00
+
+28 Jun 2015  14:00:00
+
+SNCK15FL
+
+CodeChef Snackdown 2015 Finale 
+
+27 Jun 2015  13:00:00
+
+27 Jun 2015  18:00:00
+
+SD15FLMR
+
+SnackDown 2015 Final Mirror
+
+27 Jun 2015  14:00:00
+
+27 Jun 2015  18:00:00
+
+COOK59
+
+June Cook-Off 2015
+
+21 Jun 2015  21:30:00
+
+22 Jun 2015  00:00:00
+
+JUNE15
+
+June Challenge 2015
+
+05 Jun 2015  15:00:00
+
+15 Jun 2015  15:00:00
+
+SD15ELOP
+
+SnackDown Elimination Mirror
+
+12 Jun 2015  23:00:00
+
+13 Jun 2015  02:00:00
+
+SNCK15EL
+
+CodeChef Snackdown 2015 : Online Elimination Round
+
+12 Jun 2015  21:30:00
+
+13 Jun 2015  00:30:00
+
+CODE2015
+
+Codex_1.0
+
+10 Jun 2015  20:00:00
+
+10 Jun 2015  23:15:00
+
+SNCK151C
+
+CodeChef Snackdown 2015, Round 1C
+
+07 Jun 2015  21:30:00
+
+07 Jun 2015  23:45:00
+
+LTIME24
+
+May Lunchtime 2015
+
+31 May 2015  11:00:00
+
+31 May 2015  14:00:00
+
+SNCK151B
+
+CodeChef Snackdown 2015, Round 1B
+
+30 May 2015  06:30:00
+
+30 May 2015  08:30:00
+
+COOK58
+
+May Cook-Off 2015
+
+24 May 2015  21:30:00
+
+25 May 2015  00:00:00
+
+SNCK151A
+
+CodeChef Snackdown 2015, Round 1A
+
+23 May 2015  14:30:00
+
+23 May 2015  16:45:00
+
+MAY15
+
+May Challenge 2015
+
+08 May 2015  15:00:00
+
+18 May 2015  15:00:00
+
+KOAT2015
+
+Kodeathon 15.2 - Rapid fire
+
+14 May 2015  21:00:00
+
+15 May 2015  00:00:00
+
+EXCT2015
+
+Execute 15.2
+
+09 May 2015  21:00:00
+
+10 May 2015  01:00:00
+
+CLCO2015
+
+Clash of Coders
+
+01 May 2015  20:00:00
+
+02 May 2015  01:15:00
+
+LTIME23
+
+April Lunchtime 2015
+
+26 Apr 2015  11:00:00
+
+26 Apr 2015  14:00:00
+
+SMCS2015
+
+SmartCoders(1.2)
+
+25 Apr 2015  21:00:00
+
+26 Apr 2015  00:00:00
+
+INLO2015
+
+Infinite Loop
+
+23 Apr 2015  11:00:00
+
+25 Apr 2015  23:00:00
+
+COOK57
+
+April Cook-Off 2015
+
+19 Apr 2015  21:30:00
+
+20 Apr 2015  00:30:00
+
+SPT2015
+
+SPIT Coder's Club 2.0
+
+19 Apr 2015  18:00:00
+
+19 Apr 2015  21:00:00
+
+COST2015
+
+CodeStorm 15.04
+
+18 Apr 2015  21:00:00
+
+19 Apr 2015  00:00:00
+
+DTCT2015
+
+DTU Programming Mania
+
+17 Apr 2015  21:00:00
+
+18 Apr 2015  00:00:00
+
+APRIL15
+
+April Challenge 2015
+
+03 Apr 2015  15:00:00
+
+13 Apr 2015  15:00:00
+
+CDQT2015
+
+Code-Quest
+
+11 Apr 2015  09:00:00
+
+12 Apr 2015  00:00:00
+
+BTCJ2015
+
+BIT Codejam
+
+07 Apr 2015  21:30:00
+
+08 Apr 2015  00:00:00
+
+GOCD2015
+
+Game of Codes 2.0
+
+05 Apr 2015  21:00:00
+
+06 Apr 2015  00:00:00
+
+GOOG2015
+
+Googol - ISM Dhanbad
+
+04 Apr 2015  21:00:00
+
+05 Apr 2015  00:00:00
+
+PSCD2015
+
+Pseudo Code
+
+04 Apr 2015  17:00:00
+
+04 Apr 2015  21:00:00
+
+CDOT2015
+
+CodeOut 2015
+
+03 Apr 2015  21:00:00
+
+04 Apr 2015  00:00:00
+
+KAN14ROS
+
+ACM-ICPC Asia-Kanpur Onsite Contest 2014, Replay
+
+02 Apr 2015  19:00:00
+
+03 Apr 2015  00:00:00
+
+DMNT2015
+
+Dementia 2015
+
+01 Apr 2015  22:00:00
+
+02 Apr 2015  00:30:00
+
+BIGO2015
+
+BIG (O)
+
+01 Apr 2015  18:00:00
+
+01 Apr 2015  21:00:00
+
+DBYZ15
+
+Divide By Zero 3.0
+
+29 Mar 2015  21:30:00
+
+30 Mar 2015  01:30:00
+
+LTIME22
+
+March Lunchtime 2015
+
+29 Mar 2015  11:00:00
+
+29 Mar 2015  14:00:00
+
+NCC2015
+
+National Computing Contest 2015
+
+28 Mar 2015  21:00:00
+
+28 Mar 2015  23:00:00
+
+PITTCS15
+
+Replay of Pitt CSC - University of Pittsburgh 
+
+25 Mar 2015  22:00:00
+
+26 Mar 2015  01:00:00
+
+COOK56
+
+March Cook-Off 2015
+
+22 Mar 2015  21:30:00
+
+23 Mar 2015  00:00:00
+
+COMA2015
+
+Code Marathon 2015
+
+19 Mar 2015  20:00:00
+
+20 Mar 2015  22:00:00
+
+GOC2015
+
+Game of codes 2015
+
+19 Mar 2015  21:00:00
+
+20 Mar 2015  00:00:00
+
+CDMN2015
+
+Code Mania 2015
+
+18 Mar 2015  21:00:00
+
+19 Mar 2015  00:20:00
+
+CDGO2015
+
+Codigo 2015
+
+17 Mar 2015  21:30:00
+
+18 Mar 2015  00:20:00
+
+PRDN2015
+
+Pradnya'15
+
+16 Mar 2015  21:00:00
+
+16 Mar 2015  23:00:00
+
+MARCH15
+
+March Challenge 2015
+
+06 Mar 2015  15:00:00
+
+16 Mar 2015  15:00:00
+
+ABYN2015
+
+OPC-Abhiyanth 2015
+
+15 Mar 2015  21:00:00
+
+16 Mar 2015  00:00:00
+
+IOPC2015
+
+IOPC 2015
+
+14 Mar 2015  18:00:00
+
+15 Mar 2015  18:00:00
+
+KJCC1501
+
+KJSCE Coding Challenge 2015
+
+14 Mar 2015  12:00:00
+
+14 Mar 2015  23:59:00
+
+CDER2015
+
+CodeERA
+
+09 Mar 2015  00:00:00
+
+14 Mar 2015  12:00:00
+
+CDPH2015
+
+Codephrenia 2015
+
+11 Mar 2015  21:00:00
+
+12 Mar 2015  00:00:00
+
+COTG2015
+
+Code On the Go 2015
+
+09 Mar 2015  21:00:00
+
+10 Mar 2015  22:00:00
+
+MTHX2015
+
+MathRix OPC 2015
+
+10 Mar 2015  21:00:00
+
+10 Mar 2015  22:00:00
+
+DCL1501
+
+Delhi Coding League 2015
+
+03 Mar 2015  21:00:00
+
+07 Mar 2015  21:00:00
+
+CDHU2015
+
+Code Hunt 2015
+
+06 Mar 2015  08:00:00
+
+07 Mar 2015  19:00:00
+
+CCBE2015
+
+C-Cube 2015
+
+05 Mar 2015  21:00:00
+
+06 Mar 2015  09:00:00
+
+HUMP15R
+
+Hindustan University Multi Provincial Re-Contest 2015
+
+05 Mar 2015  20:00:00
+
+06 Mar 2015  00:00:00
+
+ACMN2015
+
+OPC ACUMEN 2015
+
+04 Mar 2015  14:35:00
+
+05 Mar 2015  20:00:00
+
+FBFRW15
+
+February Farewell 2015
+
+04 Mar 2015  21:00:00
+
+05 Mar 2015  00:00:00
+
+BRCD2015
+
+BreakTheCode 2015
+
+02 Mar 2015  19:00:00
+
+03 Mar 2015  12:00:00
+
+BBYB2015
+
+Beat By BIT 2015
+
+01 Mar 2015  19:00:00
+
+02 Mar 2015  00:40:00
+
+CDTR1502
+
+CodeTrenders 2015
+
+01 Mar 2015  17:00:00
+
+01 Mar 2015  23:00:00
+
+COCR2015
+
+CodeCracker 2015
+
+28 Feb 2015  19:00:00
+
+01 Mar 2015  00:00:00
+
+PRYS2015
+
+Prayaas 2015
+
+28 Feb 2015  14:00:00
+
+28 Feb 2015  19:00:00
+
+BYCD2015
+
+ByteCode 2015
+
+27 Feb 2015  20:30:00
+
+28 Feb 2015  01:30:00
+
+CDME2015
+
+Code Me 15.02
+
+26 Feb 2015  21:30:00
+
+27 Feb 2015  00:00:00
+
+CDSH2015
+
+CODESHOW 2015
+
+25 Feb 2015  21:00:00
+
+26 Feb 2015  00:10:00
+
+DOEX2015
+
+./Execute 2015
+
+23 Feb 2015  21:00:00
+
+24 Feb 2015  01:30:00
+
+ICL2015
+
+ACM-ICL Prelims 2015
+
+22 Feb 2015  21:00:00
+
+23 Feb 2015  02:00:00
+
+LTIME21
+
+February Lunchtime 2015
+
+22 Feb 2015  11:00:00
+
+22 Feb 2015  14:00:00
+
+CDMU2015
+
+Code Mutants 2015
+
+21 Feb 2015  20:00:00
+
+22 Feb 2015  01:00:00
+
+CDTR2015
+
+JNTUV Warmup 2015
+
+19 Feb 2015  17:00:00
+
+19 Feb 2015  23:00:00
+
+ABCS2015
+
+Abacus'15
+
+18 Feb 2015  20:30:00
+
+19 Feb 2015  00:00:00
+
+IGNU2015
+
+IGNUS
+
+18 Feb 2015  20:00:00
+
+18 Feb 2015  23:00:00
+
+FEB15
+
+February Challenge 2015
+
+06 Feb 2015  15:00:00
+
+16 Feb 2015  15:00:00
+
+COOK55
+
+February Cook-Off 2015
+
+15 Feb 2015  21:30:00
+
+16 Feb 2015  00:00:00
+
+BION2015
+
+Bits ON! 2015
+
+15 Feb 2015  10:00:00
+
+15 Feb 2015  12:00:00
+
+CRNM2015
+
+Cranium
+
+14 Feb 2015  21:00:00
+
+15 Feb 2015  01:00:00
+
+CDWR1501
+
+Code-Wars, Round 1
+
+14 Feb 2015  18:00:00
+
+14 Feb 2015  20:00:00
+
+CSZLPR15
+
+CodeZilla Prelims 2015
+
+11 Feb 2015  21:00:00
+
+11 Feb 2015  23:30:00
+
+MDSW2015
+
+Mindsweepers 2015
+
+07 Feb 2015  09:30:00
+
+08 Feb 2015  12:30:00
+
+CDVA2015
+
+CodeVaitam
+
+04 Feb 2015  20:00:00
+
+08 Feb 2015  00:01:00
+
+CDBR2015
+
+Code Brunch
+
+03 Feb 2015  18:00:00
+
+06 Feb 2015  18:00:00
+
+CODC2015
+
+CSI XIE Contest 2015
+
+06 Feb 2015  10:00:00
+
+06 Feb 2015  14:00:00
+
+EXCU2015
+
+Execute 15.1 replay 2015
+
+05 Feb 2015  21:00:00
+
+06 Feb 2015  00:00:00
+
+CDCRF15R
+
+CodeCraft 2015 Replay
+
+03 Feb 2015  20:00:00
+
+04 Feb 2015  01:00:00
+
+XCPT2015
+
+Xception 2.0
+
+31 Jan 2015  21:00:00
+
+01 Feb 2015  00:30:00
+
+CDCR2015
+
+Code Currents 2015
+
+31 Jan 2015  14:30:00
+
+31 Jan 2015  17:00:00
+
+CDSU2015
+
+CodeSurf 2015
+
+30 Jan 2015  21:30:00
+
+31 Jan 2015  00:30:00
+
+INPR1503
+
+INOI 2015, Practice Round 3
+
+30 Jan 2015  19:00:00
+
+30 Jan 2015  22:00:00
+
+INPR1502
+
+INOI 2015, Practice Round 2
+
+30 Jan 2015  15:00:00
+
+30 Jan 2015  18:00:00
+
+DCOD2015
+
+Code.IT(101)
+
+29 Jan 2015  21:00:00
+
+30 Jan 2015  00:00:00
+
+INPR1501
+
+INOI 2015, Practice Round 1
+
+29 Jan 2015  18:00:00
+
+29 Jan 2015  21:00:00
+
+ALMA2015
+
+Rise of AlgoManiacs
+
+28 Jan 2015  21:30:00
+
+29 Jan 2015  00:30:00
+
+PSYC2015
+
+Psycoders 2015
+
+26 Jan 2015  17:00:00
+
+27 Jan 2015  00:59:00
+
+RCSN2015
+
+RECursion Challenge-I
+
+25 Jan 2015  21:00:00
+
+26 Jan 2015  00:30:00
+
+LTIME20
+
+January Lunchtime 2015
+
+25 Jan 2015  11:00:00
+
+25 Jan 2015  14:00:00
+
+GRCO2015
+
+GrietCode,January 2015
+
+22 Jan 2015  14:00:00
+
+25 Jan 2015  14:00:00
+
+KRKS2015
+
+Kurukshetra 2015
+
+24 Jan 2015  20:00:00
+
+25 Jan 2015  01:00:00
+
+WPC1501
+
+IIT Kanpur, Monthly Programming Contest 2015
+
+21 Jan 2015  19:00:00
+
+22 Jan 2015  01:00:00
+
+COOK54
+
+January Cook-Off 2015
+
+18 Jan 2015  21:30:00
+
+19 Jan 2015  01:00:00
+
+PRVG2015
+
+OPC- Pravega 2015
+
+17 Jan 2015  21:00:00
+
+18 Jan 2015  00:00:00
+
+DINP1501
+
+DPS Dwarka INOI practice contest 01
+
+13 Jan 2015  12:00:00
+
+17 Jan 2015  12:00:00
+
+EQBR2014
+
+Equilibrio 2015
+
+16 Jan 2015  13:00:00
+
+16 Jan 2015  15:00:00
+
+CONI2015
+
+Code Niche 2015
+
+15 Jan 2015  21:00:00
+
+16 Jan 2015  02:00:00
+
+AMR14ROS
+
+ACM-ICPC Asia-Amritapuri Onsite Contest 2014, Replay
+
+14 Jan 2015  18:00:00
+
+14 Jan 2015  23:00:00
+
+ARHN1502
+
+Aarohan 2, 2014
+
+12 Jan 2015  06:00:00
+
+13 Jan 2015  18:00:00
+
+JAN15
+
+January Challenge 2015
+
+02 Jan 2015  15:00:00
+
+12 Jan 2015  15:00:00
+
+LTIME19
+
+December Lunchtime 2014
+
+28 Dec 2014  11:00:00
+
+28 Dec 2014  14:00:00
+
+KGP14ROS
+
+ACM-ICPC Asia-Kharagpur Onsite Contest 2014, Replay
+
+24 Dec 2014  18:00:00
+
+24 Dec 2014  23:00:00
+
+COOK53
+
+December Cook-Off 2014
+
+21 Dec 2014  21:30:00
+
+22 Dec 2014  00:00:00
+
+QUCO2014
+
+Quark CodeJam
+
+20 Dec 2014  21:00:00
+
+21 Dec 2014  00:00:00
+
+ICPC14PR
+
+ACM-ICPC Practice round 2014
+
+01 Dec 2014  00:00:00
+
+17 Dec 2014  23:00:00
+
+DEC14
+
+December Challenge 2014
+
+05 Dec 2014  15:00:00
+
+15 Dec 2014  17:00:00
+
+XCEP2014
+
+Xception 1.0
+
+10 Dec 2014  21:00:00
+
+11 Dec 2014  00:00:00
+
+KG14ROL2
+
+ACM-ICPC Asia-Kharagpur Round 1, Online Contest 2014, Replay
+
+30 Nov 2014  18:00:00
+
+30 Nov 2014  21:00:00
+
+LTIME18
+
+November Lunchtime 2014
+
+30 Nov 2014  11:00:00
+
+30 Nov 2014  14:00:00
+
+KGP14ROL
+
+ACM-ICPC Asia-Kharagpur Online Contest 2014, Replay
+
+28 Nov 2014  18:00:00
+
+28 Nov 2014  21:00:00
+
+CDTR2014
+
+Codetrix II
+
+26 Nov 2014  20:30:00
+
+26 Nov 2014  22:30:00
+
+KAN14ROL
+
+ACM-ICPC Asia-Kanpur Online Contest 2014, Replay
+
+25 Nov 2014  18:00:00
+
+25 Nov 2014  21:00:00
+
+COOK52
+
+November Cook-Off 2014
+
+23 Nov 2014  21:30:00
+
+24 Nov 2014  00:00:00
+
+CDSM2014
+
+Code Smart 2014
+
+14 Nov 2014  21:00:00
+
+19 Nov 2014  21:00:00
+
+MTRX2014
+
+Matrix 2014
+
+18 Nov 2014  19:00:00
+
+19 Nov 2014  07:00:00
+
+NOV14
+
+November Challenge 2014
+
+07 Nov 2014  15:00:00
+
+17 Nov 2014  15:00:00
+
+CDAV2014
+
+Code Avengers 2014,  ABESEC Ghaziabad. 
+
+12 Nov 2014  20:00:00
+
+12 Nov 2014  23:00:00
+
+COQU2014
+
+Code Quest 2014
+
+07 Nov 2014  14:00:00
+
+07 Nov 2014  16:45:00
+
+CDZP2014
+
+Code Zip 2014
+
+02 Nov 2014  18:00:00
+
+02 Nov 2014  21:00:00
+
+ACMKAN14
+
+ACM-ICPC Asia-Kanpur Site First Round Online Contest 2014
+
+01 Nov 2014  14:00:00
+
+01 Nov 2014  16:00:00
+
+TSTKAN14
+
+ACM-ICPC Asia-Kanpur Online Practice Round, 2014
+
+31 Oct 2014  18:00:00
+
+31 Oct 2014  21:00:00
+
+ACMKG14R
+
+ACM-ICPC Asia-Kharagpur Site First Round Online Recontest 2014
+
+30 Oct 2014  18:00:00
+
+30 Oct 2014  21:00:00
+
+AMR14ROL
+
+ACM-ICPC Asia-Amritapuri Online Contest 2014, Replay
+
+28 Oct 2014  20:00:00
+
+28 Oct 2014  23:00:00
+
+LTIME17
+
+October Lunchtime 2014
+
+26 Oct 2014  11:00:00
+
+26 Oct 2014  14:00:00
+
+COOK51
+
+October Cook-Off 2014
+
+19 Oct 2014  21:30:00
+
+20 Oct 2014  00:10:00
+
+ACMKGP14
+
+ACM-ICPC Asia-Kharagpur Site First Round Online Contest 2014
+
+18 Oct 2014  14:00:00
+
+18 Oct 2014  17:00:00
+
+CDMS2014
+
+CodeMasters 2014
+
+18 Oct 2014  11:00:00
+
+18 Oct 2014  13:30:00
+
+TSTKGP14
+
+ACM-ICPC Asia - IIT Kharagpur Online Practice Round, 2014
+
+17 Oct 2014  18:00:00
+
+17 Oct 2014  21:00:00
+
+OCT14
+
+October Challenge 2014
+
+03 Oct 2014  15:00:00
+
+13 Oct 2014  15:00:00
+
+TCFS15S
+
+TechFest 2015, Screening round
+
+12 Oct 2014  20:00:00
+
+13 Oct 2014  00:30:00
+
+TCFS15P
+
+TechFest 2015, Portal round
+
+09 Oct 2014  21:00:00
+
+12 Oct 2014  02:00:00
+
+ACMAMR14
+
+ACM-ICPC Asia-Amritapuri Site First Round Online Contest 2014
+
+11 Oct 2014  18:00:00
+
+11 Oct 2014  21:30:00
+
+TSTAMR14
+
+ACM-ICPC Asia-Amritapuri Online Practice Round, 2014
+
+11 Oct 2014  13:00:00
+
+11 Oct 2014  15:00:00
+
+CDWR2014
+
+Codewars 2014
+
+08 Oct 2014  18:00:00
+
+08 Oct 2014  22:00:00
+
+WPC1401
+
+IIT Kanpur, Monthly Programming Contest-1
+
+30 Sep 2014  19:00:00
+
+01 Oct 2014  00:00:00
+
+LTIME16
+
+September Lunchtime 2014
+
+28 Sep 2014  11:00:00
+
+28 Sep 2014  14:00:00
+
+INSM2014
+
+Insomnia 2014
+
+26 Sep 2014  22:00:00
+
+27 Sep 2014  04:00:00
+
+CDST2014
+
+CodeStrike 2014
+
+23 Sep 2014  14:30:00
+
+23 Sep 2014  16:00:00
+
+COOK50
+
+September Cook-Off 2014, ACM-ICPC Warm up
+
+21 Sep 2014  21:30:00
+
+22 Sep 2014  00:00:00
+
+SEPT14
+
+September Challenge 2014
+
+05 Sep 2014  15:00:00
+
+15 Sep 2014  15:00:00
+
+CLASH14
+
+Clash Credenz 2014 Wild Card Round
+
+31 Aug 2014  21:00:00
+
+01 Sep 2014  21:00:00
+
+LTIME15
+
+August Lunchtime 2014
+
+31 Aug 2014  11:00:00
+
+31 Aug 2014  14:00:00
+
+COOK49
+
+August Cook-Off 2014
+
+24 Aug 2014  21:30:00
+
+25 Aug 2014  00:20:00
+
+AUG14
+
+August Challenge 2014
+
+01 Aug 2014  15:00:00
+
+11 Aug 2014  15:00:00
+
+PRCNSR14
+
+Procon 2014
+
+10 Aug 2014  17:00:00
+
+10 Aug 2014  19:30:00
+
+LTIME14
+
+July Lunchtime 2014
+
+27 Jul 2014  11:00:00
+
+27 Jul 2014  14:45:00
+
+COOK48
+
+July Cook-Off 2014
+
+20 Jul 2014  21:30:00
+
+21 Jul 2014  01:00:00
+
+JULY14
+
+July Challenge 2014
+
+04 Jul 2014  15:00:00
+
+14 Jul 2014  15:00:00
+
+LTIME13
+
+June Lunchtime 2014
+
+29 Jun 2014  11:00:00
+
+29 Jun 2014  14:00:00
+
+COOK47
+
+June Cook-Off 2014
+
+22 Jun 2014  21:30:00
+
+23 Jun 2014  00:45:00
+
+JUNE14
+
+June Challenge 2014
+
+06 Jun 2014  15:00:00
+
+16 Jun 2014  15:00:00
+
+LTIME12
+
+May Lunchtime 2014
+
+25 May 2014  11:00:00
+
+25 May 2014  14:00:00
+
+COOK46
+
+May Cook-Off 2014
+
+18 May 2014  21:30:00
+
+19 May 2014  00:00:00
+
+NCC2014
+
+National Computing Contest 2014
+
+15 May 2014  21:00:00
+
+16 May 2014  00:00:00
+
+MAY14
+
+May Challenge 2014
+
+02 May 2014  15:00:00
+
+12 May 2014  15:00:00
+
+CDSN2014
+
+Gambit 2014
+
+03 May 2014  15:30:00
+
+03 May 2014  19:00:00
+
+LTIME11
+
+April Lunchtime 2014
+
+27 Apr 2014  11:00:00
+
+27 Apr 2014  14:00:00
+
+COOK45
+
+April Cook-Off 2014
+
+20 Apr 2014  21:30:00
+
+21 Apr 2014  00:00:00
+
+CDGR2014
+
+CodeGuru 2014
+
+20 Apr 2014  10:00:00
+
+20 Apr 2014  13:00:00
+
+PRMT2014
+
+Prometheus 2014
+
+14 Apr 2014  00:00:00
+
+18 Apr 2014  00:00:00
+
+APRIL14
+
+April Challenge 2014
+
+04 Apr 2014  15:00:00
+
+14 Apr 2014  15:00:00
+
+TUXO2014
+
+Tux Coder 2014
+
+07 Apr 2014  21:00:00
+
+08 Apr 2014  00:00:00
+
+CDCN2014
+
+Code  2014
+
+03 Apr 2014  12:00:00
+
+04 Apr 2014  12:00:00
+
+LTIME10
+
+March Lunchtime 2014
+
+30 Mar 2014  11:00:00
+
+30 Mar 2014  14:00:00
+
+GOC2014
+
+Game of Codes 2014
+
+29 Mar 2014  21:00:00
+
+30 Mar 2014  00:00:00
+
+COOK44
+
+March Cook-Off 2014
+
+23 Mar 2014  21:30:00
+
+24 Mar 2014  00:00:00
+
+CDR2014
+
+Coder 2014
+
+22 Mar 2014  21:00:00
+
+23 Mar 2014  02:00:00
+
+BTBT2014
+
+Bit Battle 2014
+
+22 Mar 2014  21:30:00
+
+23 Mar 2014  00:00:00
+
+CDMR2014
+
+Code Marathon 2014
+
+22 Mar 2014  19:00:00
+
+22 Mar 2014  22:00:00
+
+MARCH14
+
+March Challenge 2014
+
+07 Mar 2014  15:00:00
+
+18 Mar 2014  15:00:00
+
+ABCS2014
+
+aBaCUS'14
+
+15 Mar 2014  20:00:00
+
+15 Mar 2014  23:30:00
+
+COGZ2014
+
+CodeIt 2014
+
+14 Mar 2014  11:00:00
+
+14 Mar 2014  13:30:00
+
+BTCD2014
+
+ByteCode 2014
+
+08 Mar 2014  20:30:00
+
+09 Mar 2014  01:30:00
+
+DMNT2014
+
+Dementia 2014
+
+05 Mar 2014  22:00:00
+
+06 Mar 2014  00:45:00
+
+TRNT2014
+
+Trinity 2014
+
+02 Mar 2014  21:30:00
+
+03 Mar 2014  00:00:00
+
+IOPC2014
+
+IOPC 2014
+
+01 Mar 2014  12:00:00
+
+02 Mar 2014  12:00:00
+
+CDCS2014
+
+CodeCrusade 2014
+
+01 Mar 2014  10:00:00
+
+01 Mar 2014  13:20:00
+
+IGNS2014
+
+Ignus 2014
+
+25 Feb 2014  19:00:00
+
+25 Feb 2014  22:30:00
+
+NCDFEB14
+
+UVCE N-Code February 2014
+
+22 Feb 2014  07:00:00
+
+23 Feb 2014  22:00:00
+
+CDNCTR14
+
+CodeNiche 2014, Trial round
+
+22 Feb 2014  21:00:00
+
+23 Feb 2014  21:00:00
+
+LTIME09
+
+February Lunchtime 2014
+
+23 Feb 2014  11:00:00
+
+23 Feb 2014  14:30:00
+
+CDMT2014
+
+Code Mutants 2014
+
+22 Feb 2014  20:30:00
+
+23 Feb 2014  01:30:00
+
+AICL2014
+
+ACM-ICL 2014
+
+22 Feb 2014  21:30:00
+
+23 Feb 2014  00:00:00
+
+CDMN2014
+
+CodeMania 2014
+
+18 Feb 2014  21:00:00
+
+19 Feb 2014  00:00:00
+
+FEB14
+
+February Challenge 2014
+
+07 Feb 2014  15:00:00
+
+17 Feb 2014  15:00:00
+
+COOK43
+
+February Cook-Off 2014
+
+16 Feb 2014  21:30:00
+
+17 Feb 2014  00:00:00
+
+CDCRNT14
+
+Code Currents 2014
+
+15 Feb 2014  21:00:00
+
+15 Feb 2014  23:00:00
+
+CDLV2014
+
+CodeLive 2014
+
+12 Feb 2014  12:00:00
+
+13 Feb 2014  00:00:00
+
+CDZL2014
+
+Code Zilla 2014
+
+10 Feb 2014  21:30:00
+
+11 Feb 2014  00:30:00
+
+CRNM2014
+
+Cranium 2014
+
+08 Feb 2014  21:00:00
+
+09 Feb 2014  00:00:00
+
+TROK2014
+
+Bytes 2014
+
+02 Feb 2014  21:00:00
+
+03 Feb 2014  00:00:00
+
+SMHT2014
+
+Samhita OLPC 2014
+
+02 Feb 2014  20:00:00
+
+02 Feb 2014  23:00:00
+
+DBYZ2014
+
+Divide By Zero 2014
+
+01 Feb 2014  21:30:00
+
+02 Feb 2014  00:00:00
+
+CDCRFT14
+
+CodeCraft: IIIT Hyderabad, Replay
+
+01 Feb 2014  11:00:00
+
+01 Feb 2014  18:00:00
+
+LTIME08
+
+January Lunchtime 2014
+
+26 Jan 2014  11:00:00
+
+26 Jan 2014  14:00:00
+
+CODX2014
+
+CodeX 2014
+
+24 Jan 2014  19:00:00
+
+25 Jan 2014  19:00:00
+
+COOK42
+
+January Cook-off 2014
+
+19 Jan 2014  21:30:00
+
+20 Jan 2014  00:45:00
+
+CDIT2014
+
+Code-It 2014
+
+18 Jan 2014  11:00:00
+
+18 Jan 2014  12:00:00
+
+JAN14
+
+January Challenge 2014
+
+03 Jan 2014  15:00:00
+
+13 Jan 2014  15:00:00
+
+SHSTRA14
+
+Shaastra 2014
+
+04 Jan 2014  20:00:00
+
+05 Jan 2014  01:00:00
+
+LTIME07
+
+December Lunchtime 2013
+
+29 Dec 2013  11:00:00
+
+29 Dec 2013  14:00:00
+
+KGP13ACM
+
+ACM-ICPC Kharagpur onsite regionals 2013 : Replay
+
+28 Dec 2013  18:00:00
+
+28 Dec 2013  23:00:00
+
+COOK41
+
+December Cook-off 2013
+
+22 Dec 2013  21:30:00
+
+23 Dec 2013  00:00:00
+
+DEC13
+
+December Challenge 2013
+
+06 Dec 2013  15:00:00
+
+16 Dec 2013  15:00:00
+
+KAN13ACM
+
+ACM-ICPC Kanpur onsite regionals 2013 : Replay
+
+14 Dec 2013  19:00:00
+
+15 Dec 2013  00:00:00
+
+LTIME06
+
+November Lunchtime 2013
+
+24 Nov 2013  11:00:00
+
+24 Nov 2013  14:30:00
+
+NCDRN13
+
+UVCE N-Code November 2013
+
+14 Nov 2013  21:00:00
+
+18 Nov 2013  00:00:00
+
+COOK40
+
+November Cook-off 2013
+
+17 Nov 2013  21:30:00
+
+18 Nov 2013  00:00:00
+
+ODCD2013
+
+Ode2Code 2013
+
+16 Nov 2013  20:00:00
+
+17 Nov 2013  02:00:00
+
+CDWV2013
+
+CodeWeavers 2013
+
+13 Nov 2013  21:00:00
+
+14 Nov 2013  00:00:00
+
+NOV13
+
+November Challenge 2013
+
+01 Nov 2013  15:00:00
+
+11 Nov 2013  15:00:00
+
+CDCZ2013
+
+CodeCzar 2013
+
+10 Nov 2013  12:00:00
+
+10 Nov 2013  15:00:00
+
+PRVG2014
+
+Pravega 2014
+
+09 Nov 2013  21:00:00
+
+09 Nov 2013  23:00:00
+
+ACMKGP13
+
+ACM-ICPC Asia-Kharagpur Site First Round Online Contest 2013
+
+02 Nov 2013  11:00:00
+
+02 Nov 2013  13:10:00
+
+TCFST13
+
+TechFest 2013
+
+26 Oct 2013  21:00:00
+
+28 Oct 2013  00:00:00
+
+INSCRP13
+
+Inscription 2013
+
+27 Oct 2013  21:00:00
+
+28 Oct 2013  00:00:00
+
+LTIME05
+
+October Lunchtime 2013
+
+27 Oct 2013  11:00:00
+
+27 Oct 2013  14:00:00
+
+CDCRNC13
+
+Code Crunch 2013
+
+25 Oct 2013  10:00:00
+
+25 Oct 2013  19:00:00
+
+ALKH2013
+
+Alkhwarism 2013 
+
+24 Oct 2013  20:00:00
+
+25 Oct 2013  00:00:00
+
+COOK39
+
+October Cook-Off 2013
+
+20 Oct 2013  21:30:00
+
+21 Oct 2013  00:00:00
+
+CRPT2013
+
+Cryptoss 2013
+
+16 Oct 2013  00:00:00
+
+21 Oct 2013  00:00:00
+
+ACMKAN13
+
+ACM-ICPC Asia-Kanpur Site First Round Online Contest 2013
+
+19 Oct 2013  11:00:00
+
+19 Oct 2013  13:30:00
+
+UVCNCD13
+
+UVCE NCode- October 2013
+
+07 Oct 2013  15:00:00
+
+17 Oct 2013  15:00:00
+
+DSEC2013
+
+./ Execute 2013
+
+14 Oct 2013  21:00:00
+
+16 Oct 2013  21:00:00
+
+OCT13
+
+October Challenge 2013
+
+04 Oct 2013  15:00:00
+
+14 Oct 2013  15:00:00
+
+CODW2013
+
+CodeWars 2013 - BITS, Pilani Hyderabad Campus
+
+02 Oct 2013  14:00:00
+
+02 Oct 2013  19:00:00
+
+CDCL2013
+
+CodeClash 2013
+
+02 Oct 2013  13:00:00
+
+02 Oct 2013  18:00:00
+
+CDGF2013
+
+Code Zip 2013
+
+25 Sep 2013  15:00:00
+
+29 Sep 2013  15:00:00
+
+CDWR2013
+
+Code War 2013
+
+27 Sep 2013  15:00:00
+
+29 Sep 2013  15:00:00
+
+LTIME04
+
+September Lunchtime 2013
+
+29 Sep 2013  11:00:00
+
+29 Sep 2013  14:30:00
+
+LGCD2013
+
+LogiCode 2013
+
+27 Sep 2013  18:00:00
+
+28 Sep 2013  00:00:00
+
+COOK38
+
+September Cook-Off 2013
+
+22 Sep 2013  21:30:00
+
+23 Sep 2013  00:00:00
+
+INSM2013
+
+Insomnia 2013
+
+20 Sep 2013  22:00:00
+
+21 Sep 2013  04:00:00
+
+SEPT13
+
+September Challenge 2013
+
+06 Sep 2013  15:00:00
+
+16 Sep 2013  15:00:00
+
+CLASH13
+
+Clash Credenz 2013
+
+27 Aug 2013  00:00:00
+
+29 Aug 2013  00:00:00
+
+BTCD2013
+
+ByteCode 2013
+
+18 Aug 2013  12:00:00
+
+28 Aug 2013  12:00:00
+
+LTIME03
+
+August Lunchtime 2013
+
+25 Aug 2013  11:00:00
+
+25 Aug 2013  14:00:00
+
+COOK37
+
+August Cook-Off 2013
+
+18 Aug 2013  21:30:00
+
+19 Aug 2013  00:25:00
+
+PRCN2013
+
+Procon 2013
+
+16 Aug 2013  13:30:00
+
+16 Aug 2013  15:30:00
+
+AUG13
+
+August Challenge 2013
+
+02 Aug 2013  15:00:00
+
+12 Aug 2013  15:00:00
+
+LTIME02
+
+Lunch Time July 2013
+
+28 Jul 2013  11:00:00
+
+28 Jul 2013  14:30:00
+
+COOK36
+
+July Cook-off 2013
+
+21 Jul 2013  21:30:00
+
+22 Jul 2013  00:00:00
+
+JULY13
+
+July Challenge 2013
+
+05 Jul 2013  15:00:00
+
+15 Jul 2013  15:00:00
+
+LTIME01
+
+Lunch Time June 2013
+
+30 Jun 2013  11:00:00
+
+30 Jun 2013  14:00:00
+
+COOK35
+
+June Cook-Off 2013
+
+23 Jun 2013  21:30:00
+
+24 Jun 2013  00:00:00
+
+JUNE13
+
+June Challenge 2013
+
+07 Jun 2013  15:00:00
+
+17 Jun 2013  15:00:00
+
+COOK34
+
+May Cook-off 2013
+
+19 May 2013  21:30:00
+
+20 May 2013  00:00:00
+
+MAY13
+
+May Challenge 2013
+
+03 May 2013  15:00:00
+
+13 May 2013  16:00:00
+
+COOK33
+
+April Cook-Off 2013
+
+21 Apr 2013  21:30:00
+
+22 Apr 2013  00:00:00
+
+CDNB2013
+
+Coding 2013
+
+20 Apr 2013  15:00:00
+
+21 Apr 2013  10:00:00
+
+APRIL13
+
+April Challenge 2013
+
+05 Apr 2013  15:00:00
+
+15 Apr 2013  15:00:00
+
+PROM2013
+
+Prometheus 2013 
+
+10 Apr 2013  16:00:00
+
+15 Apr 2013  00:00:00
+
+KDAT2013
+
+Kodeathon 2013
+
+13 Apr 2013  20:00:00
+
+14 Apr 2013  20:00:00
+
+CODS2013
+
+Codies 2013
+
+07 Apr 2013  20:00:00
+
+08 Apr 2013  00:00:00
+
+COOK32
+
+March Cook-off 2013
+
+24 Mar 2013  21:30:00
+
+25 Mar 2013  00:07:00
+
+INST2013
+
+Instruo 2013
+
+23 Mar 2013  21:30:00
+
+23 Mar 2013  23:30:00
+
+INVS2013
+
+CodeZilla 2013
+
+19 Mar 2013  21:00:00
+
+19 Mar 2013  23:00:00
+
+OVRN2013
+
+OverNite 2013
+
+16 Mar 2013  23:00:00
+
+17 Mar 2013  02:00:00
+
+DBYZ2013
+
+Divide By Zero 2013
+
+16 Mar 2013  16:00:00
+
+16 Mar 2013  18:00:00
+
+ALGT2013
+
+Algothika 2013
+
+11 Mar 2013  23:00:00
+
+14 Mar 2013  23:00:00
+
+MARCH13
+
+March Challenge 2013
+
+01 Mar 2013  15:00:00
+
+11 Mar 2013  15:00:00
+
+BTFR2013
+
+Bit Freak 2013
+
+09 Mar 2013  16:00:00
+
+10 Mar 2013  16:00:00
+
+IOPC2013
+
+IOPC 2013
+
+09 Mar 2013  12:00:00
+
+10 Mar 2013  12:00:00
+
+CDNC2013
+
+IIT BHU Varanasi Code Niche
+
+01 Mar 2013  20:00:00
+
+02 Mar 2013  20:00:00
+
+CDOL2013
+
+Code Olympics 2013
+
+01 Mar 2013  10:00:00
+
+01 Mar 2013  13:00:00
+
+OBFS2013
+
+Obfuscation 2013
+
+26 Feb 2013  20:00:00
+
+27 Feb 2013  00:00:00
+
+TCSG2013
+
+TechnoSurge 2013
+
+24 Feb 2013  20:00:00
+
+25 Feb 2013  00:00:00
+
+EXBT2013
+
+Exhibit 2013
+
+22 Feb 2013  20:30:00
+
+23 Feb 2013  00:30:00
+
+INCD2013
+
+International Code Zilla 2013
+
+19 Feb 2013  12:30:00
+
+19 Feb 2013  20:00:00
+
+COOK31
+
+February Cook-Off 2013
+
+17 Feb 2013  21:30:00
+
+18 Feb 2013  00:00:00
+
+DSPF2013
+
+./EXECEUTE Prefest contest
+
+11 Feb 2013  13:00:00
+
+14 Feb 2013  13:00:00
+
+CRNM2013
+
+Cranium  2013
+
+13 Feb 2013  20:00:00
+
+14 Feb 2013  01:00:00
+
+FEB13
+
+February 2013 Challenge
+
+01 Feb 2013  15:00:00
+
+11 Feb 2013  15:00:00
+
+BYTS2013
+
+Bytes 2013
+
+10 Feb 2013  20:00:00
+
+11 Feb 2013  01:00:00
+
+PRST2013
+
+IIT BHU Varanasi CodeNiche - Trial 1
+
+08 Feb 2013  20:00:00
+
+09 Feb 2013  20:00:00
+
+TCSP2013
+
+Techspardha 2013
+
+02 Feb 2013  11:00:00
+
+02 Feb 2013  14:00:00
+
+OVNT2012
+
+OverNite 2013
+
+29 Jan 2013  20:00:00
+
+29 Jan 2013  23:00:00
+
+ACMAMR12
+
+ACM-ICPC Amritapuri onsite regionals 2012 : Replay
+
+25 Jan 2013  15:00:00
+
+28 Jan 2013  15:00:00
+
+COOK30
+
+January Cook-Off 2013
+
+20 Jan 2013  21:30:00
+
+21 Jan 2013  00:20:00
+
+JAN13
+
+January Challenge 2013
+
+01 Jan 2013  15:00:00
+
+15 Jan 2013  15:00:00
+
+COOK29
+
+December Cook-Off 2012
+
+23 Dec 2012  21:30:00
+
+24 Dec 2012  00:00:00
+
+DEC12
+
+December Challenge 2012
+
+01 Dec 2012  15:00:00
+
+11 Dec 2012  15:00:00
+
+COOK28
+
+November Cook-Off 2012
+
+18 Nov 2012  21:30:00
+
+19 Nov 2012  00:00:00
+
+ZERO1
+
+ZERO1
+
+16 Nov 2012  16:00:00
+
+17 Nov 2012  16:00:00
+
+NOV12
+
+November Challenge 2012
+
+01 Nov 2012  15:00:00
+
+12 Nov 2012  15:00:00
+
+ACMKGP12
+
+ACM-ICPC Asia-Kanpur Site First Round Online Contest 2012
+
+11 Nov 2012  14:30:00
+
+11 Nov 2012  17:30:00
+
+CDWV2012
+
+CodeWeavers 2012 
+
+07 Nov 2012  21:00:00
+
+08 Nov 2012  00:00:00
+
+ACMKAN12
+
+ACM-ICPC Asia-Kanpur Site First Round Online Contest 2012
+
+03 Nov 2012  14:30:00
+
+03 Nov 2012  16:30:00
+
+CODW2012
+
+CodeWars 2012
+
+24 Oct 2012  18:00:00
+
+26 Oct 2012  18:00:00
+
+COOK27
+
+October Cook-Off 2012
+
+21 Oct 2012  21:30:00
+
+22 Oct 2012  00:00:00
+
+OCT12
+
+October Challenge 2012
+
+01 Oct 2012  15:00:00
+
+15 Oct 2012  15:00:00
+
+ALKH2012
+
+Alkhwarizm 2012
+
+29 Sep 2012  19:00:00
+
+30 Sep 2012  00:00:00
+
+EPNY2012
+
+Epiphany 2012
+
+27 Sep 2012  17:00:00
+
+28 Sep 2012  18:00:00
+
+TCSN2012
+
+Techno Shine 2012
+
+27 Sep 2012  21:30:00
+
+28 Sep 2012  00:00:00
+
+COOK26
+
+September Cook-Off 2012
+
+23 Sep 2012  21:30:00
+
+24 Sep 2012  00:45:00
+
+SEP12
+
+September Challenge 2012
+
+01 Sep 2012  15:00:00
+
+11 Sep 2012  15:00:00
+
+BTCD2012
+
+ByteCode 2012
+
+12 Aug 2012  20:00:00
+
+26 Aug 2012  20:00:00
+
+COOK25
+
+August Cook-Off 2012
+
+19 Aug 2012  21:30:00
+
+20 Aug 2012  00:20:00
+
+AUG12
+
+August Challenge 2012
+
+01 Aug 2012  15:00:00
+
+11 Aug 2012  15:00:00
+
+COOK24
+
+July Cook-Off 2012
+
+22 Jul 2012  21:30:00
+
+23 Jul 2012  00:00:00
+
+JULY12
+
+July Challenge 2012
+
+01 Jul 2012  15:00:00
+
+11 Jul 2012  15:00:00
+
+COOK23
+
+June Cook-Off 2012
+
+17 Jun 2012  21:30:00
+
+18 Jun 2012  00:25:00
+
+JUNE12
+
+June Challenge 2012
+
+01 Jun 2012  15:00:00
+
+11 Jun 2012  15:00:00
+
+ADR2012
+
+Android Hack Camp v.02
+
+28 May 2012  20:00:00
+
+30 May 2012  20:00:00
+
+COOK22
+
+May Cook-Off 2012
+
+20 May 2012  21:30:00
+
+21 May 2012  00:10:00
+
+MAY12
+
+May Challenge 2012
+
+01 May 2012  15:00:00
+
+11 May 2012  15:00:00
+
+COOK21
+
+April Cook-Off 2012
+
+22 Apr 2012  21:30:00
+
+23 Apr 2012  00:00:00
+
+ANDR2012
+
+Android Hack Camp 2012
+
+14 Apr 2012  08:00:00
+
+16 Apr 2012  14:00:00
+
+APRIL12
+
+April Challenge 2012
+
+01 Apr 2012  15:00:00
+
+11 Apr 2012  15:00:00
+
+PRDM2012
+
+Paradigm Shift contest 2012
+
+31 Mar 2012  18:00:00
+
+31 Mar 2012  20:30:00
+
+ADYN2012
+
+Adhyayan 2012
+
+21 Mar 2012  18:00:00
+
+22 Mar 2012  00:00:00
+
+COOK20
+
+March Cook-Off 2012
+
+18 Mar 2012  21:30:00
+
+19 Mar 2012  00:00:00
+
+AGTK2012
+
+ALGOTHIKA 2012
+
+03 Mar 2012  17:00:00
+
+17 Mar 2012  10:00:00
+
+TCTR2012
+
+TechTrishna 2012
+
+14 Mar 2012  12:00:00
+
+15 Mar 2012  03:00:00
+
+ICDE2012
+
+I-Code 2012
+
+11 Mar 2012  21:00:00
+
+12 Mar 2012  00:00:00
+
+MARCH12
+
+March 2012 Challenge
+
+01 Mar 2012  15:00:00
+
+11 Mar 2012  15:00:00
+
+CDOL2012
+
+Code Olympics 2012
+
+03 Mar 2012  10:00:00
+
+03 Mar 2012  13:00:00
+
+PRFT2012
+
+Dot Slash Execute Prefest Contest Page 2012
+
+27 Feb 2012  09:00:00
+
+01 Mar 2012  02:00:00
+
+CNSC2012
+
+Conscientia 2012
+
+25 Feb 2012  22:00:00
+
+26 Feb 2012  02:00:00
+
+ANWS2012
+
+WYSIWYG 2012
+
+25 Feb 2012  21:30:00
+
+26 Feb 2012  00:00:00
+
+CDSC2012
+
+CodeScone contest 2012
+
+24 Feb 2012  19:30:00
+
+25 Feb 2012  10:00:00
+
+SOPC2012
+
+SOPC Contest 2012
+
+24 Feb 2012  12:00:00
+
+25 Feb 2012  00:00:00
+
+ENCD2012
+
+Encoder 2012
+
+24 Feb 2012  17:00:00
+
+24 Feb 2012  22:00:00
+
+CRNM2012
+
+Cranium Contest 2012
+
+21 Feb 2012  19:15:00
+
+22 Feb 2012  03:15:00
+
+COOK19
+
+February 2012 Cook-off
+
+19 Feb 2012  21:30:00
+
+20 Feb 2012  00:00:00
+
+COZL2012
+
+CODEZILLA - RUBIX'12 by CSI-TSEC
+
+19 Feb 2012  09:00:00
+
+19 Feb 2012  18:00:00
+
+IGNS2012
+
+Codka Challenge 2012
+
+12 Feb 2012  09:00:00
+
+19 Feb 2012  09:00:00
+
+CDZL2012
+
+CodeZilla contest 2012
+
+17 Feb 2012  20:00:00
+
+17 Feb 2012  23:00:00
+
+CDMT2012
+
+CodeMutants 2012
+
+16 Feb 2012  20:30:00
+
+16 Feb 2012  23:10:00
+
+ALGO2012
+
+Algorythmus 2012
+
+11 Feb 2012  21:00:00
+
+12 Feb 2012  02:30:00
+
+FEB12
+
+February 2012 Challenge
+
+01 Feb 2012  15:00:00
+
+11 Feb 2012  15:00:00
+
+COOK18
+
+January Cook-Off
+
+22 Jan 2012  21:30:00
+
+23 Jan 2012  00:00:00
+
+DMNT2012
+
+Dementia 2012 - IIT Mandi
+
+21 Jan 2012  18:00:00
+
+22 Jan 2012  00:00:00
+
+IOPC2012
+
+IOPC Techkriti 2012 - IIT Kanpur
+
+14 Jan 2012  12:00:00
+
+15 Jan 2012  12:00:00
+
+JAN12
+
+January 2012 Challenge
+
+01 Jan 2012  15:00:00
+
+11 Jan 2012  15:00:00
+
+COOK17
+
+December Cook-Off
+
+18 Dec 2011  21:30:00
+
+19 Dec 2011  00:10:00
+
+DEC11
+
+December 2011 Long Contest
+
+01 Dec 2011  15:00:00
+
+11 Dec 2011  15:00:00
+
+AMRITA11
+
+Amritapuri ICPC Warmup 2011
+
+03 Dec 2011  14:30:00
+
+03 Dec 2011  16:30:00
+
+COOK16
+
+November Cook-Off
+
+20 Nov 2011  21:30:00
+
+21 Nov 2011  00:00:00
+
+NOV11
+
+November Long Contest 2011
+
+01 Nov 2011  15:00:00
+
+11 Nov 2011  15:00:00
+
+ACMKAN11
+
+ACM-ICPC Asia-Kanpur Site First Round Online Contest
+
+29 Oct 2011  14:30:00
+
+29 Oct 2011  16:30:00
+
+COOK15
+
+October Cook-off
+
+23 Oct 2011  21:30:00
+
+24 Oct 2011  00:15:00
+
+TCHR1
+
+The Code Hunt, VITS, Satna, Round 1.
+
+22 Oct 2011  10:00:00
+
+22 Oct 2011  16:00:00
+
+KANWRMUP
+
+Kanpur ACM ICPC Warm-up Contest
+
+15 Oct 2011  21:30:00
+
+16 Oct 2011  00:00:00
+
+OCT11
+
+October Long Contest 2011
+
+01 Oct 2011  15:00:00
+
+11 Oct 2011  15:00:00
+
+LMDPLA11
+
+Limit de Plazo 2011, IIIT-Allahabad
+
+28 Sep 2011  21:00:00
+
+29 Sep 2011  00:00:00
+
+ALKH11
+
+AlKhwarizm, IIIT Allahabad
+
+27 Sep 2011  21:00:00
+
+28 Sep 2011  01:30:00
+
+COOK14
+
+September Cook-off
+
+18 Sep 2011  21:30:00
+
+19 Sep 2011  00:01:00
+
+SEPT11
+
+September Long Contest
+
+01 Sep 2011  15:00:00
+
+11 Sep 2011  15:00:00
+
+COOK13
+
+August Cook-off 2011
+
+21 Aug 2011  21:30:00
+
+22 Aug 2011  00:00:00
+
+AUG11
+
+August Long Contest 2011
+
+01 Aug 2011  15:00:00
+
+12 Aug 2011  15:00:00
+
+COOK12
+
+July Cook-off 2011
+
+24 Jul 2011  21:30:00
+
+25 Jul 2011  00:00:00
+
+JULY11
+
+July 2011 Long Contest
+
+01 Jul 2011  15:00:00
+
+11 Jul 2011  15:00:00
+
+COOK11
+
+June Cook-off
+
+19 Jun 2011  21:30:00
+
+20 Jun 2011  00:00:00
+
+JUNE11
+
+June Long Contest 2011
+
+01 Jun 2011  15:00:00
+
+12 Jun 2011  15:00:00
+
+COOK10
+
+May Cook-off 2011
+
+29 May 2011  21:30:00
+
+30 May 2011  00:00:00
+
+MAY11
+
+May Long Contest 2011
+
+01 May 2011  15:00:00
+
+11 May 2011  15:00:00
+
+CDEZILLA
+
+Netaj Subhash Institute of Technology - CodeZilla
+
+25 Apr 2011  19:00:00
+
+26 Apr 2011  00:00:00
+
+COOK09
+
+April Cook-Off Challenge
+
+24 Apr 2011  21:30:00
+
+25 Apr 2011  00:00:00
+
+DREAMSPK
+
+The DreamSpark Contest -  Microsoft Software & Technology Club India
+
+17 Apr 2011  20:00:00
+
+18 Apr 2011  01:00:00
+
+APRIL11
+
+April Long Contest
+
+01 Apr 2011  15:00:00
+
+12 Apr 2011  15:00:00
+
+DSPATNA
+
+DreamSpark - Microsoft Software & Technology Club
+
+02 Apr 2011  11:30:00
+
+02 Apr 2011  14:00:00
+
+HCKATHON
+
+Hackathon
+
+24 Mar 2011  00:00:00
+
+24 Mar 2011  06:00:00
+
+SOPC2011
+
+Skit Online Programming Contest - Swami Keshvanand Institute of Technology, Management and gramothan
+
+22 Mar 2011  12:00:00
+
+23 Mar 2011  00:00:00
+
+DIALECT
+
+J.N.E.C. - Dialect
+
+21 Mar 2011  10:00:00
+
+21 Mar 2011  14:00:00
+
+COOK08
+
+March Cook-off Challenge
+
+20 Mar 2011  21:30:00
+
+21 Mar 2011  00:00:00
+
+MARCH11
+
+March 2011 Challenge
+
+12 Mar 2011  18:00:00
+
+13 Mar 2011  18:00:00
+
+XECUTE
+
+Madras Institute of Technology - Prayatna11 - Xecute
+
+10 Mar 2011  20:00:00
+
+11 Mar 2011  00:00:00
+
+CODER11
+
+BITS Pilani, Apogee 2011 - CODER
+
+05 Mar 2011  20:00:00
+
+06 Mar 2011  01:00:00
+
+ENCODED
+
+IEM - Kolkata - FESTRONIX - Encoded
+
+27 Feb 2011  15:00:00
+
+28 Feb 2011  00:00:00
+
+DSPCXI
+
+DreamSpark - Microsoft Software & Technology Club
+
+26 Feb 2011  16:00:00
+
+27 Feb 2011  04:00:00
+
+TGPA11
+
+Conscientia - TGPA 2011
+
+26 Feb 2011  22:00:00
+
+27 Feb 2011  03:00:00
+
+CMUTANTS
+
+Code Mutants - DA - IICT
+
+24 Feb 2011  21:00:00
+
+25 Feb 2011  02:00:00
+
+COOK07
+
+February Cook - Off Challenge
+
+20 Feb 2011  21:30:00
+
+21 Feb 2011  00:00:00
+
+BYTCDE11
+
+NIT Trichy ByteCode 2011
+
+20 Feb 2011  14:30:00
+
+20 Feb 2011  20:30:00
+
+SYNAPSE
+
+DA-IICT - Algorythmus, Synapse
+
+19 Feb 2011  19:30:00
+
+20 Feb 2011  19:30:00
+
+RUBIX11
+
+Thadomal Shahani Engineering College - RUBIX - Codezilla
+
+17 Feb 2011  19:00:00
+
+18 Feb 2011  00:00:00
+
+IOPC2011
+
+IIT Kanpur IOPC 2011
+
+12 Feb 2011  12:00:00
+
+13 Feb 2011  12:00:00
+
+FEB11
+
+February 2011 Contest
+
+01 Feb 2011  15:00:00
+
+11 Feb 2011  15:00:00
+
+ENCODER
+
+NIT - Kurukshetra
+
+26 Jan 2011  14:15:00
+
+26 Jan 2011  19:15:00
+
+COOK06
+
+The January 2011 Cook-Off
+
+23 Jan 2011  21:30:00
+
+24 Jan 2011  00:00:00
+
+CODEIT
+
+Indian Statistical Institute - CodeIT
+
+23 Jan 2011  08:00:00
+
+23 Jan 2011  20:00:00
+
+JAN11
+
+January 2011 Challenge
+
+01 Jan 2011  15:00:00
+
+11 Jan 2011  15:00:00
+
+COOK05
+
+The December 2010 Cook-Off
+
+19 Dec 2010  21:30:00
+
+20 Dec 2010  00:00:00
+
+DEC10
+
+December 2010 Challenge
+
+01 Dec 2010  15:00:00
+
+11 Dec 2010  15:00:00
+
+COOK04
+
+The November CookOff
+
+27 Nov 2010  21:30:00
+
+28 Nov 2010  00:00:00
+
+RUBIXDEN
+
+RubixDen - JIIT Noida
+
+26 Nov 2010  18:00:00
+
+27 Nov 2010  00:00:00
+
+NOV10
+
+November 2010 Challenge
+
+01 Nov 2010  15:00:00
+
+11 Nov 2010  15:00:00
+
+STLEMATE
+
+NSIT Delhi - Stale Mate 2.0
+
+31 Oct 2010  18:00:00
+
+01 Nov 2010  00:00:00
+
+ACMKAN10
+
+ACM-ICPC Asia-Kanpur Site First Round Online Contest 
+
+30 Oct 2010  14:30:00
+
+30 Oct 2010  17:30:00
+
+COOK03
+
+The October Cook-Off (ACM ICPC Warm Up IIT-K)
+
+15 Oct 2010  21:30:00
+
+16 Oct 2010  00:00:00
+
+TECHART
+
+MGM - Tech Arete
+
+05 Oct 2010  00:00:00
+
+12 Oct 2010  00:00:00
+
+OCT10
+
+October 2010 Challenge
+
+01 Oct 2010  15:00:00
+
+11 Oct 2010  15:00:00
+
+RGEAR
+
+Thapar University - Aranya 2010
+
+07 Oct 2010  18:00:00
+
+08 Oct 2010  18:00:00
+
+AVISHKAR
+
+MNIT - Avishkar 2010
+
+03 Oct 2010  17:00:00
+
+03 Oct 2010  22:00:00
+
+ACMTRIAL
+
+ACM Trial
+
+01 Oct 2010  19:00:00
+
+03 Oct 2010  12:00:00
+
+LMDPLA10
+
+IIIT - A , Limit-de-Plazo 2010
+
+02 Oct 2010  19:00:00
+
+03 Oct 2010  00:00:00
+
+ALKH10
+
+IIIT - A , Alkhwarizm 2010
+
+01 Oct 2010  19:00:00
+
+02 Oct 2010  00:00:00
+
+AMRITA01
+
+Amritapuri ICPC Warmup 1
+
+24 Sep 2010  20:00:00
+
+24 Sep 2010  22:30:00
+
+SEPT10
+
+September 2010 Challenge
+
+01 Sep 2010  15:00:00
+
+11 Sep 2010  15:00:00
+
+INSOMNIA
+
+Insomnia 2010
+
+04 Sep 2010  00:00:00
+
+05 Sep 2010  00:00:00
+
+COOK02
+
+August Cook Off
+
+21 Aug 2010  21:30:00
+
+22 Aug 2010  00:00:00
+
+AUG10
+
+August 2010 Challenge
+
+01 Aug 2010  15:00:00
+
+11 Aug 2010  15:00:00
+
+COOK01
+
+July Cook Off 
+
+24 Jul 2010  21:30:00
+
+25 Jul 2010  00:00:00
+
+JULY10
+
+July 2010
+
+01 Jul 2010  15:00:00
+
+11 Jul 2010  15:00:00
+
+JUNE10
+
+June 2010 Contest
+
+01 Jun 2010  15:00:00
+
+11 Jun 2010  15:00:00
+
+MAY10
+
+May 2010 Contest
+
+01 May 2010  15:00:00
+
+12 May 2010  15:00:00
+
+DSPC30
+
+DreamSpark Contest 3
+
+24 Apr 2010  18:00:00
+
+26 Apr 2010  23:59:00
+
+APRIL10
+
+April 2010 Contest
+
+01 Apr 2010  15:00:00
+
+13 Apr 2010  15:00:00
+
+EMA2010
+
+EMA 2010
+
+02 Apr 2010  00:00:00
+
+03 Apr 2010  15:00:00
+
+CE2010
+
+CE 2010
+
+25 Mar 2010  19:00:00
+
+31 Mar 2010  19:00:00
+
+CYWSL4
+
+CYW Round 4
+
+30 Mar 2010  15:00:00
+
+30 Mar 2010  16:00:00
+
+CYWSL3
+
+CYW Round 3
+
+30 Mar 2010  11:00:00
+
+30 Mar 2010  12:00:00
+
+CYWSL2
+
+CYW Round 2
+
+29 Mar 2010  15:00:00
+
+29 Mar 2010  16:00:00
+
+CYWSL1
+
+CYW Round 1
+
+29 Mar 2010  13:00:00
+
+29 Mar 2010  14:00:00
+
+MANTH10
+
+Manthan 2010
+
+28 Mar 2010  18:00:00
+
+29 Mar 2010  00:00:00
+
+ICODER10
+
+Icoder 2010
+
+21 Mar 2010  14:30:00
+
+21 Mar 2010  20:00:00
+
+CSOC30
+
+DreamSpark 2
+
+13 Mar 2010  20:00:00
+
+15 Mar 2010  02:00:00
+
+CWARS10
+
+Code Wars
+
+14 Mar 2010  16:30:00
+
+14 Mar 2010  18:00:00
+
+CRAFTALG
+
+Craft 2010
+
+10 Mar 2010  14:45:00
+
+13 Mar 2010  19:00:00
+
+MARCH10
+
+March 2010 Contest
+
+01 Mar 2010  15:00:00
+
+13 Mar 2010  15:00:00
+
+MINDB10
+
+Mindbend 2010
+
+12 Mar 2010  09:00:00
+
+13 Mar 2010  09:00:00
+
+ALGOTH10
+
+Algothika 2010
+
+04 Mar 2010  18:00:00
+
+12 Mar 2010  18:00:00
+
+ALGOC10
+
+CTRLF9 2010
+
+04 Mar 2010  10:00:00
+
+04 Mar 2010  12:00:00
+
+CSOC20
+
+DreamSpark 2010
+
+27 Feb 2010  18:00:00
+
+01 Mar 2010  00:00:00
+
+TGPA10
+
+TGPA 2010
+
+28 Feb 2010  12:00:00
+
+28 Feb 2010  17:00:00
+
+CSOC10
+
+Code Spaghetti
+
+21 Feb 2010  00:00:00
+
+22 Feb 2010  00:00:00
+
+RUBIX10
+
+Rubix 2010
+
+14 Feb 2010  12:00:00
+
+14 Feb 2010  18:00:00
+
+TZTEST
+
+TZ test
+
+11 Feb 2010  22:37:00
+
+11 Feb 2010  22:42:00
+
+FEB10
+
+February 2010 Contest
+
+01 Feb 2010  15:00:00
+
+11 Feb 2010  15:00:00
+
+CHACK01
+
+Codehack 2010
+
+06 Feb 2010  23:59:00
+
+07 Feb 2010  06:00:00
+
+TBS101
+
+Technical Blitzschlag
+
+31 Jan 2010  00:00:00
+
+01 Feb 2010  00:00:00
+
+TBS102
+
+Technical Blitzschlag
+
+31 Jan 2010  00:00:00
+
+01 Feb 2010  00:00:00
+
+CBUZZ101
+
+CodeBuzz
+
+31 Jan 2010  18:00:00
+
+31 Jan 2010  23:00:00
+
+QCJAM10
+
+Quark 2010
+
+31 Jan 2010  14:00:00
+
+31 Jan 2010  19:45:00
+
+SNONLINE
+
+Online Team Contest
+
+24 Jan 2010  21:30:00
+
+25 Jan 2010  02:30:00
+
+TV10CAT3
+
+Technovanza
+
+24 Jan 2010  22:00:00
+
+25 Jan 2010  00:30:00
+
+ENC2010
+
+Encoder 2010
+
+24 Jan 2010  14:00:00
+
+24 Jan 2010  22:00:00
+
+TV10CAT2
+
+Technovanza
+
+17 Jan 2010  21:00:00
+
+17 Jan 2010  23:00:00
+
+JAN10
+
+January 2010 (Contest XII)
+
+01 Jan 2010  15:00:00
+
+15 Jan 2010  15:00:00
+
+TV10CAT1
+
+Technovanza 2010 Round 1
+
+13 Jan 2010  21:00:00
+
+13 Jan 2010  23:00:00
+
+SNONSITE
+
+Snackdown Onsite Final
+
+10 Jan 2010  11:45:00
+
+10 Jan 2010  15:45:00
+
+RESNKDWN
+
+Codechef Campus ReSnackdown
+
+20 Dec 2009  16:00:00
+
+20 Dec 2009  19:00:00
+
+RESNKTST
+
+Resnackdown Practice Run
+
+17 Dec 2009  19:45:00
+
+17 Dec 2009  21:00:00
+
+DEC09
+
+December 2009 (Contest XI)
+
+01 Dec 2009  15:00:00
+
+11 Dec 2009  15:00:00
+
+SNACKDWN
+
+Codechef Campus Snackdown
+
+21 Nov 2009  19:00:00
+
+22 Nov 2009  00:00:00
+
+SNACKTST
+
+Snackdown Test
+
+19 Nov 2009  20:00:00
+
+19 Nov 2009  22:00:00
+
+NOV09
+
+November 2009 (Contest X)
+
+01 Nov 2009  15:00:00
+
+11 Nov 2009  15:00:00
+
+CB109
+
+Code Baker
+
+27 Oct 2009  18:00:00
+
+28 Oct 2009  18:00:00
+
+KNCO209
+
+Knight Coders Round 2
+
+24 Oct 2009  21:00:00
+
+25 Oct 2009  21:00:00
+
+INS09
+
+Inscription 2009
+
+25 Oct 2009  14:30:00
+
+25 Oct 2009  19:30:00
+
+OCT09
+
+October 2009 (Contest IX)
+
+01 Oct 2009  15:00:00
+
+11 Oct 2009  15:00:00
+
+NSIT091
+
+NSIT Contest 1
+
+10 Oct 2009  00:00:00
+
+11 Oct 2009  00:00:00
+
+SEP09
+
+September 2009 (Contest VIII)
+
+01 Sep 2009  15:00:00
+
+11 Sep 2009  15:00:00
+
+AUGMINI
+
+August Mini Challenge 2009 (Contest VII)
+
+22 Aug 2009  15:00:00
+
+24 Aug 2009  15:00:00
+
+AUG09
+
+August 2009 (Contest VI)
+
+01 Aug 2009  15:00:00
+
+11 Aug 2009  15:00:00
+
+JULY09
+
+July 2009 (Contest V)
+
+01 Jul 2009  15:00:00
+
+13 Jul 2009  15:00:00
+
+MAYGAMER
+
+May Gamers Challenge
+
+15 May 2009  00:00:00
+
+15 Jun 2009  00:00:00
+
+JUNE09
+
+June 2009 (Contest IV)
+
+01 Jun 2009  15:00:00
+
+11 Jun 2009  15:00:00
+
+MAY09
+
+May 2009 (Contest III)
+
+01 May 2009  15:00:00
+
+11 May 2009  15:00:00
+
+APRIL09
+
+April 2009 (Contest II)
+
+01 Apr 2009  15:00:00
+
+15 Apr 2009  15:00:00
+
+INSOM2
+
+IIT Roorkee Insomnia - Thought Round
+
+21 Mar 2009  21:00:00
+
+22 Mar 2009  09:00:00
+
+INSOM1
+
+IIT Roorkee Insomnia - Speed Round
+
+20 Mar 2009  16:00:00
+
+20 Mar 2009  20:00:00
+
+MARCH09
+
+March 2009 (Contest I)
+
+28 Feb 2009  22:00:00
+
+15 Mar 2009  00:00:00
+
+Programming Tools
+
+Practice Problems
+
+Initiatives
+
+Online IDE
+
+Easy
+
+Go for Gold
+
+Upcoming Coding Contests
+
+Medium
+
+CodeChef for Schools
+
+Contest Hosting
+
+Hard
+
+Campus Chapters
+
+Problem Setting
+
+Challenge
+
+CodeChef Tutorials
+
+Peer
+
+CodeChef Wiki
+
+School
+
+FAQ's
+
